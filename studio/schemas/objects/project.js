@@ -1,47 +1,49 @@
 export default {
     type: 'object',
     name: 'project',
-    title: 'Hero',
+    title: 'Project',
     fields: [
         {
-            name: 'heading',
+            name: 'name',
             type: 'string',
-            title: 'Heading'
+            title: 'Name'
         },
         {
-            name: 'tagline',
-            type: 'simplePortableText',
-            title: 'Tagline'
-        },
-        {
-            name: 'backgroundImage',
-            type: 'image',
-            title: 'Background image',
-            options: {
-                hotspot: true
-            }
-        },
-        {
-            name: 'ctas',
+            name: 'tags',
             type: 'array',
-            title: 'Call to actions',
-            of: [
-                {
-                    title: 'Call to action',
-                    type: 'cta'
-                }
-            ]
+            title: 'Tags',
+            of: [{
+                type: 'string'
+            }]
+        },
+        {
+            name: 'description',
+            type: 'simplePortableText',
+            title: 'Description'
+        },
+        {
+            name: 'image',
+            type: 'figure',
+            title: 'Image'
+        },
+        {
+            name: 'links',
+            type: 'array',
+            title: 'Links',
+            of: [{
+                type: 'titledLink'
+            }]
         }
     ],
     preview: {
         select: {
-            title: 'heading',
-            media: 'backgroundImage'
+            title: 'name',
+            media: 'image'
         },
         prepare({ title, media }) {
             return {
                 title,
-                subtitle: 'Hero section',
+                subtitle: 'Project',
                 media
             };
         }

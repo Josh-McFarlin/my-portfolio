@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SimpleBlockContent from '../SimpleBlockContent';
-import styles from './TextSection.module.css';
+import SimpleBlockContent from '../../SimpleBlockContent';
+import styles from '../TextSection/TextSection.module.css';
 
 
 function School(props) {

@@ -24,7 +24,7 @@ export default {
                 { type: 'emailForm' },
                 { type: 'textSection' },
                 { type: 'workExperience' },
-                { type: 'project' },
+                { type: 'projectsSection' },
                 { type: 'education' },
                 { type: 'skillSet' }
             ]

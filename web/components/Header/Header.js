@@ -5,7 +5,7 @@ import { withRouter } from 'next/router';
 import SVG from 'react-inlinesvg';
 
 import styles from './Header.module.css';
-import HamburgerIcon from './icons/Hamburger';
+import HamburgerIcon from '../icons/Hamburger';
 
 
 class Header extends React.Component {

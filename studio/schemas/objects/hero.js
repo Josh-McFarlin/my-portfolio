@@ -18,7 +18,10 @@ export default {
             type: 'image',
             title: 'Background image',
             options: {
-                hotspot: true
+                hotspot: true,
+                metadata: [
+                    'lqip'
+                ]
             }
         },
         {

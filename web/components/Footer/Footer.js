@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 
 import styles from './Footer.module.css';
-import SimpleBlockContent from './SimpleBlockContent';
+import SimpleBlockContent from '../SimpleBlockContent';
 
 
 function Footer(props) {

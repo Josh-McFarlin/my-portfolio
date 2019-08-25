@@ -1,4 +1,4 @@
-@import '../styles/custom-properties.css';
+@import '../../styles/custom-properties.css';
 
 .root {
   color: var(--color-black, #333);

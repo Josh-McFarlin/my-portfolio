@@ -28,8 +28,7 @@ export default {
         },
         {
             title: 'Site language',
-            description:
-        'Should be a valid bcp47 language code like en, en-US, no or nb-NO',
+            description: 'Should be a valid bcp47 language code like en, en-US, no or nb-NO',
             name: 'lang',
             type: 'string',
             validation: (Rule) =>
@@ -38,8 +37,7 @@ export default {
         },
         {
             title: 'Brand logo',
-            description:
-        'Best choice is to use an SVG where the color are set with currentColor',
+            description: 'Best choice is to use an SVG where the color are set with currentColor',
             name: 'logo',
             type: 'image',
             fields: [

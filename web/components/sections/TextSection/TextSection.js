@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import SimpleBlockContent from '../SimpleBlockContent';
+import SimpleBlockContent from '../../SimpleBlockContent';
 import styles from './TextSection.module.css';
 
 

@@ -19,11 +19,13 @@ import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
 import workExperience from './objects/workExperience';
 import job from './objects/job';
+import projectsSection from './objects/projectsSection';
 import project from './objects/project';
 import education from './objects/education';
 import school from './objects/school';
 import skillSet from './objects/skillSet';
 import skill from './objects/skill';
+import titledLink from './objects/titledLink';
 
 // Landing page sections
 import hero from './objects/hero';
@@ -53,10 +55,12 @@ export default createSchema({
         textSection,
         workExperience,
         job,
+        projectsSection,
         project,
         education,
         school,
         skillSet,
-        skill
+        skill,
+        titledLink
     ])
 });

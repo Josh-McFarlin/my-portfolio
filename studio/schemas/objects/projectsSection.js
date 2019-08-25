@@ -1,7 +1,7 @@
 export default {
     type: 'object',
-    name: 'textSection',
-    title: 'Text',
+    name: 'projectsSection',
+    title: 'Projects Section',
     fields: [
         {
             name: 'heading',
@@ -9,14 +9,12 @@ export default {
             title: 'Heading'
         },
         {
-            name: 'label',
-            type: 'string',
-            title: 'Label'
-        },
-        {
-            name: 'text',
-            type: 'portableText',
-            title: 'Text'
+            name: 'projects',
+            type: 'array',
+            title: 'Projects',
+            of: [{
+                type: 'project'
+            }]
         }
     ],
     preview: {
@@ -26,7 +24,7 @@ export default {
         prepare({ title }) {
             return {
                 title,
-                subtitle: 'Text section'
+                subtitle: 'Projects Section'
             };
         }
     }

@@ -19,11 +19,11 @@ export default {
     ],
     preview: {
         select: {
-            heading: 'heading'
+            title: 'heading'
         },
-        prepare({ heading }) {
+        prepare({ title }) {
             return {
-                title: `${heading}`,
+                title,
                 subtitle: 'Work Experience'
             };
         }

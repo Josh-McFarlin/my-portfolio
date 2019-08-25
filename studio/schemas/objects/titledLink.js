@@ -4,10 +4,15 @@ import React from 'react';
 const LinkRender = ({ children }) => <span>{children} 🌍</span>;
 
 export default {
-    title: 'URL',
-    name: 'link',
+    title: 'Titled Link',
+    name: 'titledLink',
     type: 'object',
     fields: [
+        {
+            name: 'title',
+            type: 'string',
+            title: 'Title'
+        },
         {
             title: 'URL',
             name: 'href',
@@ -21,5 +26,16 @@ export default {
     blockEditor: {
         icon: () => '🌍',
         render: LinkRender
+    },
+    preview: {
+        select: {
+            title: 'title'
+        },
+        prepare({ title }) {
+            return {
+                title,
+                subtitle: 'Link'
+            };
+        }
     }
 };

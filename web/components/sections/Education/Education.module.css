@@ -1,11 +1,11 @@
-@import '../../styles/custom-media.css';
-@import '../../styles/custom-properties.css';
+@import '../../../styles/custom-media.css';
+@import '../../../styles/custom-properties.css';
 
-.root:not(:last-of-type) {
-  padding-bottom: 2rem;
+.root {
+  padding: 2rem 0;
 
   @media (--media-min-medium) {
-    padding-bottom: 2rem;
+    padding: 2rem 0;
   }
 }
 
