@@ -1,23 +1,25 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import BlockContent from '@sanity/block-content-to-react'
-import client from '../client'
+import React from 'react';
+import PropTypes from 'prop-types';
+import BlockContent from '@sanity/block-content-to-react';
 
-const {projectId, dataset} = client.config()
+import client from '../client';
 
-function SimpleBlockContent (props) {
-  const {blocks} = props
 
-  if (!blocks) {
-    console.error('Missing blocks')
-    return null
-  }
+const { projectId, dataset } = client.config();
 
-  return <BlockContent blocks={blocks} projectId={projectId} dataset={dataset} />
+function SimpleBlockContent(props) {
+    const { blocks } = props;
+
+    if (!blocks) {
+        console.error('Missing blocks');
+        return null;
+    }
+
+    return <BlockContent blocks={blocks} projectId={projectId} dataset={dataset} />;
 }
 
 SimpleBlockContent.propTypes = {
-  blocks: PropTypes.arrayOf(PropTypes.object)
-}
+    blocks: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
-export default SimpleBlockContent
+export default SimpleBlockContent;
