@@ -17,8 +17,8 @@ export default function EmailForm(props) {
                     method='POST'
                 >
                     <input type='text' name='name' />
-                    <input type='email' name='replyto' />
-                    <input type='text' name='message' />
+                    <input type='email' name='_replyto' />
+                    <textarea name='message' />
                     <input type='submit' value='Send' />
                 </form>
             </div>
