@@ -13,40 +13,25 @@ function urlFor(source) {
 function Skill(props) {
     const { name, image } = props;
 
-    const style = image ? {
-        backgroundImage: `url("${urlFor(image)
-            .width(60)
-            .auto('format')
-            .url()}")`
-    } : {};
-
-    /*
-    return (
-        <div className={styles.root} style={style}>
-            <div className={styles.content}>
-                <h1 className={styles.title}>{name}</h1>
-            </div>
-        </div>
-    );
-    */
-
-    // const lowUrl = ;
-    const highUrl = urlFor(image)
-        .width(60)
+    const lowUrl = urlFor(image)
+        .width(20)
         .auto('format')
         .url();
 
-    console.log('image', image)
-    console.log('urlFor', urlFor(image))
+    const highUrl = urlFor(image)
+        .width(200)
+        .auto('format')
+        .url();
 
     return (
         <figure
             style={{
-                // backgroundImage: `url(${image.metadata.lqip})`,
+                backgroundImage: `url(${lowUrl})`,
                 // paddingTop: `calc(100% / ${image.metadata.dimensions.aspectRatio})`
             }}
         >
             <img src={`${highUrl}`} />
+            <figcaption>{name}</figcaption>
         </figure>
     );
 }
