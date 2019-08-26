@@ -11,10 +11,31 @@ function School(props) {
     return (
         <div className={styles.root}>
             <section className={styles.article}>
-                <div className={styles.label}>{name}</div>
-                <h2 className={styles.heading}>{location}</h2>
+                <h2 className={styles.heading}>{name}</h2>
+                <div className={styles.label}>{location}</div>
+                <div className={styles.label}>{startYear} - {endYear}</div>
                 {description && (
                     <SimpleBlockContent blocks={description} />
+                )}
+                {completedCourses && (
+                    <div>
+                        <div className={styles.label}>Completed Courses</div>
+                        <ul>
+                            {completedCourses.map((course) => (
+                                <li className={styles.label}>{course}</li>
+                            ))}
+                        </ul>
+                    </div>
+                )}
+                {currentCourses && (
+                    <div>
+                        <div className={styles.label}>Current Courses</div>
+                        <ul>
+                            {currentCourses.map((course) => (
+                                <li className={styles.label}>{course}</li>
+                            ))}
+                        </ul>
+                    </div>
                 )}
             </section>
         </div>

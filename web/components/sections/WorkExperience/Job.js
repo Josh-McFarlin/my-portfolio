@@ -11,8 +11,10 @@ function Job(props) {
     return (
         <div className={styles.root}>
             <section className={styles.article}>
-                <div className={styles.label}>{company}</div>
+                <h2 className={styles.heading}>{company}</h2>
                 <h2 className={styles.heading}>{position}</h2>
+                <div className={styles.label}>{startMonth}, {startYear} - {endMonth}, {endYear}</div>
+                <div className={styles.label}>{location}</div>
                 {description && (
                     <SimpleBlockContent blocks={description} />
                 )}
