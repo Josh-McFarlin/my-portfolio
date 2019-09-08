@@ -1,6 +1,7 @@
 import React from 'react';
 import BaseApp, { Container } from 'next/app';
 import MobileDetect from 'mobile-detect';
+import _ from 'lodash';
 import 'bootstrap-css-only';
 import 'shards-ui/dist/css/shards.min.css';
 
@@ -32,15 +33,19 @@ class App extends BaseApp {
             pageProps = await Component.getInitialProps(ctx);
         }
 
-        const md = ctx.req ? new MobileDetect(ctx.req.headers['user-agent']) :
-            new MobileDetect(navigator.userAgent);
+        const userAgent = ctx.req ? _.get(ctx, ['req', 'headers', 'user-agent']) : navigator.userAgent;
+        pageProps.isMobile = false;
+        if (userAgent != null) {
+            const md = new MobileDetect(userAgent);
+
+            pageProps.isMobile = md.mobile() != null;
+        }
 
         // Add site config from sanity
         return client.fetch(siteConfigQuery).then((config) => {
             if (!config) {
                 return {
-                    pageProps,
-                    isMobile: md.mobile() != null
+                    pageProps
                 };
             }
 
@@ -49,18 +54,17 @@ class App extends BaseApp {
             }
 
             return {
-                pageProps,
-                isMobile: md.mobile() != null
+                pageProps
             };
         });
     }
 
     render() {
-        const { Component, pageProps, isMobile } = this.props;
+        const { Component, pageProps } = this.props;
 
         return (
             <Container>
-                <Component {...pageProps} isMobile={isMobile} />
+                <Component {...pageProps} />
             </Container>
         );
     }
