@@ -28,7 +28,8 @@ export default {
                 { type: 'education' },
                 { type: 'skillSet' },
                 { type: 'basicImage' },
-                { type: 'socialLinks' }
+                { type: 'socialLinks' },
+                { type: 'sectionHeader' }
             ]
         },
         {

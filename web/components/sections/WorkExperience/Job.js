@@ -17,7 +17,10 @@ function Job(props) {
         `${startForm.format('MMMM, YYYY')} - ${endForm.format('MMMM, YYYY')}`;
 
     return (
-        <div className={styles.root}>
+        <div
+            className={styles.root}
+            id={`work-${company}`}
+        >
             <section className={styles.job}>
                 <h2 className={styles.heading}>{position} @ {company}</h2>
                 <div className={styles.details}>{dateString} in {location}</div>

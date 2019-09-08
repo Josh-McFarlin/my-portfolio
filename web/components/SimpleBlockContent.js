@@ -5,14 +5,19 @@ import BlockContent from '@sanity/block-content-to-react';
 import client from '../client';
 
 
+const internalLink = (props) => (
+    <a style={{ backgroundColor: props.mark.color }} href={props.mark.to}>
+        {props.children}
+    </a>
+);
+
 const { projectId, dataset } = client.config();
 
 function SimpleBlockContent(props) {
     const { blocks, className } = props;
 
     if (!blocks) {
-        console.error('Missing blocks');
-
+        // console.error('Missing blocks');
         return null;
     }
 
@@ -23,6 +28,7 @@ function SimpleBlockContent(props) {
             dataset={dataset}
             className={className}
             renderContainerOnSingleChild
+            serializers={{ marks: { internalLink } }}
         />
     );
 }

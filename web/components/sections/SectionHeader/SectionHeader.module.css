@@ -1,10 +1,6 @@
 @import '../../../styles/custom-media.css';
 @import '../../../styles/custom-properties.css';
 
-.root {
-  padding-bottom: 2rem;
-}
-
 .section {
   width: 100%;
   max-width: var(--width-small);
@@ -13,25 +9,20 @@
   box-sizing: border-box;
 }
 
-.label {
-  font-size: var(--font-micro-size);
-  line-height: var(--font-micro-line-height);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 1em;
-}
-
-.heading {
+.header-sm {
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
   margin: 0.25em 0;
 }
 
-.label+.heading {
-  margin-top: 0.25em;
+.header-md {
+  font-size: var(--font-title2-size);
+  line-height: var(--font-title2-line-height);
+  margin: 0.25em 0;
 }
 
-.skillsList {
-  display: flex;
-  flex-direction: row;
+.header-lg {
+  font-size: var(--font-title1-size);
+  line-height: var(--font-title1-line-height);
+  margin: 0.25em 0;
 }

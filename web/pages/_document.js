@@ -17,9 +17,7 @@ export default class MyDocument extends Document {
     render() {
         return (
             <Html lang={this.props.lang || 'en'}>
-                <Head>
-                    <link href='https://fonts.googleapis.com/css?family=Inconsolata&display=swap' rel='stylesheet' />
-                </Head>
+                <Head />
                 <body>
                     <Main />
                     <NextScript />

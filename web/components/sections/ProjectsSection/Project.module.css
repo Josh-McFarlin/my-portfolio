@@ -46,3 +46,7 @@
   flex-direction: column;
   align-items: flex-end;
 }
+
+.link {
+  margin-bottom: 5px;
+}

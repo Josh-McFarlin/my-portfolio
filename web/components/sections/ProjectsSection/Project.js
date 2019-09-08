@@ -1,7 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import imageUrlBuilder from '@sanity/image-url';
-import { Button } from 'shards-react';
 
 import styles from './Project.module.css';
 import client from '../../../client';
@@ -37,13 +36,12 @@ function Project(props) {
                         {links.map((data) => (
                             <a
                                 key={data.title}
+                                className={styles.link}
                                 href={data.href}
                                 target='_blank'
                                 rel='noopener noreferrer'
                             >
-                                <Button outline pill>
-                                    {data.title}
-                                </Button>
+                                {data.title}
                             </a>
                         ))}
                     </div>

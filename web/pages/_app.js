@@ -2,8 +2,6 @@ import React from 'react';
 import BaseApp, { Container } from 'next/app';
 import MobileDetect from 'mobile-detect';
 import _ from 'lodash';
-import 'bootstrap-css-only';
-import 'shards-ui/dist/css/shards.min.css';
 
 import client from '../client';
 import '../styles/shared.module.css';

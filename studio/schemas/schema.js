@@ -23,6 +23,7 @@ import school from './objects/school';
 import skill from './objects/skill';
 import titledLink from './objects/titledLink';
 import socialLinks from './objects/socialLinks';
+import sectionHeader from './objects/sectionHeader';
 
 // Landing page sections
 import hero from './objects/hero';
@@ -66,6 +67,7 @@ export default createSchema({
         skill,
         titledLink,
         basicImage,
-        socialLinks
+        socialLinks,
+        sectionHeader
     ])
 });

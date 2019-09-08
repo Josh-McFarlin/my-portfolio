@@ -13,12 +13,6 @@ body {
   margin: 0;
 }
 
-p, li {
-  font-family: var(--font-family-incons);
-  font-size: var(--font-base-size);
-  line-height: var(--font-base-line-height);
-}
-
 a {
   color: var(--color-link);
 }

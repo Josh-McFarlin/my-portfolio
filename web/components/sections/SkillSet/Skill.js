@@ -25,7 +25,7 @@ function Skill(props) {
         <div className={styles.root}>
             <div
                 style={style}
-                className={styles.skill}
+                className={styles.skillImage}
             />
             <p className={styles.name}>{name}</p>
         </div>

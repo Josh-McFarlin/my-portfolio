@@ -16,6 +16,8 @@ function TextSection(props) {
                     <a
                         className={styles.link}
                         href={linkedIn}
+                        target='_blank'
+                        rel='noopener noreferrer'
                     >
                         <FontAwesomeIcon
                             icon={faLinkedin}
@@ -27,6 +29,8 @@ function TextSection(props) {
                     <a
                         className={styles.link}
                         href={gitHub}
+                        target='_blank'
+                        rel='noopener noreferrer'
                     >
                         <FontAwesomeIcon
                             icon={faGithub}
@@ -38,6 +42,8 @@ function TextSection(props) {
                     <a
                         className={styles.link}
                         href={angelList}
+                        target='_blank'
+                        rel='noopener noreferrer'
                     >
                         <FontAwesomeIcon
                             icon={faAngellist}
@@ -49,6 +55,8 @@ function TextSection(props) {
                     <a
                         className={styles.link}
                         href={twitter}
+                        target='_blank'
+                        rel='noopener noreferrer'
                     >
                         <FontAwesomeIcon
                             icon={faTwitter}
@@ -60,6 +68,8 @@ function TextSection(props) {
                     <a
                         className={styles.link}
                         href={instagram}
+                        target='_blank'
+                        rel='noopener noreferrer'
                     >
                         <FontAwesomeIcon
                             icon={faInstagram}

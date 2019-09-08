@@ -12,7 +12,7 @@ function SkillSet(props) {
         <div className={styles.root}>
             <section className={styles.section}>
                 <h1 className={styles.heading}>{heading}</h1>
-                <div>
+                <div className={styles.skillsList}>
                     {skills.map((data) => (
                         <Skill
                             key={data.name}

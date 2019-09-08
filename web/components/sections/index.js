@@ -8,3 +8,4 @@ export { default as SkillSet } from './SkillSet';
 export { default as ProjectsSection } from './ProjectsSection';
 export { default as BasicImage } from './BasicImage';
 export { default as SocialLinks } from './SocialLinks';
+export { default as SectionHeader } from './SectionHeader';
