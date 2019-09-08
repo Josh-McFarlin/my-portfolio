@@ -6,3 +6,5 @@ export { default as WorkExperience } from './WorkExperience';
 export { default as Education } from './Education';
 export { default as SkillSet } from './SkillSet';
 export { default as ProjectsSection } from './ProjectsSection';
+export { default as BasicImage } from './BasicImage';
+export { default as SocialLinks } from './SocialLinks';

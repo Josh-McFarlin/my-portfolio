@@ -8,7 +8,7 @@ import Footer from './Footer';
 
 
 function Layout(props) {
-    const { config, children } = props;
+    const { config, children, isMobile } = props;
 
     if (!config) {
         console.error('Missing config');
@@ -24,8 +24,15 @@ function Layout(props) {
                 <meta name='viewport' content='initial-scale=1.0, width=device-width, viewport-fit=cover' />
             </Head>
             <div className='container'>
-                <Header title={title} navItems={mainNavigation} logo={logo} />
-                <div className='content'>{children}</div>
+                <Header
+                    title={title}
+                    navItems={mainNavigation}
+                    logo={logo}
+                    isMobile={isMobile}
+                />
+                <div className='content'>
+                    {children}
+                </div>
                 <Footer navItems={footerNavigation} text={footerText} />
                 {(logoUrl && url) && (
                     <LogoJsonLd url={url} logo={logoUrl} />
@@ -48,7 +55,8 @@ Layout.propTypes = {
             })
         }),
         url: PropTypes.string
-    }).isRequired
+    }).isRequired,
+    isMobile: PropTypes.bool.isRequired
 };
 
 export default Layout;

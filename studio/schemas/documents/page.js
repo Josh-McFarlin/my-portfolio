@@ -26,7 +26,9 @@ export default {
                 { type: 'workExperience' },
                 { type: 'projectsSection' },
                 { type: 'education' },
-                { type: 'skillSet' }
+                { type: 'skillSet' },
+                { type: 'basicImage' },
+                { type: 'socialLinks' }
             ]
         },
         {

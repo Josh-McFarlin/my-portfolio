@@ -26,7 +26,7 @@ export default {
         prepare({ title }) {
             return {
                 title,
-                subtitle: 'Text section'
+                subtitle: 'Text Section'
             };
         }
     }

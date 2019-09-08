@@ -5,16 +5,16 @@
   padding-bottom: 2rem;
 }
 
-.workExperience {
+.section {
   width: 100%;
   max-width: var(--width-small);
   margin: 0 auto;
   padding: 0 1.5rem;
   box-sizing: border-box;
+  display: flex;
+  justify-content: center;
 }
 
-.heading {
-  font-size: var(--font-title2-size);
-  line-height: var(--font-title2-line-height);
-  margin: 0.25em 0;
+.link {
+  margin: 0 8px;
 }

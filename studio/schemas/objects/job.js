@@ -19,38 +19,20 @@ export default {
             title: 'Location'
         },
         {
-            title: 'Start Month',
-            name: 'startMonth',
+            title: 'Start Date',
+            name: 'startDate',
             type: 'date',
             options: {
-                dateFormat: 'MMMM',
+                dateFormat: 'MMMM, YYYY',
                 calendarTodayLabel: 'Today'
             }
         },
         {
-            title: 'Start Year',
-            name: 'startYear',
+            title: 'End Date',
+            name: 'endDate',
             type: 'date',
             options: {
-                dateFormat: 'YYYY',
-                calendarTodayLabel: 'Today'
-            }
-        },
-        {
-            title: 'End Month',
-            name: 'endMonth',
-            type: 'date',
-            options: {
-                dateFormat: 'MMMM',
-                calendarTodayLabel: 'Today'
-            }
-        },
-        {
-            title: 'End Year',
-            name: 'endYear',
-            type: 'date',
-            options: {
-                dateFormat: 'YYYY',
+                dateFormat: 'MMMM, YYYY',
                 calendarTodayLabel: 'Today'
             }
         },

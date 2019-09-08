@@ -17,21 +17,24 @@ import internalLink from './objects/internalLink';
 import link from './objects/link';
 import portableText from './objects/portableText';
 import simplePortableText from './objects/simplePortableText';
-import workExperience from './objects/workExperience';
 import job from './objects/job';
-import projectsSection from './objects/projectsSection';
 import project from './objects/project';
-import education from './objects/education';
 import school from './objects/school';
-import skillSet from './objects/skillSet';
 import skill from './objects/skill';
 import titledLink from './objects/titledLink';
+import socialLinks from './objects/socialLinks';
 
 // Landing page sections
 import hero from './objects/hero';
 import imageSection from './objects/imageSection';
 import emailForm from './objects/emailForm';
 import textSection from './objects/textSection';
+import projectsSection from './objects/projectsSection';
+import workExperience from './objects/workExperience';
+import education from './objects/education';
+import skillSet from './objects/skillSet';
+import basicImage from './objects/basicImage';
+
 
 // Then we give our schema to the builder and provide the result to Sanity
 export default createSchema({
@@ -61,6 +64,8 @@ export default createSchema({
         school,
         skillSet,
         skill,
-        titledLink
+        titledLink,
+        basicImage,
+        socialLinks
     ])
 });

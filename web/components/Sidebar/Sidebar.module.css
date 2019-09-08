@@ -1,0 +1,71 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 70vw;
+  height: 100vh;
+  z-index: 5;
+
+  @media (--media-min-medium) {
+    display: none;
+  }
+}
+
+.background {
+  background: var(--color-accent);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.button {
+  outline: none;
+  border: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  cursor: pointer;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: transparent;
+}
+
+.links, .link {
+  margin: 0;
+  padding: 0;
+}
+
+.links {
+  position: absolute;
+  top: 80px;
+  right: 0;
+  padding: 16px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.link {
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.linkText {
+  font-size: var(--font-title3-size);
+  color: white;
+  text-decoration: underline;
+}

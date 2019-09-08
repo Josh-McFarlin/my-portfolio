@@ -10,8 +10,8 @@ function Education(props) {
 
     return (
         <div className={styles.root}>
-            <section className={styles.article}>
-                <h1 className={styles.title}>{heading}</h1>
+            <section className={styles.education}>
+                <h1 className={styles.heading}>{heading}</h1>
                 <div>
                     {schools.map((data) => (
                         <School

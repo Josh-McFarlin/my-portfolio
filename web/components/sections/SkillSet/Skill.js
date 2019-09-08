@@ -13,26 +13,22 @@ function urlFor(source) {
 function Skill(props) {
     const { name, image } = props;
 
-    const lowUrl = urlFor(image)
-        .width(20)
-        .auto('format')
-        .url();
-
-    const highUrl = urlFor(image)
-        .width(200)
-        .auto('format')
-        .url();
+    const style = image ? {
+        backgroundImage: `url("${urlFor(image)
+            .width(500)
+            .auto('format')
+            .url()}")`,
+        backgroundSize: 'contain'
+    } : {};
 
     return (
-        <figure
-            style={{
-                backgroundImage: `url(${lowUrl})`,
-                // paddingTop: `calc(100% / ${image.metadata.dimensions.aspectRatio})`
-            }}
-        >
-            <img src={`${highUrl}`} />
-            <figcaption>{name}</figcaption>
-        </figure>
+        <div className={styles.root}>
+            <div
+                style={style}
+                className={styles.skill}
+            />
+            <p className={styles.name}>{name}</p>
+        </div>
     );
 }
 

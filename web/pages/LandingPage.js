@@ -65,8 +65,7 @@ class LandingPage extends React.Component {
                       }
                     }
                   }
-                `
-                )
+                `)
                 .then((res) => ({
                     ...res.frontpage,
                     slug
@@ -84,7 +83,8 @@ class LandingPage extends React.Component {
             openGraphImage,
             content = [],
             config = {},
-            slug
+            slug,
+            isMobile
         } = this.props;
 
         const openGraphImages = openGraphImage ?
@@ -125,7 +125,10 @@ class LandingPage extends React.Component {
             [];
 
         return (
-            <Layout config={config}>
+            <Layout
+                config={config}
+                isMobile={isMobile}
+            >
                 <NextSeo
                     config={{
                         title,
@@ -153,7 +156,8 @@ LandingPage.propTypes = {
     openGraphImage: PropTypes.any.isRequired,
     content: PropTypes.any.isRequired,
     config: PropTypes.any.isRequired,
-    slug: PropTypes.any.isRequired
+    slug: PropTypes.any.isRequired,
+    isMobile: PropTypes.bool.isRequired
 };
 
 export default LandingPage;

@@ -11,18 +11,28 @@
     "start": "next start"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.22",
+    "@fortawesome/free-brands-svg-icons": "^5.10.2",
+    "@fortawesome/free-solid-svg-icons": "^5.10.2",
+    "@fortawesome/react-fontawesome": "^0.1.4",
     "@sanity/block-content-to-react": "^2.0.6",
     "@sanity/client": "^0.140.11",
     "@sanity/image-url": "^0.140.12",
     "@zeit/next-css": "^1.0.1",
+    "bootstrap-css-only": "^4.3.1",
+    "framer-motion": "^1.6.3",
     "groq": "^0.140.0",
     "lodash": "^4.17.11",
+    "mobile-detect": "^1.4.3",
+    "moment": "^2.24.0",
     "next": "^8.1.0",
     "next-seo": "^1.11.2",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-inlinesvg": "^0.8.4"
+    "react-inlinesvg": "^0.8.4",
+    "shards-react": "^1.0.3",
+    "shards-ui": "^3.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
