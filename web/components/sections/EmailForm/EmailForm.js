@@ -10,16 +10,50 @@ export default function EmailForm(props) {
     return (
         <section className={styles.root}>
             <div className={styles.container}>
-                <h2 className={styles.heading}>{heading}</h2>
-                <p className={styles.subtitle}>{subtitle}</p>
+                {(heading) && (
+                    <h2 className={styles.heading}>{heading}</h2>
+                )}
+                {(subtitle) && (
+                    <p className={styles.subtitle}>{subtitle}</p>
+                )}
                 <form
                     action={`https://formspree.io/${email}`}
                     method='POST'
                 >
-                    <input type='text' name='name' />
-                    <input type='email' name='_replyto' />
-                    <textarea name='message' />
-                    <input type='submit' value='Send' />
+                    <label htmlFor='fname'>Name</label>
+                    <input
+                        className={styles.formInput}
+                        id='fname'
+                        type='text'
+                        name='name'
+                        placeholder='Your Name'
+                        required
+                    />
+
+                    <label htmlFor='femail'>ReplyTo</label>
+                    <input
+                        className={styles.formInput}
+                        id='femail'
+                        type='email'
+                        name='replyTo'
+                        placeholder='Your Email'
+                        required
+                    />
+
+                    <label htmlFor='fmessage'>Message</label>
+                    <textarea
+                        className={styles.formInput}
+                        id='fmessage'
+                        name='message'
+                        placeholder='Message'
+                        required
+                    />
+
+                    <input
+                        className={styles.formButton}
+                        type='submit'
+                        value='Send'
+                    />
                 </form>
             </div>
         </section>
@@ -27,7 +61,12 @@ export default function EmailForm(props) {
 }
 
 EmailForm.propTypes = {
-    heading: PropTypes.string.isRequired,
-    subtitle: PropTypes.string.isRequired,
+    heading: PropTypes.string,
+    subtitle: PropTypes.string,
     email: PropTypes.string.isRequired
+};
+
+EmailForm.defaultProps = {
+    heading: null,
+    subtitle: null
 };

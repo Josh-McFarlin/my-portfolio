@@ -34,56 +34,32 @@
   margin: 0.5rem 0 1.5rem;
 }
 
-.form {
-  display: grid;
-
-  @media (--media-min-medium) {
-    min-width: 34rem;
-    display: grid;
-    grid-template-columns: 80% 20%;
-  }
-}
-
-.form input {
+.formInput {
   -webkit-font-smoothing: inherit;
   font: inherit;
-  display: block;
-  border: 1px solid var(--color-black, #000);
-  flex-grow: 1;
-  padding: 1rem;
   width: 100%;
-  max-width: 100%;
-  border-radius: 0;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   box-sizing: border-box;
-
-  @media (--media-min-medium) {
-    padding: 1em;
-  }
+  margin-top: 6px;
+  margin-bottom: 16px;
+  resize: vertical;
 }
 
-.form button {
+.formButton {
   -webkit-font-smoothing: inherit;
   font: inherit;
-  background: none;
-  margin-top: 1rem;
-  display: block;
-  padding: 1em;
-  border: 1px solid var(--color-black, #000);
+  background-color: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 25%;
+  float: right;
+}
 
-  @media (--media-min-medium) {
-    margin-top: 0;
-    border-left: none;
-  }
-
-  @nest &:focus {
-    background: var(--color-black, #000);
-    color: var(--color-white, #fff);
-  }
-
-  @media (hover: hover) {
-    @nest &:hover {
-      background: var(--color-black, #000);
-      color: var(--color-white, #fff);
-    }
-  }
+.formButton:hover {
+  background-color: #45a049;
 }
