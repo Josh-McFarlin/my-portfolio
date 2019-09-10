@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import NextSeo from 'next-seo';
+import NextSeo, { SocialProfileJsonLd } from 'next-seo';
 import groq from 'groq';
 import imageUrlBuilder from '@sanity/image-url';
 
@@ -29,7 +29,7 @@ const pageQuery = groq`
   }
 `;
 
-class LandingPage extends React.Component {
+class LandingPage extends React.PureComponent {
     static async getInitialProps({ query }) {
         const { slug } = query;
 
@@ -83,6 +83,7 @@ class LandingPage extends React.Component {
             openGraphImage,
             content = [],
             config = {},
+            socialLinks,
             slug,
             isMobile
         } = this.props;
@@ -124,6 +125,10 @@ class LandingPage extends React.Component {
             ] :
             [];
 
+        const onlySocial = socialLinks
+            .filter((item) => item.service !== 'resume')
+            .map((item) => item.link);
+
         return (
             <Layout
                 config={config}
@@ -132,7 +137,7 @@ class LandingPage extends React.Component {
                 <NextSeo
                     config={{
                         title,
-                        titleTemplate: `${config.title} | %s`,
+                        titleTemplate: `${config.name} | %s`,
                         description,
                         canonical: config.url && `${config.url}/${slug}`,
                         openGraph: {
@@ -140,6 +145,12 @@ class LandingPage extends React.Component {
                         },
                         noindex: disallowRobots
                     }}
+                />
+                <SocialProfileJsonLd
+                    type='Person'
+                    name={config.name}
+                    url={config.url}
+                    sameAs={onlySocial}
                 />
                 {content && (
                     <RenderSections sections={content} />
@@ -151,13 +162,22 @@ class LandingPage extends React.Component {
 
 LandingPage.propTypes = {
     title: PropTypes.string.isRequired,
-    description: PropTypes.string.isRequired,
-    disallowRobots: PropTypes.any.isRequired,
-    openGraphImage: PropTypes.any.isRequired,
+    description: PropTypes.string,
+    disallowRobots: PropTypes.any,
+    openGraphImage: PropTypes.any,
     content: PropTypes.any.isRequired,
     config: PropTypes.any.isRequired,
     slug: PropTypes.any.isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool,
+    socialLinks: PropTypes.array
+};
+
+LandingPage.defaultProps = {
+    description: null,
+    disallowRobots: false,
+    openGraphImage: null,
+    isMobile: false,
+    socialLinks: []
 };
 
 export default LandingPage;

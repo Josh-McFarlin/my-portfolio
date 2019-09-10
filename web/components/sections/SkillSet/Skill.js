@@ -15,7 +15,7 @@ function Skill(props) {
 
     const imageStyle = image ? {
         backgroundImage: `url("${urlFor(image)
-            .width(500)
+            .width(120)
             .auto('format')
             .url()}")`,
         backgroundSize: 'contain'

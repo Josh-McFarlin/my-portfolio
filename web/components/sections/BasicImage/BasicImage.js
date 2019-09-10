@@ -14,7 +14,9 @@ function BasicImage(props) {
     const { image, circular, size } = props;
 
     const src = urlFor(image)
-        .width(2000)
+        .width(600)
+        .height(600)
+        .fit('clip')
         .auto('format')
         .url();
 

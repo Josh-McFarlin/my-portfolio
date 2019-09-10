@@ -17,4 +17,8 @@
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
   margin: 0.25em 0;
+
+  @media (--media-max-medium) {
+    text-decoration: underline !important;
+  }
 }

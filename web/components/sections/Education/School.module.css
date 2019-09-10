@@ -2,11 +2,7 @@
 @import '../../../styles/custom-properties.css';
 
 .root:not(:last-of-type) {
-  padding-bottom: 2rem;
-
-  @media (--media-min-medium) {
-    padding-bottom: 2rem;
-  }
+  padding-bottom: 0.5rem;
 }
 
 .school {

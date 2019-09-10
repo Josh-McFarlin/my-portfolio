@@ -17,8 +17,9 @@ export default function EmailForm(props) {
                     <p className={styles.subtitle}>{subtitle}</p>
                 )}
                 <form
-                    action={`https://formspree.io/${email}`}
+                    name='contact'
                     method='POST'
+                    data-netlify='true'
                 >
                     <label htmlFor='fname'>Name</label>
                     <input

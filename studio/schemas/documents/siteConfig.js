@@ -10,9 +10,9 @@ export default {
     fieldsets: [{ name: 'footer', title: 'Footer' }],
     fields: [
         {
-            name: 'title',
+            name: 'name',
             type: 'string',
-            title: 'Site title'
+            title: 'Your Name'
         },
         {
             title: 'URL',
@@ -36,21 +36,10 @@ export default {
                     (bcp47.parse(lang) ? true : 'Please use a valid bcp47 code'))
         },
         {
-            title: 'Brand logo',
-            description: 'Best choice is to use an SVG where the color are set with currentColor',
-            name: 'logo',
+            name: 'favicon',
+            title: 'Favicon',
             type: 'image',
-            fields: [
-                {
-                    name: 'alt',
-                    type: 'string',
-                    title: 'Alternative text',
-                    description: 'Important for SEO and accessiblity.',
-                    options: {
-                        isHighlighted: true
-                    }
-                }
-            ]
+            validation: (Rule) => Rule.required()
         },
         {
             title: 'Main navigation',
@@ -64,7 +53,7 @@ export default {
             of: [
                 {
                     type: 'reference',
-                    to: [{ type: 'route' }]
+                    to: [{ type: 'route' }, { type: 'socialLink' }]
                 }
             ]
         },

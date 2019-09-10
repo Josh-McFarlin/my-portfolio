@@ -8,15 +8,19 @@ export default class MyDocument extends Document {
     static async getInitialProps(ctx) {
         const initialProps = await Document.getInitialProps(ctx);
 
-        return client.fetch('*[_id == "global-config"] {lang}.lang[0]').then((lang) => ({
+        const lang = await client.fetch('*[_id == "global-config"] {lang}.lang[0]');
+
+        return {
             ...initialProps,
             lang
-        }));
+        };
     }
 
     render() {
+        const { lang } = this.props;
+
         return (
-            <Html lang={this.props.lang || 'en'}>
+            <Html lang={lang || 'en'}>
                 <Head />
                 <body>
                     <Main />

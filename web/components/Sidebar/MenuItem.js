@@ -30,8 +30,12 @@ const variants = {
 };
 
 const MenuItem = ({ item, router, toggle }) => {
-    const { slug, title } = item;
-    const isActive = router.pathname === '/LandingPage' && router.query.slug === slug.current;
+    const { slug, title, link } = item;
+
+    let isActive = false;
+    if (slug != null) {
+        isActive = router.pathname === '/LandingPage' && router.query.slug === slug.current;
+    }
 
     return (
         <motion.div
@@ -41,21 +45,32 @@ const MenuItem = ({ item, router, toggle }) => {
             whileTap={{ scale: 0.95 }}
             onClick={toggle}
         >
-            <Link
-                href={{
-                    pathname: '/LandingPage',
-                    query: { slug: slug.current }
-                }}
-                as={`/${slug.current !== '/' ? slug.current : ''}`}
-                prefetch
-            >
-                <div
+            {(slug != null) ? (
+                <Link
+                    href={{
+                        pathname: '/LandingPage',
+                        query: { slug: slug.current }
+                    }}
+                    as={`/${slug.current !== '/' ? slug.current : ''}`}
+                    prefetch
+                >
+                    <div
+                        className={styles.linkText}
+                        data-is-active={isActive ? 'true' : 'false'}
+                    >
+                        {title}
+                    </div>
+                </Link>
+            ) : (
+                <a
                     className={styles.linkText}
-                    data-is-active={isActive ? 'true' : 'false'}
+                    href={link}
+                    target='_blank'
+                    rel='noopener noreferrer'
                 >
                     {title}
-                </div>
-            </Link>
+                </a>
+            )}
         </motion.div>
     );
 };

@@ -16,7 +16,7 @@ export default {
         {
             name: 'size',
             type: 'number',
-            title: 'Size',
+            title: 'Size (Percent Width)',
             validation: (Rule) => Rule.required().integer().min(1).max(100)
         }
     ],

@@ -1,7 +1,7 @@
 import React from 'react';
 import BaseApp, { Container } from 'next/app';
-import MobileDetect from 'mobile-detect';
-import _ from 'lodash';
+import isMobile from 'ismobilejs';
+import { get } from 'lodash';
 
 import client from '../client';
 import '../styles/shared.module.css';
@@ -11,7 +11,6 @@ import '../styles/layout.css';
 const siteConfigQuery = `
   *[_id == "global-config"] {
     ...,
-    logo {asset->{extension, url}},
     mainNavigation[] -> {
       ...,
       "title": page->title
@@ -23,6 +22,13 @@ const siteConfigQuery = `
   }[0]
   `;
 
+const socialQuery = `
+  *[_type == "socialLink"] {
+    link,
+    service
+  }
+`;
+
 class App extends BaseApp {
     static async getInitialProps({ Component, ctx }) {
         let pageProps = {};
@@ -31,30 +37,23 @@ class App extends BaseApp {
             pageProps = await Component.getInitialProps(ctx);
         }
 
-        const userAgent = ctx.req ? _.get(ctx, ['req', 'headers', 'user-agent']) : navigator.userAgent;
+        const userAgent = ctx.req ? get(ctx, ['req', 'headers', 'user-agent']) : navigator.userAgent;
         pageProps.isMobile = false;
         if (userAgent != null) {
-            const md = new MobileDetect(userAgent);
-
-            pageProps.isMobile = md.mobile() != null;
+            pageProps.isMobile = isMobile(userAgent).any;
         }
 
-        // Add site config from sanity
-        return client.fetch(siteConfigQuery).then((config) => {
-            if (!config) {
-                return {
-                    pageProps
-                };
-            }
-
-            if (config && pageProps) {
-                pageProps.config = config;
-            }
-
-            return {
-                pageProps
-            };
+        await client.fetch(siteConfigQuery).then((config) => {
+            pageProps.config = config;
         });
+
+        await client.fetch(socialQuery).then((socialLinks) => {
+            pageProps.socialLinks = socialLinks;
+        });
+
+        return {
+            pageProps
+        };
     }
 
     render() {

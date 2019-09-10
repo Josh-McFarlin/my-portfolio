@@ -21,7 +21,7 @@ function TextSection(props) {
                     >
                         <FontAwesomeIcon
                             icon={faLinkedin}
-                            size='lg'
+                            size='2x'
                         />
                     </a>
                 )}
@@ -34,7 +34,7 @@ function TextSection(props) {
                     >
                         <FontAwesomeIcon
                             icon={faGithub}
-                            size='lg'
+                            size='2x'
                         />
                     </a>
                 )}
@@ -47,7 +47,7 @@ function TextSection(props) {
                     >
                         <FontAwesomeIcon
                             icon={faAngellist}
-                            size='lg'
+                            size='2x'
                         />
                     </a>
                 )}
@@ -60,7 +60,7 @@ function TextSection(props) {
                     >
                         <FontAwesomeIcon
                             icon={faTwitter}
-                            size='lg'
+                            size='2x'
                         />
                     </a>
                 )}
@@ -73,7 +73,7 @@ function TextSection(props) {
                     >
                         <FontAwesomeIcon
                             icon={faInstagram}
-                            size='lg'
+                            size='2x'
                         />
                     </a>
                 )}

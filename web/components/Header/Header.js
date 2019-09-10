@@ -2,27 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
-import SVG from 'react-inlinesvg';
 import Sidebar from '../Sidebar';
 
 import styles from './Header.module.css';
 
 
-class Header extends React.Component {
-    renderLogo = (logo) => {
-        if (!logo || !logo.asset) {
-            return null;
-        }
-
-        if (logo.asset.extension === 'svg') {
-            return <SVG src={logo.asset.url} className={styles.logo} />;
-        }
-
-        return <img src={logo.asset.url} alt={logo.title} className={styles.logo} />;
-    };
-
+class Header extends React.PureComponent {
     render() {
-        const { title = 'Missing title', navItems, router, logo, isMobile } = this.props;
+        const { name = 'Missing name', navItems, router, isMobile } = this.props;
 
         return (
             <div className={styles.root}>
@@ -37,14 +24,10 @@ class Header extends React.Component {
                         as='/'
                         prefetch
                     >
-                        <a title={title}>
-                            {logo && logo.asset ? (
-                                this.renderLogo(logo)
-                            ) : (
-                                <h1 className={styles.title}>
-                                    {title}
-                                </h1>
-                            )}
+                        <a title={name}>
+                            <h1 className={styles.title}>
+                                {name}
+                            </h1>
                         </a>
                     </Link>
                 </h1>
@@ -56,21 +39,35 @@ class Header extends React.Component {
                     <nav className={styles.nav}>
                         <ul className={styles.navItems}>
                             {navItems && navItems.map((item) => {
-                                const { slug, title, _id } = item;
-                                const isActive = router.pathname === '/LandingPage' && router.query.slug === slug.current;
+                                const { slug, title, link, _id } = item;
+
+                                let isActive = false;
+                                if (slug != null) {
+                                    isActive = router.pathname === '/LandingPage' && router.query.slug === slug.current;
+                                }
 
                                 return (
                                     <li key={_id} className={styles.navItem}>
-                                        <Link
-                                            href={{
-                                                pathname: '/LandingPage',
-                                                query: { slug: slug.current }
-                                            }}
-                                            as={`/${slug.current !== '/' ? slug.current : ''}`}
-                                            prefetch
-                                        >
-                                            <a data-is-active={isActive ? 'true' : 'false'}>{title}</a>
-                                        </Link>
+                                        {(slug != null) ? (
+                                            <Link
+                                                href={{
+                                                    pathname: '/LandingPage',
+                                                    query: { slug: slug.current }
+                                                }}
+                                                as={`/${slug.current !== '/' ? slug.current : ''}`}
+                                                prefetch
+                                            >
+                                                <a data-is-active={isActive ? 'true' : 'false'}>{title}</a>
+                                            </Link>
+                                        ) : (
+                                            <a
+                                                href={link}
+                                                target='_blank'
+                                                rel='noopener noreferrer'
+                                            >
+                                                {title}
+                                            </a>
+                                        )}
                                     </li>
                                 );
                             })}
@@ -90,21 +87,15 @@ Header.propTypes = {
         }),
         events: PropTypes.any
     }).isRequired,
-    title: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
     navItems: PropTypes.arrayOf(
         PropTypes.shape({
-            title: PropTypes.string.isRequired,
+            title: PropTypes.string,
             slug: PropTypes.shape({
                 current: PropTypes.string
-            }).isRequired
+            })
         })
     ).isRequired,
-    logo: PropTypes.shape({
-        asset: PropTypes.shape({
-            url: PropTypes.string
-        }),
-        logo: PropTypes.string
-    }).isRequired,
     isMobile: PropTypes.bool.isRequired
 };
 
