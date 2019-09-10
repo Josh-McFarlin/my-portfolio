@@ -4,67 +4,119 @@ import React from 'react';
 import styles from './EmailForm.module.css';
 
 
-export default function EmailForm(props) {
-    const { heading, subtitle, email } = props;
+export default class EmailForm extends React.PureComponent {
+    constructor(props) {
+        super(props);
 
-    return (
-        <section className={styles.root}>
-            <div className={styles.container}>
-                {(heading) && (
-                    <h2 className={styles.heading}>{heading}</h2>
-                )}
-                {(subtitle) && (
-                    <p className={styles.subtitle}>{subtitle}</p>
-                )}
-                <form
-                    name='contact'
-                    method='POST'
-                    data-netlify='true'
-                >
-                    <label htmlFor='fname'>Name</label>
-                    <input
-                        className={styles.formInput}
-                        id='fname'
-                        type='text'
-                        name='name'
-                        placeholder='Your Name'
-                        required
-                    />
+        this.state = {
+            name: '',
+            replyTo: '',
+            message: ''
+        };
+    }
 
-                    <label htmlFor='femail'>ReplyTo</label>
-                    <input
-                        className={styles.formInput}
-                        id='femail'
-                        type='email'
-                        name='replyTo'
-                        placeholder='Your Email'
-                        required
-                    />
+    handleChange = (event) => {
+        this.setState({
+            [event.target.name]: event.target.value
+        });
+    };
 
-                    <label htmlFor='fmessage'>Message</label>
-                    <textarea
-                        className={styles.formInput}
-                        id='fmessage'
-                        name='message'
-                        placeholder='Message'
-                        required
-                    />
+    submitForm = async (event) => {
+        event.preventDefault();
 
-                    <input
-                        className={styles.formButton}
-                        type='submit'
-                        value='Send'
-                    />
-                </form>
-            </div>
-        </section>
-    );
+        const { name, replyTo, message } = this.state;
+
+        if (name.length > 0 && replyTo.length > 0 && message.length > 0) {
+            await fetch('/contact', {
+                method: 'post',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    name,
+                    replyTo,
+                    message
+                })
+            })
+                .then(() => {
+                    alert('Successfully submitted contact form!');
+                })
+                .catch(() => {
+                    alert('An error occurred while submitting the contact form, please try again later!');
+                });
+        }
+    };
+
+    render() {
+        const { heading, subtitle } = this.props;
+        const { name, replyTo, message } = this.state;
+
+        return (
+            <section className={styles.root}>
+                <div className={styles.container}>
+                    {(heading) && (
+                        <h2 className={styles.heading}>{heading}</h2>
+                    )}
+                    {(subtitle) && (
+                        <p className={styles.subtitle}>{subtitle}</p>
+                    )}
+                    <form
+                        name='contact'
+                        method='POST'
+                        data-netlify='true'
+                        action='/contact'
+                        onSubmit={this.submitForm}
+                    >
+                        <label htmlFor='fname'>Name</label>
+                        <input
+                            className={styles.formInput}
+                            id='fname'
+                            type='text'
+                            name='name'
+                            placeholder='Your Name'
+                            required
+                            value={name}
+                            onChange={this.handleChange}
+                        />
+
+                        <label htmlFor='femail'>ReplyTo</label>
+                        <input
+                            className={styles.formInput}
+                            id='femail'
+                            type='email'
+                            name='replyTo'
+                            placeholder='Your Email'
+                            required
+                            value={replyTo}
+                            onChange={this.handleChange}
+                        />
+
+                        <label htmlFor='fmessage'>Message</label>
+                        <textarea
+                            className={styles.formInput}
+                            id='fmessage'
+                            name='message'
+                            placeholder='Message'
+                            required
+                            value={message}
+                            onChange={this.handleChange}
+                        />
+
+                        <input
+                            className={styles.formButton}
+                            type='submit'
+                            value='Send'
+                        />
+                    </form>
+                </div>
+            </section>
+        );
+    }
 }
 
 EmailForm.propTypes = {
     heading: PropTypes.string,
-    subtitle: PropTypes.string,
-    email: PropTypes.string.isRequired
+    subtitle: PropTypes.string
 };
 
 EmailForm.defaultProps = {

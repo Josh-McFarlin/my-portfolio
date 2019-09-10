@@ -1,4 +1,6 @@
 const withCSS = require('@zeit/next-css');
+const webpack = require('webpack');
+
 const client = require('./client');
 
 
@@ -56,5 +58,12 @@ module.exports = withCSS({
             };
             return nextRoutes;
         });
+    },
+    webpack: (config) => {
+        config.plugins.push(
+            new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
+        );
+
+        return config;
     }
 });
