@@ -64,9 +64,19 @@ export default class EmailForm extends React.PureComponent {
                         name='contact'
                         method='POST'
                         data-netlify='true'
+                        netlify-honeypot='bot-field'
                         action='/contact'
                         onSubmit={this.submitForm}
                     >
+                        <input
+                            type='hidden'
+                            name='form-name'
+                            value='contact'
+                        />
+                        <input
+                            name='bot-field'
+                        />
+
                         <label htmlFor='fname'>Name</label>
                         <input
                             className={styles.formInput}
