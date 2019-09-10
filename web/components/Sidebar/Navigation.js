@@ -1,5 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 import MenuItem from './MenuItem';
 import styles from './Sidebar.module.css';
@@ -14,18 +15,28 @@ const variants = {
     }
 };
 
-const Navigation = ({ navItems }) => (
+const Navigation = ({ navItems, toggle }) => (
     <motion.div
         className={styles.links}
         variants={variants}
     >
-        {navItems.map((i) => (
+        {navItems.map((item) => (
             <MenuItem
-                i={i}
-                key={i._id}
+                item={item}
+                key={item._id}
+                toggle={toggle}
             />
         ))}
     </motion.div>
 );
+
+Navigation.propTypes = {
+    navItems: PropTypes.array,
+    toggle: PropTypes.func.isRequired
+};
+
+Navigation.defaultProps = {
+    navItems: []
+};
 
 export default Navigation;

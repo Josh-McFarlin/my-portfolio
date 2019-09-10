@@ -27,3 +27,7 @@ body,
 :global(.content) {
   min-height: calc(100% - 84px - 218px);
 }
+
+p {
+  margin: 8px 0;
+}

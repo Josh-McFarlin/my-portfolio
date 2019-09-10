@@ -43,10 +43,24 @@
 
 .linkContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .link {
-  margin-bottom: 5px;
+  margin-bottom: 25px;
+  padding: 0.5em 1em;
+  border: 0.16em solid #FFFFFF;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: var(--font-micro-size);
+}
+
+.link:hover{
+  color: #DDDDDD;
+  border-color: #DDDDDD;
 }

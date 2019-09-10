@@ -1,15 +1,36 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import BlockContent from '@sanity/block-content-to-react';
 
+import Link from 'next/link';
 import client from '../client';
 
 
-const internalLink = (props) => (
-    <a style={{ backgroundColor: props.mark.color }} href={props.mark.to}>
-        {props.children}
-    </a>
-);
+const internalLink = (props) => {
+    const [slug, setSlug] = useState({});
+
+    useEffect(() => {
+        client.fetch(`*[_id == "${props.mark._ref}"][0]`)
+            .then((response) => {
+                setSlug(response.slug);
+            });
+    }, []);
+
+    return (
+        <Link
+            href={{
+                pathname: '/LandingPage',
+                query: { slug: slug.current }
+            }}
+            as={`/${slug.current !== '/' ? slug.current : ''}`}
+            prefetch
+        >
+            <a>
+                {props.children}
+            </a>
+        </Link>
+    );
+};
 
 const { projectId, dataset } = client.config();
 

@@ -11,7 +11,9 @@ function SkillSet(props) {
     return (
         <div className={styles.root}>
             <section className={styles.section}>
-                <h1 className={styles.heading}>{heading}</h1>
+                {(heading) && (
+                    <h1 className={styles.heading}>{heading}</h1>
+                )}
                 <div className={styles.skillsList}>
                     {skills.map((data) => (
                         <Skill
@@ -26,8 +28,13 @@ function SkillSet(props) {
 }
 
 SkillSet.propTypes = {
-    heading: PropTypes.string.isRequired,
-    skills: PropTypes.arrayOf(PropTypes.object).isRequired
+    heading: PropTypes.string,
+    skills: PropTypes.arrayOf(PropTypes.object)
+};
+
+SkillSet.defaultProps = {
+    heading: null,
+    skills: []
 };
 
 export default SkillSet;

@@ -13,7 +13,7 @@ function urlFor(source) {
 function Skill(props) {
     const { name, image } = props;
 
-    const style = image ? {
+    const imageStyle = image ? {
         backgroundImage: `url("${urlFor(image)
             .width(500)
             .auto('format')
@@ -23,18 +23,27 @@ function Skill(props) {
 
     return (
         <div className={styles.root}>
-            <div
-                style={style}
-                className={styles.skillImage}
-            />
-            <p className={styles.name}>{name}</p>
+            {(image) && (
+                <div
+                    style={imageStyle}
+                    className={styles.skillImage}
+                />
+            )}
+            {(name) && (
+                <p className={styles.skillText}>{name}</p>
+            )}
         </div>
     );
 }
 
 Skill.propTypes = {
-    name: PropTypes.string.isRequired,
-    image: PropTypes.object.isRequired
+    name: PropTypes.string,
+    image: PropTypes.object
+};
+
+Skill.defaultProps = {
+    name: null,
+    image: null
 };
 
 export default Skill;

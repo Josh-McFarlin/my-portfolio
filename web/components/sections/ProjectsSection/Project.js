@@ -16,7 +16,8 @@ function Project(props) {
 
     const style = image ? {
         backgroundImage: `url("${urlFor(image)
-            .width(1200)
+            .width(1260)
+            .height(1024)
             .auto('format')
             .url()}")`,
         backgroundSize: 'cover'
@@ -26,11 +27,9 @@ function Project(props) {
         <div className={styles.root} style={style}>
             <div className={styles.content}>
                 <h1 className={styles.title}>{name}</h1>
-                <div className={styles.tagline}>
-                    {description && (
-                        <SimpleBlockContent blocks={description} />
-                    )}
-                </div>
+                {description && (
+                    <SimpleBlockContent blocks={description} />
+                )}
                 {links && (
                     <div className={styles.linkContainer}>
                         {links.map((data) => (

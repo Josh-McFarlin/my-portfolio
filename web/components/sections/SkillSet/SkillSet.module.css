@@ -3,6 +3,7 @@
 
 .root {
   padding-bottom: 2rem;
+  margin-top: -1.5rem;
 }
 
 .section {
@@ -13,25 +14,17 @@
   box-sizing: border-box;
 }
 
-.label {
-  font-size: var(--font-micro-size);
-  line-height: var(--font-micro-line-height);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-top: 1em;
-}
-
 .heading {
-  font-size: var(--font-title3-size);
-  line-height: var(--font-title3-line-height);
+  font-size: var(--font-title4-size);
+  line-height: var(--font-title4-line-height);
+  font-weight: 400;
   margin: 0.25em 0;
-}
-
-.label+.heading {
-  margin-top: 0.25em;
+  text-align: center;
 }
 
 .skillsList {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }

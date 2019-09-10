@@ -1,5 +1,6 @@
-import React, { useRef } from 'react';
+import React from 'react';
 import { motion, useCycle } from 'framer-motion';
+import PropTypes from 'prop-types';
 
 import { useDimensions } from './utils';
 import MenuToggle from './MenuToggle';
@@ -29,7 +30,7 @@ const variants = {
 
 const Sidebar = ({ navItems }) => {
     const [isOpen, toggleOpen] = useCycle(false, true);
-    const containerRef = useRef(null);
+    const containerRef = React.useRef(null);
     const { height } = useDimensions(containerRef);
 
     return (
@@ -44,12 +45,23 @@ const Sidebar = ({ navItems }) => {
                 className={styles.background}
                 variants={variants}
             />
-            <Navigation
-                navItems={navItems}
-            />
             <MenuToggle toggle={() => toggleOpen()} />
+            {(isOpen) && (
+                <Navigation
+                    navItems={navItems}
+                    toggle={() => toggleOpen()}
+                />
+            )}
         </motion.nav>
     );
+};
+
+Sidebar.propTypes = {
+    navItems: PropTypes.array
+};
+
+Sidebar.defaultProps = {
+    navItems: []
 };
 
 export default Sidebar;

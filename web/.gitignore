@@ -39,3 +39,6 @@ jspm_packages
 
 # Static
 out
+
+# For Netlify building
+package-lock.json
