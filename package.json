@@ -3,14 +3,14 @@
   "name": "my-portfolio",
   "version": "1.0.0",
   "scripts": {
-    "build": "lerna run build --parallel",
+    "build": "npm install lerna next && lerna run build --parallel",
     "build-web": "(cd web && npm run build)",
     "build-studio": "(cd studio && npm run build)",
     "dev": "lerna run dev --parallel",
     "format": "lerna run format",
     "graphql-deploy": "lerna run graphql-deploy",
     "lint": "lerna run lint",
-    "postinstall": "npm install && lerna bootstrap",
+    "postinstall": "npm install lerna next && lerna bootstrap",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
