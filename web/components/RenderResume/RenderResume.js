@@ -100,9 +100,9 @@ class RenderResume extends React.PureComponent {
                             file={showWhich === 'link' ? link : pdfLink}
                             options={{
                                 cMapUrl: 'cmaps/',
-                                cMapPacked: true,
-                                renderMode: 'svg'
+                                cMapPacked: true
                             }}
+                            renderMode='svg'
                             loading={<div className={styles.loading}>Loading Resume...</div>}
                             onSourceError={this.onRenderFail}
                             onLoadError={this.onRenderFail}
