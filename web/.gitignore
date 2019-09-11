@@ -39,3 +39,5 @@ jspm_packages
 
 # Static
 out
+/static/pdf.worker.min.js
+/cmaps/

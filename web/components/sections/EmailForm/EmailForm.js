@@ -4,7 +4,11 @@ import React from 'react';
 import styles from './EmailForm.module.css';
 
 
-export default class EmailForm extends React.PureComponent {
+const encode = (data) => Object.keys(data)
+    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
+    .join('&');
+
+class EmailForm extends React.PureComponent {
     constructor(props) {
         super(props);
 
@@ -27,18 +31,23 @@ export default class EmailForm extends React.PureComponent {
         const { name, replyTo, message } = this.state;
 
         if (name.length > 0 && replyTo.length > 0 && message.length > 0) {
-            await fetch('/contact', {
+            await fetch('/', {
                 method: 'post',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: JSON.stringify({
+                body: encode({
+                    'form-name': 'contact',
                     name,
                     replyTo,
                     message
                 })
             })
-                .then(() => {
+                .then((response) => {
+                    if (!response.ok) {
+                        throw Error(response.statusText);
+                    }
+
                     alert('Successfully submitted contact form!');
                 })
                 .catch(() => {
@@ -64,8 +73,8 @@ export default class EmailForm extends React.PureComponent {
                         name='contact'
                         method='POST'
                         data-netlify='true'
-                        netlify-honeypot='bot-field'
-                        action='/contact'
+                        data-netlify-honeypot='bot-field'
+                        action='/contact/'
                         onSubmit={this.submitForm}
                     >
                         <input
@@ -73,9 +82,14 @@ export default class EmailForm extends React.PureComponent {
                             name='form-name'
                             value='contact'
                         />
-                        <input
-                            name='bot-field'
-                        />
+                        <p hidden>
+                            <label>
+                                <input
+                                    name='bot-field'
+                                    onChange={this.handleChange}
+                                />
+                            </label>
+                        </p>
 
                         <label htmlFor='fname'>Name</label>
                         <input
@@ -133,3 +147,5 @@ EmailForm.defaultProps = {
     heading: null,
     subtitle: null
 };
+
+export default EmailForm;

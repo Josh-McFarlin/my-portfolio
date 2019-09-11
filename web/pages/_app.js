@@ -22,12 +22,7 @@ const siteConfigQuery = `
   }[0]
   `;
 
-const socialQuery = `
-  *[_type == "socialLink"] {
-    link,
-    service
-  }
-`;
+const socialQuery = '*[_type == "socialLink"].link';
 
 class App extends BaseApp {
     static async getInitialProps({ Component, ctx }) {

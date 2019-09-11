@@ -4,7 +4,7 @@ import { MdDashboard, MdSettings } from 'react-icons';
 // We filter document types defined in structure to prevent
 // them from being listed twice
 const hiddenDocTypes = (listItem) =>
-    !['page', 'route', 'site-config', 'socialLink'].includes(listItem.getId());
+    !['page', 'route', 'site-config', 'socialLink', 'resumePage'].includes(listItem.getId());
 
 export default () =>
     S.list()
@@ -24,6 +24,15 @@ export default () =>
                 .icon(MdDashboard)
                 .schemaType('page')
                 .child(S.documentTypeList('page').title('Pages')),
+            S.listItem()
+                .title('Resume Page')
+                .icon(MdSettings)
+                .child(
+                    S.editor()
+                        .id('resume')
+                        .schemaType('resumePage')
+                        .documentId('resume')
+                ),
             S.listItem()
                 .title('Routes')
                 .schemaType('route')

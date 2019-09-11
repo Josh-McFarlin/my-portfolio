@@ -19,10 +19,6 @@ export default {
             options: {
                 list: [
                     {
-                        title: 'Resume',
-                        value: 'resume'
-                    },
-                    {
                         title: 'LinkedIn',
                         value: 'linkedIn'
                     },

@@ -9,6 +9,7 @@ import page from './documents/page';
 import route from './documents/route';
 import siteConfig from './documents/siteConfig';
 import socialLink from './documents/socialLink';
+import resumePage from './documents/resumePage';
 
 // Object types
 import cta from './objects/cta';
@@ -70,6 +71,7 @@ export default createSchema({
         basicImage,
         socialLinks,
         sectionHeader,
-        socialLink
+        socialLink,
+        resumePage
     ])
 });

@@ -7,6 +7,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import Layout from '../components/Layout';
 import client from '../client';
 import RenderSections from '../components/RenderSections';
+import RenderResume from '../components/RenderResume';
 
 
 const builder = imageUrlBuilder(client);
@@ -85,7 +86,8 @@ class LandingPage extends React.PureComponent {
             config = {},
             socialLinks,
             slug,
-            isMobile
+            isMobile,
+            resume
         } = this.props;
 
         const openGraphImages = openGraphImage ?
@@ -125,10 +127,6 @@ class LandingPage extends React.PureComponent {
             ] :
             [];
 
-        const onlySocial = socialLinks
-            .filter((item) => item.service !== 'resume')
-            .map((item) => item.link);
-
         return (
             <Layout
                 config={config}
@@ -150,10 +148,13 @@ class LandingPage extends React.PureComponent {
                     type='Person'
                     name={config.name}
                     url={config.url}
-                    sameAs={onlySocial}
+                    sameAs={socialLinks}
                 />
-                {content && (
+                {(content) && (
                     <RenderSections sections={content} />
+                )}
+                {(resume) && (
+                    <RenderResume {...resume} />
                 )}
             </Layout>
         );
@@ -165,11 +166,12 @@ LandingPage.propTypes = {
     description: PropTypes.string,
     disallowRobots: PropTypes.any,
     openGraphImage: PropTypes.any,
-    content: PropTypes.any.isRequired,
+    content: PropTypes.any,
     config: PropTypes.any.isRequired,
     slug: PropTypes.any.isRequired,
     isMobile: PropTypes.bool,
-    socialLinks: PropTypes.array
+    socialLinks: PropTypes.array,
+    resume: PropTypes.object
 };
 
 LandingPage.defaultProps = {
@@ -177,7 +179,9 @@ LandingPage.defaultProps = {
     disallowRobots: false,
     openGraphImage: null,
     isMobile: false,
-    socialLinks: []
+    socialLinks: [],
+    content: null,
+    resume: null
 };
 
 export default LandingPage;

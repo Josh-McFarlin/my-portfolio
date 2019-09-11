@@ -7,7 +7,10 @@ export default {
     title: 'Site configuration',
     // https://www.sanity.io/docs/experimental/ui-affordances-for-actions
     __experimental_actions: ['update', 'publish'],
-    fieldsets: [{ name: 'footer', title: 'Footer' }],
+    fieldsets: [{
+        name: 'footer',
+        title: 'Footer'
+    }],
     fields: [
         {
             name: 'name',
@@ -50,12 +53,13 @@ export default {
                 Rule.unique().error('You have duplicate menu items')
             ],
             type: 'array',
-            of: [
-                {
-                    type: 'reference',
-                    to: [{ type: 'route' }, { type: 'socialLink' }]
-                }
-            ]
+            of: [{
+                type: 'reference',
+                to: [
+                    { type: 'route' },
+                    { type: 'socialLink' }
+                ]
+            }]
         },
         {
             title: 'Footer navigation items',
@@ -66,12 +70,10 @@ export default {
                 Rule.unique().error('You have duplicate menu items')
             ],
             fieldset: 'footer',
-            of: [
-                {
-                    type: 'reference',
-                    to: [{ type: 'route' }]
-                }
-            ]
+            of: [{
+                type: 'reference',
+                to: [{ type: 'route' }]
+            }]
         },
         {
             name: 'footerText',
