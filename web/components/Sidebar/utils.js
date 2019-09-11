@@ -13,8 +13,6 @@ export const useDimensions = (ref) => {
     useEffect(() => {
         dimensions.current.width = ref.current.offsetWidth;
         dimensions.current.height = ref.current.offsetHeight;
-
-        console.log(30 / dimensions.current.height)
     }, []);
 
     return dimensions.current;

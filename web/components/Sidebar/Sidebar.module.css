@@ -2,14 +2,14 @@
 @import '../../styles/custom-properties.css';
 
 .sidebar {
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   bottom: 0;
   width: 70vw;
   height: 100vh;
-  z-index: 5;
   pointer-events: none;
+  z-index: 5;
 }
 
 .background {
@@ -67,5 +67,4 @@
   font-size: var(--font-title3-size) !important;
   color: white !important;
   text-decoration: underline !important;
-  pointer-events: auto !important;
 }

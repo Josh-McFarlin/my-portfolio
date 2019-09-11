@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Link from 'next/link';
 import { withRouter } from 'next/router';
-import Sidebar from '../Sidebar';
 
 import styles from './Header.module.css';
 
@@ -31,11 +30,7 @@ class Header extends React.PureComponent {
                         </a>
                     </Link>
                 </h1>
-                {(isMobile) ? (
-                    <Sidebar
-                        navItems={navItems}
-                    />
-                ) : (
+                {(!isMobile) && (
                     <nav className={styles.nav}>
                         <ul className={styles.navItems}>
                             {navItems && navItems.map((item) => {

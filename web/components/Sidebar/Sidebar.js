@@ -46,12 +46,10 @@ const Sidebar = ({ navItems }) => {
                 variants={variants}
             />
             <MenuToggle toggle={() => toggleOpen()} />
-            {(isOpen) && (
-                <Navigation
-                    navItems={navItems}
-                    toggle={() => toggleOpen()}
-                />
-            )}
+            <Navigation
+                navItems={navItems}
+                toggle={() => toggleOpen()}
+            />
         </motion.nav>
     );
 };

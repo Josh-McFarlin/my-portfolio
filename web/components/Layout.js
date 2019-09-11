@@ -6,6 +6,7 @@ import imageUrlBuilder from '@sanity/image-url';
 import Header from './Header';
 import Footer from './Footer';
 import client from '../client';
+import Sidebar from './Sidebar';
 
 
 const builder = imageUrlBuilder(client);
@@ -75,13 +76,19 @@ function Layout(props) {
                     logo={logo}
                     isMobile={isMobile}
                 />
+                {(isMobile) && (
+                    <Sidebar navItems={mainNavigation} />
+                )}
                 <div className='content'>
                     {children}
                 </div>
-                <Footer
-                    navItems={footerNavigation}
-                    text={footerText}
-                />
+                {((footerText != null && footerText.length > 0)
+                    || (footerNavigation != null && footerNavigation.length > 0)) && (
+                    <Footer
+                        navItems={footerNavigation}
+                        text={footerText}
+                    />
+                )}
             </div>
         </>
     );
@@ -102,7 +109,11 @@ Layout.propTypes = {
         url: PropTypes.string,
         favicon: PropTypes.object
     }).isRequired,
-    isMobile: PropTypes.bool.isRequired
+    isMobile: PropTypes.bool
+};
+
+Layout.defaultProps = {
+    isMobile: true
 };
 
 export default Layout;

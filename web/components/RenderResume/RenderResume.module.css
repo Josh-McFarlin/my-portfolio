@@ -1,0 +1,51 @@
+@import '../../styles/custom-media.css';
+@import '../../styles/custom-properties.css';
+
+.root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.resumeContainer {
+  flex: 1;
+  margin: 16px;
+  height: 200px;
+  max-width: calc(100% - 32px);
+  border: 1px solid black;
+  box-shadow: 10px 10px 2px 1px rgba(0, 0, 255, .2);
+}
+
+.resume {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.resumeImage {
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 100%;
+}
+
+.link {
+  margin-bottom: 16px;
+  padding: 0.5em 1em;
+  border: 0.16em solid black;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: black;
+  text-align: center;
+  font-size: var(--font-micro-size);
+}
+
+.loading {
+  width: 612px;
+  height: 792px;
+  display: flex;
+  justify-content: center;
+}
