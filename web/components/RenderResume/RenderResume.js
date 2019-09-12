@@ -1,26 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import imageUrlBuilder from '@sanity/image-url';
-import dynamic from 'next/dynamic';
-import { pdfjs } from 'react-pdf';
 
 import client from '../../client';
 import styles from './RenderResume.module.css';
 
 
-pdfjs.GlobalWorkerOptions.workerSrc = '/static/pdf.worker.min.js';
-
-const Loader = <div className={styles.loading}>Loading Resume...</div>;
-
-const Document = dynamic(() => import('react-pdf/dist/Document'), {
-    ssr: false,
-    loading: () => Loader
-});
-
-const Page = dynamic(() => import('react-pdf/dist/Page'), {
-    ssr: false,
-    loading: () => Loader
-});
+const Loader = () => <div className={styles.loading}>Loading Resume...</div>;
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
@@ -31,21 +17,15 @@ class RenderResume extends React.PureComponent {
         super(props);
 
         this.state = {
-            pageNumber: 1,
             pdfLink: null,
             imageLink: null,
-            imageLoading: true,
-            showWhich: props.first,
-            pageWidth: 600
+            isLoading: true,
+            showWhich: props.first
         };
     }
 
     async componentDidMount() {
         const { image, pdf } = this.props;
-
-        this.setState({
-            pageWidth: window.innerWidth >= 600 ? 600 : window.innerWidth - 32
-        });
 
         if (pdf != null) {
             const response = await client.fetch(`*[_id == "${pdf.asset._ref}"][0]`);
@@ -67,9 +47,9 @@ class RenderResume extends React.PureComponent {
         }
     }
 
-    onImageLoaded = () => {
+    onLoaded = () => {
         this.setState({
-            imageLoading: false
+            isLoading: false
         });
     };
 
@@ -90,14 +70,15 @@ class RenderResume extends React.PureComponent {
             }
 
             return {
-                showWhich: next
+                showWhich: next,
+                isLoading: true
             };
         });
     };
 
     render() {
         const { link } = this.props;
-        const { pageNumber, pdfLink, imageLink, imageLoading, showWhich, pageWidth } = this.state;
+        const { pdfLink, imageLink, isLoading, showWhich } = this.state;
 
         return (
             <div className={styles.root}>
@@ -112,41 +93,29 @@ class RenderResume extends React.PureComponent {
                     </a>
                 )}
                 <div className={styles.resumeContainer}>
+                    {(isLoading) && (
+                        <Loader />
+                    )}
                     {(showWhich === 'link' || showWhich === 'pdf') && (
-                        <Document
+                        <iframe
                             className={styles.resume}
-                            file={showWhich === 'link' ? link : pdfLink}
-                            options={{
-                                cMapUrl: 'cmaps/',
-                                cMapPacked: true
-                            }}
-                            renderMode='svg'
-                            loading={Loader}
-                            onSourceError={this.onRenderFail}
-                            onLoadError={this.onRenderFail}
-                        >
-                            <Page
-                                pageNumber={pageNumber}
-                                onRenderError={this.onRenderFail}
-                                renderTextLayer={false}
-                                width={pageWidth}
-                                loading={Loader}
-                            />
-                        </Document>
+                            src={`https://docs.google.com/gview?url=${showWhich === 'link' ? link : pdfLink}&embedded=true`}
+                            frameBorder='0'
+                            title='My Resume'
+                            onLoad={this.onLoaded}
+                            onError={this.onRenderFail}
+                        />
                     )}
                     {(showWhich === 'image') && (
-                        <>
-                            {(imageLoading) && (
-                                <Loader />
-                            )}
+                        <div className={styles.imageContainer}>
                             <img
                                 className={styles.resumeImage}
                                 src={imageLink}
                                 alt='Resume'
-                                onLoad={this.onImageLoaded}
+                                onLoad={this.onLoaded}
                                 onError={this.onRenderFail}
                             />
-                        </>
+                        </div>
                     )}
                     {(showWhich == null) && (
                         <div className={styles.loading}>

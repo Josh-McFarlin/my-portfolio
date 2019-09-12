@@ -41,10 +41,6 @@
   }
 }
 
-.logo {
-  display: block;
-}
-
 .nav {
   @media (--media-min-medium) {
     flex: 1;
@@ -75,10 +71,6 @@
     width: 100%;
     background-color: var(--color-black, #000);
     color: var(--color-white, #fff);
-
-    @nest .root[data-show-nav="true"] & {
-      display: block;
-    }
   }
 }
 

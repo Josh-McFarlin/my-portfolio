@@ -8,7 +8,7 @@ import styles from './Header.module.css';
 
 class Header extends React.PureComponent {
     render() {
-        const { name = 'Missing name', navItems, router, isMobile } = this.props;
+        const { name = 'Missing name', navItems, router } = this.props;
 
         return (
             <div className={styles.root}>
@@ -30,45 +30,43 @@ class Header extends React.PureComponent {
                         </a>
                     </Link>
                 </h1>
-                {(!isMobile) && (
-                    <nav className={styles.nav}>
-                        <ul className={styles.navItems}>
-                            {navItems && navItems.map((item) => {
-                                const { slug, title, link, _id } = item;
+                <nav className={styles.nav}>
+                    <ul className={styles.navItems}>
+                        {navItems && navItems.map((item) => {
+                            const { slug, title, link, _id } = item;
 
-                                let isActive = false;
-                                if (slug != null) {
-                                    isActive = router.pathname === '/LandingPage' && router.query.slug === slug.current;
-                                }
+                            let isActive = false;
+                            if (slug != null) {
+                                isActive = router.pathname === '/LandingPage' && router.query.slug === slug.current;
+                            }
 
-                                return (
-                                    <li key={_id} className={styles.navItem}>
-                                        {(slug != null) ? (
-                                            <Link
-                                                href={{
-                                                    pathname: '/LandingPage',
-                                                    query: { slug: slug.current }
-                                                }}
-                                                as={`/${slug.current !== '/' ? slug.current : ''}`}
-                                                prefetch
-                                            >
-                                                <a data-is-active={isActive ? 'true' : 'false'}>{title}</a>
-                                            </Link>
-                                        ) : (
-                                            <a
-                                                href={link}
-                                                target='_blank'
-                                                rel='noopener noreferrer'
-                                            >
-                                                {title}
-                                            </a>
-                                        )}
-                                    </li>
-                                );
-                            })}
-                        </ul>
-                    </nav>
-                )}
+                            return (
+                                <li key={_id} className={styles.navItem}>
+                                    {(slug != null) ? (
+                                        <Link
+                                            href={{
+                                                pathname: '/LandingPage',
+                                                query: { slug: slug.current }
+                                            }}
+                                            as={`/${slug.current !== '/' ? slug.current : ''}`}
+                                            prefetch
+                                        >
+                                            <a data-is-active={isActive ? 'true' : 'false'}>{title}</a>
+                                        </Link>
+                                    ) : (
+                                        <a
+                                            href={link}
+                                            target='_blank'
+                                            rel='noopener noreferrer'
+                                        >
+                                            {title}
+                                        </a>
+                                    )}
+                                </li>
+                            );
+                        })}
+                    </ul>
+                </nav>
             </div>
         );
     }
@@ -90,8 +88,7 @@ Header.propTypes = {
                 current: PropTypes.string
             })
         })
-    ).isRequired,
-    isMobile: PropTypes.bool.isRequired
+    ).isRequired
 };
 
 export default withRouter(Header);

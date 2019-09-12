@@ -13,7 +13,7 @@ const builder = imageUrlBuilder(client);
 
 class Layout extends React.PureComponent {
     render() {
-        const { config, children, isMobile } = this.props;
+        const { config, children } = this.props;
 
         if (!config) {
             console.error('Missing config');
@@ -76,11 +76,10 @@ class Layout extends React.PureComponent {
                         name={name}
                         navItems={mainNavigation}
                         logo={logo}
-                        isMobile={isMobile}
                     />
-                    {(isMobile) && (
-                        <Sidebar navItems={mainNavigation} />
-                    )}
+                    <Sidebar
+                        navItems={mainNavigation}
+                    />
                     <div className='content'>
                         {children}
                     </div>
@@ -108,8 +107,7 @@ Layout.propTypes = {
         }),
         url: PropTypes.string,
         favicon: PropTypes.object
-    }).isRequired,
-    isMobile: PropTypes.bool
+    }).isRequired
 };
 
 Layout.defaultProps = {

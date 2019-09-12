@@ -7,17 +7,13 @@
   color: var(--color-white, #fff);
   background-size: cover;
   background: var(--color-black, #000) no-repeat center center;
+  margin-bottom: 2rem;
   height: calc(0.75 * var(--width-small));
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   border-radius: 25px;
   overflow: hidden;
-  border: 1px solid black;
-}
-
-.root:not(:last-of-type) {
-  margin-bottom: 2rem;
 }
 
 .content {

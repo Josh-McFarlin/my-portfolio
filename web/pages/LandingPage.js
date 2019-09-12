@@ -86,7 +86,6 @@ class LandingPage extends React.PureComponent {
             config = {},
             socialLinks,
             slug,
-            isMobile,
             resume
         } = this.props;
 
@@ -128,10 +127,7 @@ class LandingPage extends React.PureComponent {
             [];
 
         return (
-            <Layout
-                config={config}
-                isMobile={isMobile}
-            >
+            <Layout config={config}>
                 <NextSeo
                     config={{
                         title,
@@ -169,7 +165,6 @@ LandingPage.propTypes = {
     content: PropTypes.any,
     config: PropTypes.any.isRequired,
     slug: PropTypes.any.isRequired,
-    isMobile: PropTypes.bool,
     socialLinks: PropTypes.array,
     resume: PropTypes.object
 };
@@ -178,7 +173,6 @@ LandingPage.defaultProps = {
     description: null,
     disallowRobots: false,
     openGraphImage: null,
-    isMobile: false,
     socialLinks: [],
     content: null,
     resume: null

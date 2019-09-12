@@ -1,8 +1,6 @@
 const withCSS = require('@zeit/next-css');
 const withWorkers = require('@zeit/next-workers');
 const webpack = require('webpack');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const path = require('path');
 
 const client = require('./client');
 
@@ -65,19 +63,6 @@ module.exports = withWorkers(withCSS({
     webpack: (config) => {
         config.plugins.push(
             new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
-        );
-
-        config.plugins.push(
-            new CopyWebpackPlugin([
-                {
-                    from: path.join(__dirname, 'node_modules/pdfjs-dist/cmaps/'),
-                    to: path.join(__dirname, 'cmaps/')
-                },
-                {
-                    from: path.join(__dirname, 'node_modules/pdfjs-dist/build/pdf.worker.min.js'),
-                    to: path.join(__dirname, 'static/')
-                }
-            ])
         );
 
         return config;

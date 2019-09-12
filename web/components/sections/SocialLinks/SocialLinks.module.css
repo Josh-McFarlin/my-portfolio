@@ -17,6 +17,7 @@
 
 .link {
   margin: 0 8px;
-  min-width: 30px;
-  min-height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

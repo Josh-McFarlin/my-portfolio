@@ -1,7 +1,5 @@
 import React from 'react';
 import BaseApp, { Container } from 'next/app';
-import isMobile from 'ismobilejs';
-import { get } from 'lodash';
 
 import client from '../client';
 import '../styles/shared.module.css';
@@ -30,12 +28,6 @@ class App extends BaseApp {
 
         if (Component.getInitialProps) {
             pageProps = await Component.getInitialProps(ctx);
-        }
-
-        const userAgent = ctx.req ? get(ctx, ['req', 'headers', 'user-agent']) : navigator.userAgent;
-        pageProps.isMobile = false;
-        if (userAgent != null) {
-            pageProps.isMobile = isMobile(userAgent).any;
         }
 
         await client.fetch(siteConfigQuery).then((config) => {

@@ -20,10 +20,8 @@
     "@sanity/image-url": "^0.140.12",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-workers": "^1.0.0",
-    "copy-webpack-plugin": "^5.0.4",
     "framer-motion": "^1.6.3",
     "groq": "^0.140.0",
-    "ismobilejs": "^1.0.2",
     "lodash": "^4.17.11",
     "moment": "^2.24.0",
     "next": "^8.1.0",
@@ -32,7 +30,6 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-inlinesvg": "^0.8.4",
-    "react-pdf": "^4.1.0",
     "webpack": "^4.39.3",
     "worker-loader": "^2.0.0"
   },
