@@ -9,29 +9,33 @@ import SimpleBlockContent from '../SimpleBlockContent';
 
 function Footer(props) {
     const { navItems, text, router } = props;
+
+    if (navItems.length === 0 && text == null) {
+        return null;
+    }
+
     return (
         <div className={styles.root}>
             <nav>
                 <ul className={styles.items}>
-                    {navItems
-            && navItems.map((item) => {
-                const isActive =
-                router.pathname === '/LandingPage' && router.query.slug === item.slug.current;
-                return (
-                    <li key={item._id} className={styles.item}>
-                        <Link
-                            href={{
-                                pathname: '/LandingPage',
-                                query: { slug: item.slug.current }
-                            }}
-                            as={`/${item.slug.current}`}
-                            prefetch
-                        >
-                            <a data-is-active={isActive ? 'true' : 'false'}>{item.title}</a>
-                        </Link>
-                    </li>
-                );
-            })}
+                    {navItems && navItems.map((item) => {
+                        const isActive = router.pathname === '/LandingPage' && router.query.slug === item.slug.current;
+
+                        return (
+                            <li key={item._id} className={styles.item}>
+                                <Link
+                                    href={{
+                                        pathname: '/LandingPage',
+                                        query: { slug: item.slug.current }
+                                    }}
+                                    as={`/${item.slug.current}`}
+                                    prefetch
+                                >
+                                    <a data-is-active={isActive ? 'true' : 'false'}>{item.title}</a>
+                                </Link>
+                            </li>
+                        );
+                    })}
                 </ul>
             </nav>
             <div className={styles.text}>
@@ -49,14 +53,19 @@ Footer.propTypes = {
                 current: PropTypes.string
             }).isRequired
         })
-    ).isRequired,
-    text: PropTypes.arrayOf(PropTypes.object).isRequired,
+    ),
+    text: PropTypes.arrayOf(PropTypes.object),
     router: PropTypes.shape({
         pathname: PropTypes.string,
         query: PropTypes.shape({
             slug: PropTypes.string
         })
-    }).isRequired,
+    }).isRequired
+};
+
+Footer.defaultProps = {
+    navItems: [],
+    text: null
 };
 
 export default withRouter(Footer);

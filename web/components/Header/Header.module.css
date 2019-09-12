@@ -11,6 +11,7 @@
   padding: 8px 0;
   margin: auto;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
+  background: white;
 }
 
 .root a {
@@ -29,6 +30,10 @@
   @nest & > a {
     display: block;
     padding: 1.5em 8px;
+
+    @media (--media-max-medium) {
+      padding: 12px 8px;
+    }
   }
 
   @media (--media-max-medium) {

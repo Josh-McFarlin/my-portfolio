@@ -13,7 +13,6 @@
 .resumeContainer {
   flex: 1;
   margin: 16px;
-  height: 0;
   max-width: calc(100% - 32px);
   width: 600px;
   border: 1px solid black;
@@ -52,7 +51,7 @@
 
 .loading {
   width: 100%;
-  height: 100%;
+  height: 750px;
   text-align: center;
   display: flex;
   flex-direction: column;

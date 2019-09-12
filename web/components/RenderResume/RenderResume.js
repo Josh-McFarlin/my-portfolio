@@ -35,12 +35,17 @@ class RenderResume extends React.PureComponent {
             pdfLink: null,
             imageLink: null,
             imageLoading: true,
-            showWhich: props.first
+            showWhich: props.first,
+            pageWidth: 600
         };
     }
 
     async componentDidMount() {
         const { image, pdf } = this.props;
+
+        this.setState({
+            pageWidth: window.innerWidth >= 600 ? 600 : window.innerWidth - 32
+        });
 
         if (pdf != null) {
             const response = await client.fetch(`*[_id == "${pdf.asset._ref}"][0]`);
@@ -92,7 +97,7 @@ class RenderResume extends React.PureComponent {
 
     render() {
         const { link } = this.props;
-        const { pageNumber, pdfLink, imageLink, imageLoading, showWhich } = this.state;
+        const { pageNumber, pdfLink, imageLink, imageLoading, showWhich, pageWidth } = this.state;
 
         return (
             <div className={styles.root}>
@@ -124,7 +129,7 @@ class RenderResume extends React.PureComponent {
                                 pageNumber={pageNumber}
                                 onRenderError={this.onRenderFail}
                                 renderTextLayer={false}
-                                width={600}
+                                width={pageWidth}
                                 loading={Loader}
                             />
                         </Document>

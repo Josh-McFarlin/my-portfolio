@@ -84,13 +84,10 @@ class Layout extends React.PureComponent {
                     <div className='content'>
                         {children}
                     </div>
-                    {((footerText != null && footerText.length > 0)
-                        || (footerNavigation != null && footerNavigation.length > 0)) && (
-                        <Footer
-                            navItems={footerNavigation}
-                            text={footerText}
-                        />
-                    )}
+                    <Footer
+                        navItems={footerNavigation}
+                        text={footerText}
+                    />
                 </div>
             </>
         );
