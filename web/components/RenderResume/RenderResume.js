@@ -1,13 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import imageUrlBuilder from '@sanity/image-url';
-import { Document, Page, pdfjs } from 'react-pdf';
+import dynamic from 'next/dynamic';
+import { pdfjs } from 'react-pdf';
 
 import client from '../../client';
 import styles from './RenderResume.module.css';
 
 
 pdfjs.GlobalWorkerOptions.workerSrc = '/static/pdf.worker.min.js';
+
+const Loader = <div className={styles.loading}>Loading Resume...</div>;
+
+const Document = dynamic(() => import('react-pdf/dist/Document'), {
+    ssr: false,
+    loading: () => Loader
+});
+
+const Page = dynamic(() => import('react-pdf/dist/Page'), {
+    ssr: false,
+    loading: () => Loader
+});
 
 function urlFor(source) {
     return imageUrlBuilder(client).image(source);
@@ -103,20 +116,23 @@ class RenderResume extends React.PureComponent {
                                 cMapPacked: true
                             }}
                             renderMode='svg'
-                            loading={<div className={styles.loading}>Loading Resume...</div>}
+                            loading={Loader}
                             onSourceError={this.onRenderFail}
                             onLoadError={this.onRenderFail}
                         >
                             <Page
                                 pageNumber={pageNumber}
                                 onRenderError={this.onRenderFail}
+                                renderTextLayer={false}
+                                width={600}
+                                loading={Loader}
                             />
                         </Document>
                     )}
                     {(showWhich === 'image') && (
                         <>
                             {(imageLoading) && (
-                                <div className={styles.loading}>Loading Resume...</div>
+                                <Loader />
                             )}
                             <img
                                 className={styles.resumeImage}

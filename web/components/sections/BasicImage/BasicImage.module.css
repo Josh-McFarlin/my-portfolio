@@ -1,15 +1,11 @@
 @import '../../../styles/custom-media.css';
 @import '../../../styles/custom-properties.css';
 
-.root:not(:last-of-type) {
+.root {
   padding-bottom: 2rem;
-
-  @media (--media-min-medium) {
-    padding-bottom: 2rem;
-  }
 }
 
-.article {
+.section {
   width: 100%;
   max-width: var(--width-small);
   margin: 0 auto;
@@ -22,4 +18,5 @@
 .image {
   width: 100%;
   height: auto;
+  border: 1px solid black;
 }

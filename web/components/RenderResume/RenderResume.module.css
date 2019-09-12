@@ -13,10 +13,18 @@
 .resumeContainer {
   flex: 1;
   margin: 16px;
-  height: 200px;
+  height: 0;
   max-width: calc(100% - 32px);
+  width: 600px;
   border: 1px solid black;
   box-shadow: 10px 10px 2px 1px rgba(0, 0, 255, .2);
+  overflow: auto;
+  background: white;
+
+  & > * {
+    height: 100%;
+    min-height: 100%;
+  }
 }
 
 .resume {
@@ -27,9 +35,8 @@
 
 .resumeImage {
   width: auto;
-  max-width: 100%;
-  height: auto;
-  max-height: 100%;
+  min-width: 100%;
+  max-width: 125%;
 }
 
 .link {
@@ -44,7 +51,16 @@
 }
 
 .loading {
-  width: 612px;
-  height: 792px;
+  width: 100%;
+  height: 100%;
+  text-align: center;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: white;
+}
+
+:global(.react-pdf__message) {
+  height: 100%;
 }

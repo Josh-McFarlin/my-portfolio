@@ -30,7 +30,9 @@ function Skill(props) {
                 />
             )}
             {(name) && (
-                <p className={styles.skillText}>{name}</p>
+                <div className={styles.skillText}>
+                    {name}
+                </div>
             )}
         </div>
     );

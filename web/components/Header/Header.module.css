@@ -6,8 +6,11 @@
   color: var(--color-black, #000);
   display: flex;
   flex-direction: column;
-  max-width: var(--width-small);
-  margin: 0 auto 16px;
+  justify-content: center;
+  width: 100%;
+  padding: 8px 0;
+  margin: auto;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.4);
 }
 
 .root a {
@@ -25,22 +28,7 @@
 
   @nest & > a {
     display: block;
-    padding: 1.5em 1.5em 8px;
-
-    @supports (padding-top: env(safe-area-inset-top)) {
-      padding-left: calc(env(safe-area-inset-left) + 1.5rem);
-    }
-  }
-
-  @nest & img, & svg {
-    height: calc(var(--font-base-line-height) * 1.5rem);
-    width: auto;
-    color: inherit;
-    vertical-align: top;
-  }
-
-  @nest & svg path {
-    fill: currentColor;
+    padding: 1.5em 8px;
   }
 
   @media (--media-max-medium) {

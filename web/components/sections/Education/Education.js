@@ -12,7 +12,7 @@ function Education(props) {
         <div className={styles.root}>
             <section className={styles.education}>
                 <h1 className={styles.heading}>{heading}</h1>
-                <div>
+                <div className={styles.allSchools}>
                     {schools.map((data) => (
                         <School
                             key={data.name + data.startYear}

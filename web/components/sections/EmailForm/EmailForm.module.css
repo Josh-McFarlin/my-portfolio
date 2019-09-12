@@ -34,6 +34,11 @@
   margin: 0.5rem 0 1.5rem;
 }
 
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
 .formInput {
   -webkit-font-smoothing: inherit;
   font: inherit;
@@ -58,7 +63,7 @@
   cursor: pointer;
   width: 25%;
   min-width: 100px;
-  float: right;
+  align-self: flex-end;
 }
 
 .formButton:hover {

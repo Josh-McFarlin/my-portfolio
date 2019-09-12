@@ -11,6 +11,7 @@
   margin: 0 auto;
   padding: 0 1.5rem;
   box-sizing: border-box;
+  position: relative;
 }
 
 .heading {
@@ -21,4 +22,8 @@
   @media (--media-max-medium) {
     text-decoration: underline !important;
   }
+}
+
+.allSchools {
+  position: relative;
 }

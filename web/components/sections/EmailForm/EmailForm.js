@@ -70,6 +70,7 @@ class EmailForm extends React.PureComponent {
                         <p className={styles.subtitle}>{subtitle}</p>
                     )}
                     <form
+                        className={styles.form}
                         name='contact'
                         method='POST'
                         data-netlify='true'

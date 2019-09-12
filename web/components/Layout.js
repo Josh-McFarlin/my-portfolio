@@ -11,87 +11,90 @@ import Sidebar from './Sidebar';
 
 const builder = imageUrlBuilder(client);
 
-function Layout(props) {
-    const { config, children, isMobile } = props;
+class Layout extends React.PureComponent {
+    render() {
+        const { config, children, isMobile } = this.props;
 
-    if (!config) {
-        console.error('Missing config');
-        return <div>Missing config</div>;
-    }
+        if (!config) {
+            console.error('Missing config');
 
-    const { name, mainNavigation, footerNavigation, footerText, logo, url, favicon } = config;
+            return <div>Missing config</div>;
+        }
 
-    const appleIconUrl = builder
-        .image(favicon)
-        .width(180)
-        .height(180)
-        .format('png')
-        .url();
+        const { name, mainNavigation, footerNavigation, footerText, logo, url, favicon } = config;
 
-    const thirtyIconUrl = builder
-        .image(favicon)
-        .width(32)
-        .height(32)
-        .fit('clip')
-        .format('png')
-        .url();
+        const appleIconUrl = builder
+            .image(favicon)
+            .width(180)
+            .height(180)
+            .format('png')
+            .url();
 
-    const sixIconUrl = builder
-        .image(favicon)
-        .width(16)
-        .height(16)
-        .fit('clip')
-        .format('png')
-        .url();
+        const thirtyIconUrl = builder
+            .image(favicon)
+            .width(32)
+            .height(32)
+            .fit('clip')
+            .format('png')
+            .url();
 
-    return (
-        <>
-            <Head>
-                <meta
-                    name='viewport'
-                    content='initial-scale=1.0, width=device-width, viewport-fit=cover'
-                />
-                <link
-                    rel='apple-touch-icon'
-                    sizes='180x180'
-                    href={appleIconUrl}
-                />
-                <link
-                    rel='icon'
-                    type='image/png'
-                    sizes='32x32'
-                    href={thirtyIconUrl}
-                />
-                <link
-                    rel='icon'
-                    type='image/png'
-                    sizes='16x16'
-                    href={sixIconUrl}
-                />
-            </Head>
-            <div className='container'>
-                <Header
-                    name={name}
-                    navItems={mainNavigation}
-                    logo={logo}
-                    isMobile={isMobile}
-                />
-                {(isMobile) && (
-                    <Sidebar navItems={mainNavigation} />
-                )}
-                <div className='content'>
-                    {children}
-                </div>
-                {((footerText != null && footerText.length > 0)
-                    || (footerNavigation != null && footerNavigation.length > 0)) && (
-                    <Footer
-                        navItems={footerNavigation}
-                        text={footerText}
+        const sixIconUrl = builder
+            .image(favicon)
+            .width(16)
+            .height(16)
+            .fit('clip')
+            .format('png')
+            .url();
+
+        return (
+            <>
+                <Head>
+                    <meta
+                        name='viewport'
+                        content='initial-scale=1.0, width=device-width, viewport-fit=cover'
                     />
-                )}
-            </div>
-        </>
-    );
+                    <link
+                        rel='apple-touch-icon'
+                        sizes='180x180'
+                        href={appleIconUrl}
+                    />
+                    <link
+                        rel='icon'
+                        type='image/png'
+                        sizes='32x32'
+                        href={thirtyIconUrl}
+                    />
+                    <link
+                        rel='icon'
+                        type='image/png'
+                        sizes='16x16'
+                        href={sixIconUrl}
+                    />
+                </Head>
+                <div className='container'>
+                    <Header
+                        name={name}
+                        navItems={mainNavigation}
+                        logo={logo}
+                        isMobile={isMobile}
+                    />
+                    {(isMobile) && (
+                        <Sidebar navItems={mainNavigation} />
+                    )}
+                    <div className='content'>
+                        {children}
+                    </div>
+                    {((footerText != null && footerText.length > 0)
+                        || (footerNavigation != null && footerNavigation.length > 0)) && (
+                        <Footer
+                            navItems={footerNavigation}
+                            text={footerText}
+                        />
+                    )}
+                </div>
+            </>
+        );
+    }
 }
 
 Layout.propTypes = {

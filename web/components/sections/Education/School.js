@@ -17,10 +17,10 @@ function School(props) {
             <section className={styles.school}>
                 <h2 className={styles.heading}>{name}</h2>
                 <div className={styles.details}>{startForm.year()} - {endForm.year()} in {location}</div>
-                {description && (
+                {(description) && (
                     <SimpleBlockContent blocks={description} />
                 )}
-                {completedCourses && (
+                {(completedCourses) && (
                     <div>
                         <div className={styles.details}>Completed Courses</div>
                         <ul>
@@ -35,7 +35,7 @@ function School(props) {
                         </ul>
                     </div>
                 )}
-                {currentCourses && (
+                {(currentCourses) && (
                     <div>
                         <div className={styles.details}>Current Courses</div>
                         <ul>

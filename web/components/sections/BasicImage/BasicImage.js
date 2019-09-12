@@ -27,7 +27,7 @@ function BasicImage(props) {
 
     return (
         <div className={styles.root}>
-            <section className={styles.article}>
+            <section className={styles.section}>
                 <img
                     className={styles.image}
                     style={style}

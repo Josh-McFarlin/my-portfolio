@@ -16,8 +16,8 @@ function Project(props) {
 
     const style = image ? {
         backgroundImage: `url("${urlFor(image)
-            .width(1260)
-            .height(1024)
+            .width(1400)
+            .height(1130)
             .auto('format')
             .url()}")`,
         backgroundSize: 'cover'
