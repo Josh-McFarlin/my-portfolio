@@ -71,7 +71,7 @@ class Layout extends React.PureComponent {
                         href={sixIconUrl}
                     />
                 </Head>
-                <div className='container'>
+                <>
                     <Header
                         name={name}
                         navItems={mainNavigation}
@@ -87,7 +87,7 @@ class Layout extends React.PureComponent {
                         navItems={footerNavigation}
                         text={footerText}
                     />
-                </div>
+                </>
             </>
         );
     }

@@ -6,13 +6,12 @@
   flex-direction: row;
 
   @media (--media-min-medium) {
-    height: 300px;
+    min-height: 300px;
   }
 }
 
 .image {
   flex: 1;
-  height: 100%;
   width: 50%;
   background: white;
 
@@ -63,20 +62,14 @@
   padding: 0.5em 1em;
   text-align: center;
   margin-top: 8px;
-  font-size: var(--font-micro-size);
-  line-height: var(--font-micro-line-height);
+  font-size: var(--font-small-size);
+  line-height: var(--font-small-line-height);
   transition: all .5s ease;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   background: #747fe0;
   border: 1px solid rgba(0, 0, 0, 0.1);
   color: #fff;
-
-  @media (--media-min-medium) {
-    margin-top: 0;
-    font-size: var(--font-small-size);
-    line-height: var(--font-small-line-height);
-  }
 }
 
 .button:hover{

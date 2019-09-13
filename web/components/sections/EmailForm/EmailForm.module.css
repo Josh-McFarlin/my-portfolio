@@ -3,10 +3,6 @@
 
 .root {
   padding: 2rem 0;
-
-  @media (--media-min-medium) {
-    padding: 4rem 0;
-  }
 }
 
 .container {

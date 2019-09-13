@@ -14,14 +14,11 @@ function Job(props) {
     const monYear = {
         month: 'long',
         year: 'numeric',
-        timeZone: 'UTC',
-        timeZoneName: 'short'
+        timeZone: 'UTC'
     };
 
     const onlyMonth = {
-        month: 'long',
-        timeZone: 'UTC',
-        timeZoneName: 'short'
+        month: 'long'
     };
 
     const endFormatted = new Intl.DateTimeFormat('en-US', monYear).format(endForm);

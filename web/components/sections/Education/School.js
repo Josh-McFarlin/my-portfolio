@@ -15,7 +15,7 @@ function School(props) {
         <div className={styles.root}>
             <section className={styles.school}>
                 <h2 className={styles.heading}>{name}</h2>
-                <div className={styles.details}>{startForm.getFullYear()} - {endForm.getFullYear()} in {location}</div>
+                <div className={styles.details}>{startForm.getUTCFullYear()} - {endForm.getUTCFullYear()} in {location}</div>
                 {description && (
                     <SimpleBlockContent blocks={description} />
                 )}

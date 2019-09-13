@@ -5,13 +5,15 @@
   position: relative;
   color: var(--color-black, #000);
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  padding: 8px 0;
   margin: auto;
   border-bottom: 1px solid rgba(0, 0, 0, 0.4);
   background: white;
+  box-sizing: border-box;
+  padding: 8px 0;
 }
 
 .root a {
@@ -26,6 +28,7 @@
   margin: 0;
   padding: 0;
   text-align: center;
+  flex: 1;
 
   @nest & > a {
     display: block;
@@ -35,15 +38,13 @@
       padding: 12px 8px;
     }
   }
-
-  @media (--media-max-medium) {
-    flex: 1;
-  }
 }
 
 .nav {
-  @media (--media-min-medium) {
-    flex: 1;
+  flex: 1;
+
+  @media (--media-max-medium) {
+    display: none;
   }
 }
 
@@ -61,23 +62,13 @@
   @supports (padding-top: env(safe-area-inset-top)) {
     padding-right: calc(env(safe-area-inset-right) + 1rem);
   }
-
-  @media (--media-max-medium) {
-    z-index: 10;
-    display: none;
-    position: absolute;
-    left: 0;
-    top: 100%;
-    width: 100%;
-    background-color: var(--color-black, #000);
-    color: var(--color-white, #fff);
-  }
 }
 
 .navItem {
   display: flex;
   white-space: nowrap;
   align-items: stretch;
+  padding: 0 !important;
   line-height: calc(var(--font-base-line-height) * 1.5rem);
 
   @nest & > a {

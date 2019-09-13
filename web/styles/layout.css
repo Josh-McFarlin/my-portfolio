@@ -11,6 +11,19 @@ body {
   background: #f0efe9;
   color: var(--color-black);
   margin: 0;
+  overflow: hidden;
+}
+
+html,
+body,
+:global(#__next) {
+  width: 100%;
+  height: 100%;
+}
+
+:global(#__next) {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 a {
@@ -25,35 +38,11 @@ li:not(:last-of-type) {
   padding-bottom: 8px;
 }
 
-html,
-body,
-:global(#__next),
-:global(.container) {
-  width: 100%;
-  height: 100%;
-}
-
-:global(.container) {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-
-  @media (--typography-breakpoint) {
-    margin: 0;
-    width: 100%;
-  }
-}
-
-:global(.wide-container) {
-  @media (--typography-breakpoint) {
-    max-width: var(--wide-container, 60rem);
-  }
-}
-
 :global(.content) {
-  padding-top: 16px;
-  flex: 1;
-  overflow: auto;
+  margin-top: 16px;
+  background: #f0efe9;
+  min-height: calc(100% - 126px);
+  height: 0;
 }
 
 :global(.card) {
