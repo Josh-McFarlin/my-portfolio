@@ -2,7 +2,6 @@ import React from 'react';
 import BaseApp, { Container } from 'next/app';
 
 import client from '../client';
-import '../styles/shared.module.css';
 import '../styles/layout.css';
 
 

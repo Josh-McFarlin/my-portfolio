@@ -17,7 +17,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "@sanity/block-content-to-react": "^2.0.6",
     "@sanity/client": "^0.140.11",
-    "@sanity/image-url": "^0.140.12",
+    "@sanity/image-url": "^0.140.14",
     "@zeit/next-css": "^1.0.1",
     "@zeit/next-workers": "^1.0.0",
     "framer-motion": "^1.6.3",

@@ -2,13 +2,13 @@
 @import '../../../styles/custom-properties.css';
 
 .root {
-  composes: center from '../../../styles/shared.module.css';
   position: relative;
-  background-color: var(--color-black, #000);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
   color: var(--color-white, #fff);
   background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+  background: var(--color-black, #000) no-repeat center center;
   padding-bottom: 2rem;
 
   @media (--media-min-medium) {

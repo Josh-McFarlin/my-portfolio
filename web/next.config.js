@@ -62,7 +62,7 @@ module.exports = withWorkers(withCSS({
             return nextRoutes;
         });
     },
-    webpack: (config) => {
+    webpack: (config, { defaultLoaders }) => {
         config.plugins.push(
             new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
         );
@@ -71,6 +71,12 @@ module.exports = withWorkers(withCSS({
             config.plugins.push(
                 new OptimizeCssAssetsPlugin()
             );
+
+            if (defaultLoaders.babel.options.plugins instanceof Array) {
+                defaultLoaders.babel.options.plugins.push('transform-react-remove-prop-types');
+            } else {
+                defaultLoaders.babel.options.plugins = ['transform-react-remove-prop-types'];
+            }
 
             config.plugins.push(
                 new PacktrackerPlugin({

@@ -14,17 +14,24 @@ function urlFor(source) {
 function Project(props) {
     const { name, tags, description, image, links } = props;
 
-    const style = image ? {
-        backgroundImage: `url("${urlFor(image)
-            .width(1260)
-            .height(1024)
-            .auto('format')
-            .url()}")`,
+    const projImage = urlFor(image)
+        // .width(1260)
+        .height(300)
+        .dpr(3)
+        .auto('format')
+        .url();
+
+    const imgStyle = image ? {
+        backgroundImage: `url("${projImage}")`,
         backgroundSize: 'cover'
     } : {};
 
     return (
-        <div className={styles.root} style={style}>
+        <div className={`${styles.root} card`}>
+            <div
+                style={imgStyle}
+                className={styles.image}
+            />
             <div className={styles.content}>
                 <h1 className={styles.title}>{name}</h1>
                 {description && (
@@ -35,7 +42,7 @@ function Project(props) {
                         {links.map((data) => (
                             <a
                                 key={data.title}
-                                className={styles.link}
+                                className={styles.button}
                                 href={data.href}
                                 target='_blank'
                                 rel='noopener noreferrer'
