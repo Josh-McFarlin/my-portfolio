@@ -1,6 +1,9 @@
 const withCSS = require('@zeit/next-css');
 const withWorkers = require('@zeit/next-workers');
 const webpack = require('webpack');
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const PacktrackerPlugin = require('@packtracker/webpack-plugin');
 
 const client = require('./client');
 
@@ -64,6 +67,23 @@ module.exports = withWorkers(withCSS({
         config.plugins.push(
             new webpack.IgnorePlugin(/^\.\/locale$/, /moment$/)
         );
+
+        if (isProduction) {
+            config.plugins.push(
+                new OptimizeCssAssetsPlugin()
+            );
+
+            config.plugins.push(
+                new PacktrackerPlugin({
+                    project_token: 'dc2fe0d9-6d34-4f76-b25b-b6af3f16822f',
+                    upload: true
+                })
+            );
+        } else {
+            config.plugins.push(
+                new BundleAnalyzerPlugin()
+            );
+        }
 
         return config;
     }

@@ -30,10 +30,10 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-inlinesvg": "^0.8.4",
-    "webpack": "^4.39.3",
     "worker-loader": "^2.0.0"
   },
   "devDependencies": {
+    "@packtracker/webpack-plugin": "^2.2.0",
     "babel-eslint": "^10.0.1",
     "cssnano": "^4.1.10",
     "eslint": "^5.15.1",
@@ -46,8 +46,11 @@
     "eslint-plugin-promise": "^4.0.1",
     "eslint-plugin-react": "^7.14.3",
     "eslint-plugin-standard": "^4.0.0",
+    "optimize-css-assets-webpack-plugin": "^5.0.3",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.6.0",
-    "sitemap": "^2.1.0"
+    "sitemap": "^2.1.0",
+    "webpack": "^4.39.3",
+    "webpack-bundle-analyzer": "^3.5.0"
   }
 }

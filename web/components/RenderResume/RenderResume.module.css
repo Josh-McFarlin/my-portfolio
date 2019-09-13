@@ -13,10 +13,10 @@
 .resumeContainer {
   position: relative;
   flex: 1;
-  margin: 16px;
+  margin: 32px;
   height: 0;
-  max-width: calc(100% - 32px);
-  width: 615px;
+  max-width: calc(100% - 64px);
+  width: 600px;
   border: 1px solid black;
   box-shadow: 10px 10px 2px 1px rgba(0, 0, 255, .2);
   background: white;
@@ -40,14 +40,15 @@
 }
 
 .link {
-  margin-bottom: 16px;
-  padding: 0.5em 1em;
-  border: 0.16em solid black;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: black;
-  text-align: center;
-  font-size: var(--font-micro-size);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 3px 3px 3px;
+  padding: 8px;
+  border: 1px solid #000;
+  cursor: default;
+  background: white;
+  box-shadow: 3px 4px 2px 0 rgba(0,0,255,.2);
 }
 
 .loading {
@@ -62,8 +63,4 @@
   position: absolute;
   top: 0;
   left: 0;
-}
-
-:global(.react-pdf__message) {
-  height: 100%;
 }

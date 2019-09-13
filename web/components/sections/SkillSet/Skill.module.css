@@ -5,10 +5,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 2px 2px;
+  margin: 0 3px 3px 3px;
   padding: 8px;
-  border: 1px solid black;
+  border: 1px solid #000;
   cursor: default;
+  background: white;
+  box-shadow: 3px 4px 2px 0px rgba(0,0,255,.2);
 }
 
 .skillImage {
