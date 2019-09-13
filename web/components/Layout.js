@@ -110,8 +110,4 @@ Layout.propTypes = {
     }).isRequired
 };
 
-Layout.defaultProps = {
-    isMobile: true
-};
-
 export default Layout;

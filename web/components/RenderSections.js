@@ -1,13 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { upperFirst } from 'lodash';
 
 import * as SectionComponents from './sections';
 
 
 function resolveSections(section) {
-    // eslint-disable-next-line import/namespace
-    const Section = SectionComponents[upperFirst(section._type)];
+    let upper = section._type;
+    if (typeof upper === 'string' && upper.length > 0) {
+        upper = upper[0].toUpperCase() + upper.slice(1);
+    }
+
+    const Section = SectionComponents[upper];
 
     if (Section) {
         return Section;
@@ -29,10 +32,17 @@ function RenderSections(props) {
         <>
             {sections.map((section) => {
                 const SectionComponent = resolveSections(section);
+
                 if (!SectionComponent) {
                     return <div>Missing section {section._type}</div>;
                 }
-                return <SectionComponent {...section} key={section._key} />;
+
+                return (
+                    <SectionComponent
+                        {...section}
+                        key={section._key}
+                    />
+                );
             })}
         </>
     );

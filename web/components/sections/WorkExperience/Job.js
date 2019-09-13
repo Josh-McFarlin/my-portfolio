@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
 import SimpleBlockContent from '../../SimpleBlockContent';
 import styles from './Job.module.css';
@@ -9,12 +8,27 @@ import styles from './Job.module.css';
 function Job(props) {
     const { company, position, location, startDate, endDate, description } = props;
 
-    const startForm = moment(startDate, 'YYYY-MM-DD');
-    const endForm = moment(endDate, 'YYYY-MM-DD');
+    const startForm = new Date(startDate);
+    const endForm = new Date(endDate);
 
-    const dateString = startForm.year() === endForm.year() ?
-        `${startForm.format('MMMM')} - ${endForm.format('MMMM, YYYY')}` :
-        `${startForm.format('MMMM, YYYY')} - ${endForm.format('MMMM, YYYY')}`;
+    const monYear = {
+        month: 'long',
+        year: 'numeric',
+        timeZone: 'UTC',
+        timeZoneName: 'short'
+    };
+
+    const onlyMonth = {
+        month: 'long',
+        timeZone: 'UTC',
+        timeZoneName: 'short'
+    };
+
+    const endFormatted = new Intl.DateTimeFormat('en-US', monYear).format(endForm);
+
+    const dateString = startForm.getFullYear() === endForm.getFullYear() ?
+        `${new Intl.DateTimeFormat('en-US', onlyMonth).format(startForm)} - ${endFormatted}` :
+        `${new Intl.DateTimeFormat('en-US', monYear).format(startForm)} - ${endFormatted}`;
 
     return (
         <div

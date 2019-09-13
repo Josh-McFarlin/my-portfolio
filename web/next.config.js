@@ -1,7 +1,6 @@
 const withCSS = require('@zeit/next-css');
 const withWorkers = require('@zeit/next-workers');
 const webpack = require('webpack');
-const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PacktrackerPlugin = require('@packtracker/webpack-plugin');
 
@@ -79,10 +78,6 @@ module.exports = withWorkers(withCSS({
                     branch: 'master',
                     upload: true
                 })
-            );
-        } else {
-            config.plugins.push(
-                new BundleAnalyzerPlugin()
             );
         }
 

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import moment from 'moment';
 
 import SimpleBlockContent from '../../SimpleBlockContent';
 import styles from './School.module.css';
@@ -9,14 +8,14 @@ import styles from './School.module.css';
 function School(props) {
     const { name, location, startYear, endYear, description, completedCourses, currentCourses } = props;
 
-    const startForm = moment(startYear, 'YYYY-MM-DD');
-    const endForm = moment(endYear, 'YYYY-MM-DD');
+    const startForm = new Date(startYear);
+    const endForm = new Date(endYear);
 
     return (
         <div className={styles.root}>
             <section className={styles.school}>
                 <h2 className={styles.heading}>{name}</h2>
-                <div className={styles.details}>{startForm.year()} - {endForm.year()} in {location}</div>
+                <div className={styles.details}>{startForm.getFullYear()} - {endForm.getFullYear()} in {location}</div>
                 {description && (
                     <SimpleBlockContent blocks={description} />
                 )}

@@ -22,8 +22,6 @@
     "@zeit/next-workers": "^1.0.0",
     "framer-motion": "^1.6.3",
     "groq": "^0.140.0",
-    "lodash": "^4.17.11",
-    "moment": "^2.24.0",
     "next": "^8.1.0",
     "next-seo": "^1.11.2",
     "prop-types": "^15.7.2",
@@ -35,6 +33,7 @@
   "devDependencies": {
     "@packtracker/webpack-plugin": "^2.2.0",
     "babel-eslint": "^10.0.1",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
     "cssnano": "^4.1.10",
     "eslint": "^5.15.1",
     "eslint-config-airbnb": "^18.0.1",
@@ -50,7 +49,6 @@
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.6.0",
     "sitemap": "^2.1.0",
-    "webpack": "^4.39.3",
-    "webpack-bundle-analyzer": "^3.5.0"
+    "webpack": "^4.39.3"
   }
 }
