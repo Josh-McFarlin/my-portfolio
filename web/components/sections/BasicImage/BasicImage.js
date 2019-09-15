@@ -10,39 +10,83 @@ function urlFor(source) {
     return imageUrlBuilder(client).image(source);
 }
 
-function BasicImage(props) {
-    const { image, circular, size } = props;
+class BasicImage extends React.PureComponent {
+    constructor(props) {
+        super(props);
 
-    const src = urlFor(image)
-        .width(600)
-        .height(600)
-        .fit('clip')
-        .auto('format')
-        .url();
+        this.state = {
+            src: null
+        };
+    }
 
-    const style = {
-        borderRadius: circular ? '50%' : '0',
-        width: `${size}%`
-    };
+    async componentDidMount() {
+        const { image, width, height } = this.props;
 
-    return (
-        <div className={styles.root}>
-            <section className={styles.article}>
-                <img
-                    className={styles.image}
-                    style={style}
-                    src={src}
-                    alt={image.alt}
-                />
-            </section>
-        </div>
-    );
+        const src = await urlFor(image)
+            .width(width)
+            .height(height)
+            .dpr(2)
+            .fit('clip')
+            .auto('format')
+            .url();
+
+        this.setState({
+            src
+        });
+    }
+
+    render() {
+        const { image, circular, width, maxWidth, height, maxHeight } = this.props;
+        const { src } = this.state;
+
+        const contStyle = {
+            maxWidth: maxWidth ? `${maxWidth}vw` : undefined,
+            maxHeight: maxHeight ? `${maxHeight}vh` : undefined
+        };
+
+        const imgStyle = {
+            borderRadius: circular ? '50%' : '0',
+            maxWidth: width,
+            maxHeight: height,
+            width,
+            height
+        };
+
+        return (
+            <div className={styles.root}>
+                <section className={styles.section}>
+                    <div
+                        style={contStyle}
+                        className={styles.imageContainer}
+                    >
+                        <img
+                            src={src}
+                            className={styles.image}
+                            style={imgStyle}
+                            alt={image.alt}
+                        />
+                    </div>
+                </section>
+            </div>
+        );
+    }
 }
 
 BasicImage.propTypes = {
     image: PropTypes.object.isRequired,
-    circular: PropTypes.bool.isRequired,
-    size: PropTypes.number.isRequired
+    circular: PropTypes.bool,
+    width: PropTypes.number,
+    maxWidth: PropTypes.number,
+    height: PropTypes.number,
+    maxHeight: PropTypes.number
+};
+
+BasicImage.defaultProps = {
+    circular: false,
+    width: null,
+    height: null,
+    maxWidth: null,
+    maxHeight: null
 };
 
 export default BasicImage;

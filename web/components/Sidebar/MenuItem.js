@@ -9,21 +9,26 @@ import styles from './Sidebar.module.css';
 
 const variants = {
     open: {
-        y: 0,
+        x: 0,
         opacity: 1,
+        display: 'block',
         transition: {
-            y: {
-                stiffness: 1000,
+            x: {
+                stiffness: 5,
                 velocity: -100
             }
         }
     },
     closed: {
-        y: 50,
+        x: 100,
         opacity: 0,
+        display: 'none',
         transition: {
-            y: {
-                stiffness: 1000
+            x: {
+                stiffness: 5
+            },
+            display: {
+                delay: 0.3
             }
         }
     }
@@ -41,8 +46,6 @@ const MenuItem = ({ item, router, toggle }) => {
         <motion.div
             className={styles.link}
             variants={variants}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.95 }}
             onClick={toggle}
         >
             {(slug != null) ? (

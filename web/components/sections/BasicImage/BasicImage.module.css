@@ -5,7 +5,7 @@
   padding-bottom: 2rem;
 }
 
-.article {
+.section {
   width: 100%;
   max-width: var(--width-small);
   margin: 0 auto;
@@ -15,8 +15,15 @@
   justify-content: center;
 }
 
+.imageContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .image {
   width: 100%;
-  height: auto;
+  height: 100%;
+  object-fit: cover;
   border: 1px solid black;
 }

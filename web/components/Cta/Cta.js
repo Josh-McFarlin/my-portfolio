@@ -30,7 +30,11 @@ function cta(props) {
         );
     }
 
-    return <a className={styles.button}>{title}</a>;
+    return (
+        <a className={styles.button}>
+            {title}
+        </a>
+    );
 }
 
 cta.propTypes = {
@@ -39,8 +43,13 @@ cta.propTypes = {
         slug: PropTypes.shape({
             current: PropTypes.string
         })
-    }).isRequired,
-    link: PropTypes.string.isRequired
+    }),
+    link: PropTypes.string
+};
+
+cta.defaultProps = {
+    route: null,
+    link: null
 };
 
 export default cta;

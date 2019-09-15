@@ -8,9 +8,22 @@ import Navigation from './Navigation';
 import styles from './Sidebar.module.css';
 
 
-const variants = {
+const sidebarVariants = {
+    open: {
+        background: 'rgba(0, 0, 0, 0.3)'
+    },
+    closed: {
+        background: 'rgba(0, 0, 0, 0)',
+        transition: {
+            delay: 0.8
+        }
+    }
+};
+
+const backgroundVariants = {
     open: (height = 1000) => ({
         clipPath: `circle(${height * 2 + 200}px at calc(100% - 40px) 40px)`,
+        boxShadow: '-5px 0px 20px 5px rgba(0, 0, 0, 0.4)',
         transition: {
             type: 'spring',
             stiffness: 20,
@@ -19,8 +32,9 @@ const variants = {
     }),
     closed: {
         clipPath: 'circle(30px at calc(100% - 40px) 40px)',
+        boxShadow: '-5px 0px 20px 5px rgba(0, 0, 0, 0)',
         transition: {
-            delay: 0.5,
+            delay: 0.3,
             type: 'spring',
             stiffness: 400,
             damping: 40
@@ -35,21 +49,25 @@ const Sidebar = ({ navItems }) => {
 
     return (
         <motion.nav
-            className={styles.sidebar}
+            className={styles.root}
             initial={false}
             animate={isOpen ? 'open' : 'closed'}
-            custom={height}
+            variants={sidebarVariants}
             ref={containerRef}
         >
             <motion.div
                 className={styles.background}
-                variants={variants}
-            />
-            <MenuToggle toggle={() => toggleOpen()} />
-            <Navigation
-                navItems={navItems}
-                toggle={() => toggleOpen()}
-            />
+                variants={backgroundVariants}
+                custom={height}
+            >
+                <MenuToggle
+                    toggle={() => toggleOpen()}
+                />
+                <Navigation
+                    navItems={navItems}
+                    toggle={() => toggleOpen()}
+                />
+            </motion.div>
         </motion.nav>
     );
 };

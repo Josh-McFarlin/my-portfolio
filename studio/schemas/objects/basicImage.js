@@ -11,13 +11,32 @@ export default {
         {
             name: 'image',
             type: 'figure',
-            title: 'Image'
+            title: 'Image',
+            validation: (Rule) => Rule.required()
         },
         {
-            name: 'size',
+            name: 'width',
             type: 'number',
-            title: 'Size (Percent Width)',
-            validation: (Rule) => Rule.required().integer().min(1).max(100)
+            title: 'Width (px)',
+            validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'height',
+            type: 'number',
+            title: 'Height (px)',
+            validation: (Rule) => Rule.required()
+        },
+        {
+            name: 'maxWidth',
+            type: 'number',
+            title: 'Max Width (Percent)',
+            validation: (Rule) => Rule.integer().min(1).max(100)
+        },
+        {
+            name: 'maxHeight',
+            type: 'number',
+            title: 'Max Height (Percent)',
+            validation: (Rule) => Rule.integer().min(1).max(100)
         }
     ],
     preview: {

@@ -88,7 +88,11 @@ Header.propTypes = {
                 current: PropTypes.string
             })
         })
-    ).isRequired
+    )
+};
+
+Header.defaultProps = {
+    navItems: []
 };
 
 export default withRouter(Header);
