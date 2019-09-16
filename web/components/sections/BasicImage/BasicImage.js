@@ -15,7 +15,9 @@ class BasicImage extends React.PureComponent {
         super(props);
 
         this.state = {
-            src: null
+            src: null,
+            loaded: false,
+            error: false
         };
     }
 
@@ -35,21 +37,35 @@ class BasicImage extends React.PureComponent {
         });
     }
 
+    onLoad = () => {
+        this.setState({
+            loaded: true
+        });
+    };
+
+    onError = () => {
+        this.setState({
+            error: true
+        });
+    };
+
     render() {
         const { image, circular, width, maxWidth, height, maxHeight } = this.props;
-        const { src } = this.state;
+        const { src, loaded, error } = this.state;
+
+        if (image == null || error) {
+            return null;
+        }
 
         const contStyle = {
-            maxWidth: maxWidth ? `${maxWidth}vw` : undefined,
-            maxHeight: maxHeight ? `${maxHeight}vh` : undefined
+            maxWidth: maxWidth ? `${maxWidth}vw` : 'none',
+            maxHeight: maxHeight ? `${maxHeight}vh` : 'none'
         };
 
         const imgStyle = {
             borderRadius: circular ? '50%' : '0',
             maxWidth: width,
-            maxHeight: height,
-            width,
-            height
+            maxHeight: height
         };
 
         return (
@@ -64,6 +80,8 @@ class BasicImage extends React.PureComponent {
                             className={styles.image}
                             style={imgStyle}
                             alt={image.alt}
+                            onLoad={this.onLoad}
+                            onError={this.onError}
                         />
                     </div>
                 </section>
