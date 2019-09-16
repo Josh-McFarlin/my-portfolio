@@ -68,6 +68,11 @@ class BasicImage extends React.PureComponent {
             maxHeight: height
         };
 
+        if (!loaded) {
+            imgStyle.width = `${width}px`;
+            imgStyle.height = `${height}px`;
+        }
+
         return (
             <div className={styles.root}>
                 <section className={styles.section}>
