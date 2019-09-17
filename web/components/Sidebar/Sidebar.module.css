@@ -24,11 +24,6 @@
   bottom: 0;
   width: 70%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  padding: 24px;
-  box-sizing: border-box;
 }
 
 .button {
@@ -36,44 +31,25 @@
   border: none;
   user-select: none;
   cursor: pointer;
-  position: relative;
+  position: absolute;
+  top: 20px;
+  right: 15px;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background: transparent;
   pointer-events: auto;
-  margin: 0 0 16px;
+  margin: 0;
+  padding: 0;
 }
 
 .links {
-  position: relative;
-  margin: 0;
-  padding: 16px;
+  position: absolute;
+  top: 80px;
+  right: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-}
-
-.link {
-  margin: 0 0 26px;
-  cursor: pointer;
-  width: 100%;
-  padding: 5px;
-  border: 3px solid white;
-  border-radius: 10px;
-}
-
-.linkItems {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-}
-
-.linkText {
-  font-size: var(--font-title3-size) !important;
-  color: white !important;
-  text-decoration: underline !important;
-  order: 1;
 }

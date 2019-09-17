@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
-import styles from './Sidebar.module.css';
+import styles from './MenuItem.module.css';
 
 
 const variants = {
@@ -44,7 +44,7 @@ const MenuItem = ({ item, router, toggle }) => {
 
     return (
         <motion.div
-            className={styles.link}
+            className={styles.root}
             variants={variants}
             onClick={toggle}
         >
@@ -58,10 +58,10 @@ const MenuItem = ({ item, router, toggle }) => {
                     prefetch
                 >
                     <div
-                        className={styles.linkItems}
+                        className={styles.container}
                         data-is-active={isActive ? 'true' : 'false'}
                     >
-                        <p className={styles.linkText}>{title}</p>
+                        <p className={styles.text}>{title}</p>
                     </div>
                 </Link>
             ) : (
@@ -72,10 +72,10 @@ const MenuItem = ({ item, router, toggle }) => {
                     rel='noopener noreferrer'
                 >
                     <div
-                        className={styles.linkItems}
+                        className={styles.container}
                         data-is-active={isActive ? 'true' : 'false'}
                     >
-                        <p className={styles.linkText}>{title}</p>
+                        <p className={styles.text}>{title}</p>
                     </div>
                 </a>
             )}
