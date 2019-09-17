@@ -6,8 +6,8 @@
   top: 0;
   right: 0;
   bottom: 0;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   pointer-events: none;
   z-index: 5;
 
@@ -24,34 +24,30 @@
   bottom: 0;
   width: 70%;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 24px;
+  box-sizing: border-box;
 }
 
 .button {
   outline: none;
   border: none;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
+  user-select: none;
   cursor: pointer;
-  position: absolute;
-  top: 20px;
-  right: 15px;
+  position: relative;
   width: 50px;
   height: 50px;
   border-radius: 50%;
   background: transparent;
   pointer-events: auto;
-}
-
-.links, .link {
-  margin: 0;
-  padding: 0;
+  margin: 0 0 16px;
 }
 
 .links {
-  position: absolute;
-  top: 80px;
-  right: 0;
+  position: relative;
+  margin: 0;
   padding: 16px;
   width: 100%;
   display: flex;
@@ -61,14 +57,23 @@
 }
 
 .link {
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
+  margin: 0 0 26px;
   cursor: pointer;
+  width: 100%;
+  padding: 5px;
+  border: 3px solid white;
+  border-radius: 10px;
+}
+
+.linkItems {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .linkText {
   font-size: var(--font-title3-size) !important;
   color: white !important;
   text-decoration: underline !important;
+  order: 1;
 }

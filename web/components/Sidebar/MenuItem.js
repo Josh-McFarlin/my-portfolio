@@ -58,10 +58,10 @@ const MenuItem = ({ item, router, toggle }) => {
                     prefetch
                 >
                     <div
-                        className={styles.linkText}
+                        className={styles.linkItems}
                         data-is-active={isActive ? 'true' : 'false'}
                     >
-                        {title}
+                        <p className={styles.linkText}>{title}</p>
                     </div>
                 </Link>
             ) : (
@@ -71,7 +71,12 @@ const MenuItem = ({ item, router, toggle }) => {
                     target='_blank'
                     rel='noopener noreferrer'
                 >
-                    {title}
+                    <div
+                        className={styles.linkItems}
+                        data-is-active={isActive ? 'true' : 'false'}
+                    >
+                        <p className={styles.linkText}>{title}</p>
+                    </div>
                 </a>
             )}
         </motion.div>
