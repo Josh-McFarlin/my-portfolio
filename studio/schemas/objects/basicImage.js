@@ -17,26 +17,26 @@ export default {
         {
             name: 'width',
             type: 'number',
-            title: 'Width (px)',
-            validation: (Rule) => Rule.required()
+            title: 'Width (percent)',
+            validation: (Rule) => Rule.required().min(1).max(100)
         },
         {
             name: 'height',
             type: 'number',
-            title: 'Height (px)',
-            validation: (Rule) => Rule.required()
+            title: 'Height (percent)',
+            validation: (Rule) => Rule.required().min(1).max(100)
         },
         {
             name: 'maxWidth',
             type: 'number',
-            title: 'Max Width (Percent)',
-            validation: (Rule) => Rule.integer().min(1).max(100)
+            title: 'Max Width (px)',
+            validation: (Rule) => Rule.integer().min(1)
         },
         {
             name: 'maxHeight',
             type: 'number',
-            title: 'Max Height (Percent)',
-            validation: (Rule) => Rule.integer().min(1).max(100)
+            title: 'Max Height (px)',
+            validation: (Rule) => Rule.integer().min(1)
         }
     ],
     preview: {

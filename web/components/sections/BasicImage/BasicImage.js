@@ -14,34 +14,36 @@ class BasicImage extends React.PureComponent {
     constructor(props) {
         super(props);
 
+        this.imageRef = React.createRef();
+
         this.state = {
             src: null,
-            loaded: false,
             error: false
         };
     }
 
     async componentDidMount() {
-        const { image, width, height } = this.props;
+        const { image, width, height, maxWidth, maxHeight } = this.props;
 
-        const src = await urlFor(image)
-            .width(width)
-            .height(height)
-            .dpr(2)
-            .fit('clip')
-            .auto('format')
-            .url();
+        const imageWidth = this.imageRef.current.clientWidth || maxWidth || width * 5 || 500;
+        const imageHeight = this.imageRef.current.clientHeight || maxHeight || height * 5 || 500;
 
-        this.setState({
-            src
-        });
+        try {
+            const src = await urlFor(image.image)
+                .width(imageWidth)
+                .height(imageHeight)
+                .dpr(2)
+                .fit('clip')
+                .auto('format')
+                .url();
+
+            this.setState({
+                src
+            });
+        } catch (e) {
+            this.onError();
+        }
     }
-
-    onLoad = () => {
-        this.setState({
-            loaded: true
-        });
-    };
 
     onError = () => {
         this.setState({
@@ -51,41 +53,36 @@ class BasicImage extends React.PureComponent {
 
     render() {
         const { image, circular, width, maxWidth, height, maxHeight } = this.props;
-        const { src, loaded, error } = this.state;
+        const { src, error } = this.state;
 
-        if (image == null || error) {
+        if (image.image == null || error) {
             return null;
         }
 
         const contStyle = {
-            maxWidth: maxWidth ? `${maxWidth}vw` : 'none',
-            maxHeight: maxHeight ? `${maxHeight}vh` : 'none'
+            width: `${width}vw`,
+            height: `${height}vh`,
+            maxWidth: maxWidth != null ? maxWidth : 'none',
+            maxHeight: maxHeight != null ? maxHeight : 'none'
         };
 
         const imgStyle = {
-            borderRadius: circular ? '50%' : '0',
-            maxWidth: width,
-            maxHeight: height
+            borderRadius: circular ? '50%' : '0'
         };
-
-        if (!loaded) {
-            imgStyle.width = `${width}px`;
-            imgStyle.height = `${height}px`;
-        }
 
         return (
             <div className={styles.root}>
                 <section className={styles.section}>
                     <div
-                        style={contStyle}
                         className={styles.imageContainer}
+                        style={contStyle}
                     >
                         <img
+                            ref={this.imageRef}
                             src={src}
                             className={styles.image}
                             style={imgStyle}
                             alt={image.alt}
-                            onLoad={this.onLoad}
                             onError={this.onError}
                         />
                     </div>

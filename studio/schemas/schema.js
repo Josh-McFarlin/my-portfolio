@@ -10,11 +10,11 @@ import route from './documents/route';
 import siteConfig from './documents/siteConfig';
 import socialLink from './documents/socialLink';
 import resumePage from './documents/resumePage';
+import figure from './documents/figure';
 
 // Object types
 import cta from './objects/cta';
 import embedHTML from './objects/embedHTML';
-import figure from './objects/figure';
 import internalLink from './objects/internalLink';
 import link from './objects/link';
 import portableText from './objects/portableText';

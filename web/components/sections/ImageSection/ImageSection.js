@@ -12,7 +12,7 @@ const builder = imageUrlBuilder(client);
 function ImageSection(props) {
     const { heading, label, text, image, cta } = props;
 
-    if (!image) {
+    if (!image.image) {
         return null;
     }
 
@@ -21,7 +21,7 @@ function ImageSection(props) {
             <figure className={styles.content}>
                 <img
                     src={builder
-                        .image(image)
+                        .image(image.image)
                         .auto('format')
                         .width(2000)
                         .url()}

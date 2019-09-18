@@ -14,7 +14,7 @@ function urlFor(source) {
 function Project(props) {
     const { name, tags, description, image, links } = props;
 
-    const projImage = urlFor(image)
+    const projImage = urlFor(image.image)
         // .width(1260)
         .height(300)
         .dpr(3)
