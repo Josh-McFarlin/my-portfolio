@@ -24,10 +24,6 @@ const pageQuery = groq`
         ctas[] {
           ...,
           route->
-        },
-        figures[] {
-          ...,
-          "image": image.asset->
         }
       }
     }

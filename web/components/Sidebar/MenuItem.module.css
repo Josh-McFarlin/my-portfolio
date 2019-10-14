@@ -28,4 +28,5 @@
   font-size: var(--font-title3-size);
   color: white;
   text-decoration: none;
+  margin: 0;
 }

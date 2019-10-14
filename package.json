@@ -3,7 +3,7 @@
   "name": "my-portfolio",
   "version": "1.0.0",
   "scripts": {
-    "build": "lerna run build --parallel",
+    "build": "npm install && lerna run build --parallel",
     "build-web": "(cd web && npm run build)",
     "build-studio": "(cd studio && npm run build)",
     "dev": "lerna run dev --parallel",
