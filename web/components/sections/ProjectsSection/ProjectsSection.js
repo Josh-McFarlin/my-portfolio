@@ -14,7 +14,7 @@ function ProjectsSection(props) {
                 {(heading) && (
                     <h1 className={styles.heading}>{heading}</h1>
                 )}
-                <div>
+                <div className={styles.projectList}>
                     {projects.map((data) => (
                         <Project
                             key={data.name}

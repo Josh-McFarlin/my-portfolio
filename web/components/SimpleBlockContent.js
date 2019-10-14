@@ -6,31 +6,58 @@ import Link from 'next/link';
 import client from '../client';
 
 
-const internalLink = (props) => {
-    const [slug, setSlug] = useState({});
+class internalLink extends React.PureComponent {
+    constructor(props) {
+        super(props);
 
-    useEffect(() => {
-        client.fetch(`*[_id == "${props.mark._ref}"][0]`)
-            .then((response) => {
-                setSlug(response.slug);
+        this.state = {
+            slug: null
+        };
+    }
+
+    async componentDidMount() {
+        const { mark } = this.props;
+
+        if (mark != null && mark._ref != null) {
+            const ref = mark._ref;
+            const refQuery = `*[_id == "${ref}"][0]`;
+
+            await client.fetch(refQuery).then((res) => {
+                if (res != null && res.slug != null) {
+                    this.setState({
+                        slug: res.slug
+                    });
+                }
             });
-    }, []);
+        }
+    }
 
-    return (
-        <Link
-            href={{
-                pathname: '/LandingPage',
-                query: { slug: slug.current }
-            }}
-            as={`/${slug.current !== '/' ? slug.current : ''}`}
-            prefetch
-        >
-            <a>
-                {props.children}
+    render() {
+        const { children } = this.props;
+        const { slug } = this.state;
+
+        if (slug != null) {
+            return (
+                <Link
+                    href={{
+                        pathname: '/LandingPage',
+                        query: { slug: slug.current }
+                    }}
+                    as={`/${slug.current !== '/' ? slug.current : ''}`}
+                    prefetch
+                >
+                    <a>{children}</a>
+                </Link>
+            );
+        }
+
+        return (
+            <a href={''}>
+                {children}
             </a>
-        </Link>
-    );
-};
+        );
+    }
+}
 
 const { projectId, dataset } = client.config();
 
