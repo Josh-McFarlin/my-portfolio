@@ -21,7 +21,9 @@ export default class MyDocument extends Document {
 
         return (
             <Html lang={lang || 'en'}>
-                <Head />
+                <Head>
+                    <link href='https://fonts.googleapis.com/css?family=Quicksand&display=swap' rel='stylesheet' />
+                </Head>
                 <body>
                     <Main />
                     <NextScript />

@@ -1,7 +1,7 @@
 @import './custom-properties.css';
 
 html {
-  font-family: var(--font-family-mons);
+  font-family: var(--font-family-quicksand);
   font-size: var(--font-base-size);
   line-height: var(--font-base-line-height);
 }
@@ -12,6 +12,7 @@ body {
   color: var(--color-black);
   margin: 0;
   overflow: hidden;
+  font-weight: bolder;
 }
 
 html,

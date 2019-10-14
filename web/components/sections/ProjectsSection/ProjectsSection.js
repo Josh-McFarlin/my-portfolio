@@ -37,4 +37,8 @@ ProjectsSection.defaultProps = {
     projects: []
 };
 
+ProjectsSection.defaultProps = {
+    heading: null
+};
+
 export default ProjectsSection;

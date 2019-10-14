@@ -28,7 +28,7 @@
   flex-direction: column;
   justify-content: flex-start;
   color: #000;
-  box-shadow: -10px 0px 40px 50px rgb(255, 255, 255);
+  box-shadow: -10px 0 40px 50px rgb(255, 255, 255);
 
   @media (--media-max-medium) {
     width: 100%;
@@ -46,6 +46,33 @@
   font-size: var(--font-title2-size);
   line-height: var(--font-title2-line-height);
   margin: 0;
+}
+
+.tagsContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.tag {
+  padding: 0.25em;
+  text-align: center;
+  margin-top: 8px;
+  margin-bottom: 8px;
+  font-size: var(--font-small-size);
+  line-height: var(--font-small-line-height);
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+  border-radius: 4px;
+  background: #fff;
+  border: 1px solid #c76a5d;
+  color: #c76a5d;
+}
+
+.tag:not(:last-of-type) {
+  margin-right: 8px;
 }
 
 .linkContainer {
