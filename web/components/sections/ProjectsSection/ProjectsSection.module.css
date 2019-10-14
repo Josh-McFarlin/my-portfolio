@@ -15,7 +15,7 @@
 .heading {
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
-  text-align: center;
+  margin-top: 0.25em;
 }
 
 .projectList {

@@ -1,17 +1,14 @@
 export default {
     name: 'figure',
     title: 'Image',
-    type: 'document',
+    type: 'image',
+    options: {
+        hotspot: true,
+        metadata: [
+            'lqip'
+        ]
+    },
     fields: [
-        {
-            name: 'image',
-            title: 'Image',
-            type: 'image',
-            options: {
-                hotspot: true,
-                metadata: ['lqip']
-            }
-        },
         {
             title: 'Caption',
             name: 'caption',
@@ -32,7 +29,7 @@ export default {
     ],
     preview: {
         select: {
-            media: 'image',
+            imageUrl: 'asset.url',
             title: 'caption'
         }
     }
