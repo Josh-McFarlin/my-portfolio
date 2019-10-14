@@ -26,6 +26,7 @@ import titledLink from './objects/titledLink';
 import socialLinks from './objects/socialLinks';
 import sectionHeader from './objects/sectionHeader';
 import figure from './objects/figure';
+import icon from './objects/icon';
 
 // Landing page sections
 import hero from './objects/hero';
@@ -72,6 +73,7 @@ export default createSchema({
         socialLinks,
         sectionHeader,
         socialLink,
-        resumePage
+        resumePage,
+        icon
     ])
 });

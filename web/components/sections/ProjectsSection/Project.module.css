@@ -67,8 +67,8 @@
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
   background: #fff;
-  border: 1px solid #c76a5d;
-  color: #c76a5d;
+  border: 1px solid var(--color-accent2);
+  color: var(--color-accent2);
 }
 
 .tag:not(:last-of-type) {
@@ -94,13 +94,13 @@
   transition: all .5s ease;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
   border-radius: 4px;
-  background: #747fe0;
+  background: var(--color-accent);
   border: 1px solid rgba(0, 0, 0, 0.1);
   color: #fff;
 }
 
 .button:hover{
-  background: #7795f8;
+  background: var(--color-accent);
   transform: scale(1.05);
 }
 
