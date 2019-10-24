@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import dynamic from 'next/dynamic';
 
+import Person from './Icons/Person';
+import Mail from './Icons/Mail';
+import List from './Icons/List';
+import Document from './Icons/Document';
 
-const Person = dynamic(() => import('./Icons/Person'));
-const Mail = dynamic(() => import('./Icons/Mail'));
-const List = dynamic(() => import('./Icons/List'));
-const Document = dynamic(() => import('./Icons/Document'));
 
 const Icon = ({ type, ...rest }) => {
     switch (type) {
