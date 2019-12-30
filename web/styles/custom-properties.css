@@ -3,7 +3,7 @@
   --narrow-container: 40rem;
 
   --font-family-sans: -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-family-mons: Montserrat, sans-serif;
+  --font-family-quicksand: 'Quicksand', sans-serif;
 
   --color-black: #202123;
   --color-dark-gray: #32373e;
@@ -11,7 +11,8 @@
   --color-light-gray: #b4bcc7;
   --color-very-light-gray: #e7ebed;
   --color-white: #fff;
-  --color-accent: #156dff;
+  --color-accent: #747fe0;
+  --color-accent2: #c76a5d;
   --color-link: #0074d9;
 
   /* Typography */

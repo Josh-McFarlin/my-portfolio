@@ -14,18 +14,19 @@
 .container {
   display: flex;
   flex-direction: row;
+  align-items: center;
 }
 
 .icon {
-  width: 75px;
-  margin-right: 16px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  width: 30px;
+  height: 30px;
+  margin: 0 8px;
+  color: var(--color-white);
 }
 
 .text {
   font-size: var(--font-title3-size);
-  color: white;
+  color: var(--color-white);
   text-decoration: none;
+  margin: 0;
 }

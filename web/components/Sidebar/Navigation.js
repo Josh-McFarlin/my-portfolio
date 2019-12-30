@@ -1,6 +1,6 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import PropTypes from 'prop-types';
+import { motion } from 'framer-motion';
 
 import MenuItem from './MenuItem';
 import styles from './Sidebar.module.css';

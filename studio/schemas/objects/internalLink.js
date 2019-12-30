@@ -8,7 +8,7 @@ export default {
     name: 'internalLink',
     type: 'reference',
     description: 'Locate a document you want to link to',
-    to: [{ type: 'route' }],
+    to: [{ type: 'page' }, { type: 'route' }],
     blockEditor: {
         icon: () => '🔗',
         render: InternalLinkRender

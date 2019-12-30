@@ -1,9 +1,13 @@
 import React from 'react';
 import BaseApp, { Container } from 'next/app';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config as faConfig } from '@fortawesome/fontawesome-svg-core';
 
 import client from '../client';
 import '../styles/layout.css';
 
+
+faConfig.autoAddCss = false;
 
 const siteConfigQuery = `
   *[_id == "global-config"] {

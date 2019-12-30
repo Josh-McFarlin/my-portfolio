@@ -11,12 +11,8 @@ function TextSection(props) {
     return (
         <div className={styles.root}>
             <section className={styles.section}>
-                {(label) && (
-                    <div className={styles.label}>{label}</div>
-                )}
-                {(heading) && (
-                    <h1 className={styles.heading}>{heading}</h1>
-                )}
+                <div className={styles.label}>{label}</div>
+                <h1 className={styles.heading}>{heading}</h1>
                 {text && (
                     <SimpleBlockContent
                         className={styles.textContainer}
@@ -29,14 +25,13 @@ function TextSection(props) {
 }
 
 TextSection.propTypes = {
-    heading: PropTypes.string,
+    heading: PropTypes.string.isRequired,
     label: PropTypes.string,
     text: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 TextSection.defaultProps = {
-    heading: null,
-    label: null
+    label: ''
 };
 
 export default TextSection;

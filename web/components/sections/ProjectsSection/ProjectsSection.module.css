@@ -6,15 +6,21 @@
 }
 
 .section {
-  width: 100%;
-  max-width: 50em;
-  margin: 0 auto;
-  padding: 0 1.5rem;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .heading {
   font-size: var(--font-title3-size);
   line-height: var(--font-title3-line-height);
-  text-align: center;
+  margin-top: 0.25em;
+}
+
+.projectList {
+  width: 100%;
+  max-width: 50em;
+  padding: 16px;
+  box-sizing: border-box;
 }

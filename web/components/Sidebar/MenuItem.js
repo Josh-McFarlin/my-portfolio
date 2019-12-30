@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 import PropTypes from 'prop-types';
 
+import Icon from '../sections/Icon';
 import styles from './MenuItem.module.css';
 
 
@@ -35,7 +36,7 @@ const variants = {
 };
 
 const MenuItem = ({ item, router, toggle }) => {
-    const { slug, title, link } = item;
+    const { slug, title, link, icon } = item;
 
     let isActive = false;
     if (slug != null) {
@@ -61,6 +62,7 @@ const MenuItem = ({ item, router, toggle }) => {
                         className={styles.container}
                         data-is-active={isActive ? 'true' : 'false'}
                     >
+                        <Icon type={icon} className={styles.icon} />
                         <p className={styles.text}>{title}</p>
                     </div>
                 </Link>
@@ -75,6 +77,7 @@ const MenuItem = ({ item, router, toggle }) => {
                         className={styles.container}
                         data-is-active={isActive ? 'true' : 'false'}
                     >
+                        <Icon type={icon} className={styles.icon} />
                         <p className={styles.text}>{title}</p>
                     </div>
                 </a>

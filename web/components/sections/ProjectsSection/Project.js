@@ -14,8 +14,7 @@ function urlFor(source) {
 function Project(props) {
     const { name, tags, description, image, links } = props;
 
-    const projImage = urlFor(image.image)
-        // .width(1260)
+    const projImage = urlFor(image)
         .height(300)
         .dpr(3)
         .auto('format')
@@ -34,10 +33,22 @@ function Project(props) {
             />
             <div className={styles.content}>
                 <h1 className={styles.title}>{name}</h1>
-                {description && (
+                {(description) && (
                     <SimpleBlockContent blocks={description} />
                 )}
-                {links && (
+                {(tags.length > 0) && (
+                    <div className={styles.tagsContainer}>
+                        {tags.map((tag) => (
+                            <div
+                                key={tag}
+                                className={styles.tag}
+                            >
+                                {tag}
+                            </div>
+                        ))}
+                    </div>
+                )}
+                {(links) && (
                     <div className={styles.linkContainer}>
                         {links.map((data) => (
                             <a

@@ -10,7 +10,7 @@
   border: 1px solid #000;
   cursor: default;
   background: white;
-  box-shadow: 3px 4px 2px 0px rgba(0,0,255,.2);
+  box-shadow: 3px 4px 2px 0 rgba(0, 0, 255, 0.2);
 }
 
 .skillImage {

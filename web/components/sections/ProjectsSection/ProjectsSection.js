@@ -11,10 +11,10 @@ function ProjectsSection(props) {
     return (
         <div className={styles.root}>
             <section className={styles.section}>
-                {(heading) && (
-                    <h1 className={styles.heading}>{heading}</h1>
+                {(heading != null) && (
+                    <h1 className={styles.title}>{heading}</h1>
                 )}
-                <div>
+                <div className={styles.projectList}>
                     {projects.map((data) => (
                         <Project
                             key={data.name}
@@ -29,12 +29,11 @@ function ProjectsSection(props) {
 
 ProjectsSection.propTypes = {
     heading: PropTypes.string,
-    projects: PropTypes.arrayOf(PropTypes.object)
+    projects: PropTypes.arrayOf(PropTypes.object).isRequired
 };
 
 ProjectsSection.defaultProps = {
-    heading: null,
-    projects: []
+    heading: null
 };
 
 export default ProjectsSection;

@@ -32,7 +32,7 @@
 
   @nest & > a {
     display: block;
-    padding: 1.5em 8px;
+    padding: 0.5em 0;
 
     @media (--media-max-medium) {
       padding: 12px 8px;

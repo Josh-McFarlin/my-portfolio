@@ -29,10 +29,10 @@ class BasicImage extends React.PureComponent {
         const imageHeight = this.imageRef.current.clientHeight || maxHeight || height * 5 || 500;
 
         try {
-            const src = await urlFor(image.image)
+            const src = await urlFor(image)
                 .width(imageWidth)
                 .height(imageHeight)
-                .dpr(2)
+                .dpr(3)
                 .fit('clip')
                 .auto('format')
                 .url();

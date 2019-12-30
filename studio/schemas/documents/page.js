@@ -47,6 +47,7 @@ export default {
             fieldset: 'metadata'
         }
     ],
+
     preview: {
         select: {
             title: 'title',

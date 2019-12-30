@@ -14,9 +14,13 @@ function Skill(props) {
     const { name, image } = props;
 
     const imageStyle = image ? {
-        backgroundImage: `url("${urlFor(image.image)
-            .width(120)
+        backgroundImage: `url("${urlFor(image)
+            .fit('clip')
+            .width(26)
+            .height(22)
+            .dpr(3)
             .auto('format')
+            .ignoreImageParams()
             .url()}")`,
         backgroundSize: 'contain'
     } : {};
