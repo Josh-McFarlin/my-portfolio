@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import NextSeo, { SocialProfileJsonLd } from 'next-seo';
+import { NextSeo, SocialProfileJsonLd } from 'next-seo';
 import groq from 'groq';
 import imageUrlBuilder from '@sanity/image-url';
 
@@ -133,16 +133,14 @@ class LandingPage extends React.PureComponent {
         return (
             <Layout config={config}>
                 <NextSeo
-                    config={{
-                        title,
-                        titleTemplate: `${config.name} | %s`,
-                        description,
-                        canonical: config.url && `${config.url}/${slug}`,
-                        openGraph: {
-                            images: openGraphImages
-                        },
-                        noindex: disallowRobots
+                    title={title}
+                    titleTemplate={`${config.name} | %s`}
+                    description={description}
+                    canonical={config.url && `${config.url}/${slug}`}
+                    openGraph={{
+                        images: openGraphImages
                     }}
+                    noIndex={disallowRobots}
                 />
                 <SocialProfileJsonLd
                     type='Person'
