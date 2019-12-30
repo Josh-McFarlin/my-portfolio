@@ -1,8 +1,8 @@
 import React from 'react';
 import { motion, useCycle } from 'framer-motion';
 import PropTypes from 'prop-types';
+import useComponentSize from '@rehooks/component-size';
 
-import { useDimensions } from './utils';
 import MenuToggle from './MenuToggle';
 import Navigation from './Navigation';
 import styles from './Sidebar.module.css';
@@ -45,7 +45,7 @@ const backgroundVariants = {
 const Sidebar = ({ navItems }) => {
     const [isOpen, toggleOpen] = useCycle(false, true);
     const containerRef = React.useRef(null);
-    const { height } = useDimensions(containerRef);
+    const { height } = useComponentSize(containerRef);
 
     return (
         <motion.nav
@@ -61,11 +61,11 @@ const Sidebar = ({ navItems }) => {
                 custom={height}
             >
                 <MenuToggle
-                    toggle={() => toggleOpen()}
+                    toggle={toggleOpen}
                 />
                 <Navigation
                     navItems={navItems}
-                    toggle={() => toggleOpen()}
+                    toggle={toggleOpen}
                 />
             </motion.div>
         </motion.nav>

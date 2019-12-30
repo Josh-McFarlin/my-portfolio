@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import imageUrlBuilder from '@sanity/image-url';
-
+import useComponentSize from '@rehooks/component-size';
 import styles from './BasicImage.module.css';
 import client from '../../../client';
 
@@ -10,87 +10,80 @@ function urlFor(source) {
     return imageUrlBuilder(client).image(source);
 }
 
-class BasicImage extends React.PureComponent {
-    constructor(props) {
-        super(props);
+const BasicImage = (props) => {
+    const [src, setSrc] = React.useState(null);
+    const [error, setError] = React.useState(false);
+    const imageContainer = React.useRef(null);
+    const { width, height } = useComponentSize(imageContainer);
 
-        this.imageRef = React.createRef();
-
-        this.state = {
-            src: null,
-            error: false
-        };
-    }
-
-    async componentDidMount() {
-        const { image, width, height, maxWidth, maxHeight } = this.props;
-
-        const imageWidth = this.imageRef.current.clientWidth || maxWidth || width * 5 || 500;
-        const imageHeight = this.imageRef.current.clientHeight || maxHeight || height * 5 || 500;
-
-        try {
-            const src = await urlFor(image)
-                .width(imageWidth)
-                .height(imageHeight)
-                .dpr(3)
-                .fit('clip')
-                .auto('format')
-                .url();
-
-            this.setState({
-                src
-            });
-        } catch (e) {
-            this.onError();
-        }
-    }
-
-    onError = () => {
-        this.setState({
-            error: true
-        });
+    const onError = () => {
+        setError(true);
     };
 
-    render() {
-        const { image, circular, width, maxWidth, height, maxHeight } = this.props;
-        const { src, error } = this.state;
+    React.useLayoutEffect(() => {
+        const handler = async () => {
+            const imageWidth = imageContainer.current.clientWidth || props.maxWidth || 500;
+            const imageHeight = imageContainer.current.clientHeight || props.maxHeight || 500;
 
-        if (image.image == null || error) {
-            return null;
-        }
+            try {
+                const newSrc = await urlFor(props.image)
+                    .width(imageWidth)
+                    .height(imageHeight)
+                    .dpr(3)
+                    .fit('clip')
+                    .auto('format')
+                    .url();
 
-        const contStyle = {
-            width: `${width}vw`,
-            height: `${height}vh`,
-            maxWidth: maxWidth != null ? maxWidth : 'none',
-            maxHeight: maxHeight != null ? maxHeight : 'none'
+                setSrc(newSrc);
+            } catch (e) {
+                onError();
+            }
         };
 
-        const imgStyle = {
-            borderRadius: circular ? '50%' : '0'
-        };
+        handler();
+    }, []);
 
-        return (
-            <div className={styles.root}>
-                <section className={styles.section}>
-                    <div
-                        className={styles.imageContainer}
-                        style={contStyle}
-                    >
-                        <img
-                            ref={this.imageRef}
-                            src={src}
-                            className={styles.image}
-                            style={imgStyle}
-                            alt={image.alt}
-                            onError={this.onError}
-                        />
-                    </div>
-                </section>
-            </div>
-        );
+    if (props.image.image == null || error) {
+        return null;
     }
-}
+
+    const contStyle = {
+        width: `${props.width}vw`,
+        height: `${props.height}vh`,
+        maxWidth: props.maxWidth,
+        maxHeight: props.maxHeight
+    };
+
+    const imgStyle = {
+        borderRadius: props.circular ? '50%' : '0'
+    };
+
+    const smaller = Math.min(width, height)
+
+    return (
+        <div className={styles.root}>
+            <section className={styles.section}>
+                <div
+                    className={styles.imageContainer}
+                    style={contStyle}
+                    ref={imageContainer}
+                >
+                    <div
+                        style={{
+                            ...imgStyle,
+                            width: smaller,
+                            height: smaller,
+                            backgroundImage: `url('${src}')`,
+                            backgroundSize: 'cover',
+                            backgroundPosition: 'center center'
+                        }}
+                    />
+                </div>
+            </section>
+        </div>
+    );
+};
+
 
 BasicImage.propTypes = {
     image: PropTypes.object.isRequired,
