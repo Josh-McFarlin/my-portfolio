@@ -3,6 +3,7 @@ const withWorkers = require('@zeit/next-workers');
 const webpack = require('webpack');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 const PacktrackerPlugin = require('@packtracker/webpack-plugin');
+const withOffline = require('next-offline');
 
 const client = require('./client');
 
@@ -43,7 +44,7 @@ const reduceRoutes = (obj, route) => {
     return obj;
 };
 
-module.exports = withWorkers(withCSS({
+module.exports = withOffline(withWorkers(withCSS({
     cssModules: true,
     cssLoaderOptions: {
         modules: true,
@@ -89,4 +90,4 @@ module.exports = withWorkers(withCSS({
 
         return config;
     }
-}));
+})));
