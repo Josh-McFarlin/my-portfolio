@@ -7,57 +7,23 @@ import styles from "./RenderResume.module.css";
 
 const Loader = () => <div className={styles.loading}>Loading Resume...</div>;
 
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source);
-}
+const urlFor = (source) => imageUrlBuilder(client).image(source);
 
-class RenderResume extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const RenderResume = ({ first, second, image, link, pdf }) => {
+  const [pdfLink, setPdfLink] = React.useState(null);
+  const [imageLink, setImageLink] = React.useState(null);
+  const [isLoading, setIsLoading] = React.useState(true);
+  const [showWhich, setShowWhich] = React.useState(first);
 
-    this.state = {
-      pdfLink: null,
-      imageLink: null,
-      isLoading: true,
-      showWhich: props.first,
-    };
-  }
+  const onLoaded = () => setIsLoading(false);
 
-  async componentDidMount() {
-    const { image, pdf } = this.props;
-
-    if (pdf != null) {
-      const response = await client.fetch(`*[_id == "${pdf.asset._ref}"][0]`);
-
-      this.setState({
-        pdfLink: response.url,
-      });
-    }
-
-    if (image != null) {
-      const imageLink = await urlFor(image).height(3000).auto("format").url();
-
-      this.setState({
-        imageLink,
-      });
-    }
-  }
-
-  onLoaded = () => {
-    this.setState({
-      isLoading: false,
-    });
-  };
-
-  onRenderFail = () => {
-    const { first, second } = this.props;
-
-    this.setState((prevState) => {
+  const onRenderFail = () => {
+    setShowWhich((prevWhich) => {
       let next = null;
 
-      if (prevState.showWhich === first && first !== second) {
+      if (prevWhich === first && first !== second) {
         next = second;
-      } else if (prevState.showWhich === second) {
+      } else if (prevWhich === second) {
         ["link", "pdf", "image"].forEach((item) => {
           if (first !== item && second !== item) {
             next = item;
@@ -65,64 +31,69 @@ class RenderResume extends React.PureComponent {
         });
       }
 
-      return {
-        showWhich: next,
-        isLoading: true,
-      };
+      return next;
     });
+    setIsLoading(true);
   };
 
-  render() {
-    const { link } = this.props;
-    const { pdfLink, imageLink, isLoading, showWhich } = this.state;
+  React.useEffect(() => {
+    if (pdf != null) {
+      client
+        .fetch(`*[_id == "${pdf.asset._ref}"][0]`)
+        .then(({ url }) => setPdfLink(url));
+    }
 
-    return (
-      <div className={styles.root}>
-        {(link || pdfLink) && (
-          <a
-            className={styles.link}
-            href={showWhich === "link" ? link : pdfLink}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Download PDF
-          </a>
+    if (image != null) {
+      setImageLink(urlFor(image).height(3000).auto("format").url());
+    }
+  }, []);
+
+  return (
+    <div className={styles.root}>
+      {(link || pdfLink) && (
+        <a
+          className={styles.link}
+          href={showWhich === "link" ? link : pdfLink}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Download PDF
+        </a>
+      )}
+      <div className={styles.resumeContainer}>
+        {isLoading && <Loader />}
+        {(showWhich === "link" || showWhich === "pdf") && (
+          <iframe
+            className={styles.resume}
+            src={`https://docs.google.com/gview?url=${
+              showWhich === "link" ? link : pdfLink
+            }&embedded=true`}
+            frameBorder="0"
+            title="My Resume"
+            onLoad={onLoaded}
+            onError={onRenderFail}
+          />
         )}
-        <div className={styles.resumeContainer}>
-          {isLoading && <Loader />}
-          {(showWhich === "link" || showWhich === "pdf") && (
-            <iframe
-              className={styles.resume}
-              src={`https://docs.google.com/gview?url=${
-                showWhich === "link" ? link : pdfLink
-              }&embedded=true`}
-              frameBorder="0"
-              title="My Resume"
-              onLoad={this.onLoaded}
-              onError={this.onRenderFail}
+        {showWhich === "image" && (
+          <div className={styles.imageContainer}>
+            <img
+              className={styles.resumeImage}
+              src={imageLink}
+              alt="Resume"
+              onLoad={onLoaded}
+              onError={onRenderFail}
             />
-          )}
-          {showWhich === "image" && (
-            <div className={styles.imageContainer}>
-              <img
-                className={styles.resumeImage}
-                src={imageLink}
-                alt="Resume"
-                onLoad={this.onLoaded}
-                onError={this.onRenderFail}
-              />
-            </div>
-          )}
-          {showWhich == null && (
-            <div className={styles.loading}>
-              Could not load resume at this time, please try again later!
-            </div>
-          )}
-        </div>
+          </div>
+        )}
+        {showWhich == null && (
+          <div className={styles.loading}>
+            Could not load resume at this time, please try again later!
+          </div>
+        )}
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 RenderResume.propTypes = {
   first: PropTypes.string,

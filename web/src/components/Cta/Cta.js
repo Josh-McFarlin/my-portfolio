@@ -4,9 +4,7 @@ import Link from "next/link";
 
 import styles from "./Cta.module.css";
 
-function cta(props) {
-  const { title, route, link } = props;
-
+const cta = ({ title, route, link }) => {
   if (route && route.slug && route.slug.current) {
     return (
       <Link
@@ -30,7 +28,7 @@ function cta(props) {
   }
 
   return <a className={styles.button}>{title}</a>;
-}
+};
 
 cta.propTypes = {
   title: PropTypes.string.isRequired,

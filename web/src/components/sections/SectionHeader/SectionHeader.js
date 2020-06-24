@@ -3,19 +3,15 @@ import PropTypes from "prop-types";
 
 import styles from "./SectionHeader.module.css";
 
-function SectionHeader(props) {
-  const { header, align, size } = props;
-
-  return (
-    <div className={styles.root}>
-      <section className={styles.section}>
-        <h1 className={styles[`header-${size}`]} align={align}>
-          {header}
-        </h1>
-      </section>
-    </div>
-  );
-}
+const SectionHeader = ({ header, align, size }) => (
+  <div className={styles.root}>
+    <section className={styles.section}>
+      <h1 className={styles[`header-${size}`]} align={align}>
+        {header}
+      </h1>
+    </section>
+  </div>
+);
 
 SectionHeader.propTypes = {
   header: PropTypes.string.isRequired,

@@ -6,9 +6,7 @@ import { withRouter } from "next/router";
 import styles from "./Footer.module.css";
 import SimpleBlockContent from "../SimpleBlockContent";
 
-function Footer(props) {
-  const { navItems, text, router } = props;
-
+const Footer = ({ navItems, text, router }) => {
   if (navItems.length === 0 && text == null) {
     return null;
   }
@@ -46,7 +44,7 @@ function Footer(props) {
       </div>
     </div>
   );
-}
+};
 
 Footer.propTypes = {
   navItems: PropTypes.arrayOf(

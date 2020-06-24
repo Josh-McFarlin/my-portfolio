@@ -7,13 +7,9 @@ import client from "../../../../client";
 import SimpleBlockContent from "../../SimpleBlockContent";
 import Cta from "../../Cta";
 
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source);
-}
+const urlFor = (source) => imageUrlBuilder(client).image(source);
 
-function ImageSection(props) {
-  const { heading, label, text, image, cta } = props;
-
+const ImageSection = ({ heading, label, text, image, cta }) => {
   if (image == null) {
     return null;
   }
@@ -39,7 +35,7 @@ function ImageSection(props) {
       </figure>
     </div>
   );
-}
+};
 
 ImageSection.propTypes = {
   heading: PropTypes.string.isRequired,

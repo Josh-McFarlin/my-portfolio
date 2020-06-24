@@ -24,17 +24,20 @@ const MyApp = ({ Component, pageProps }) => <Component {...pageProps} />;
 MyApp.getInitialProps = async ({ Component, ctx }) => {
   let pageProps = {};
 
-  if (Component.getInitialProps) {
-    pageProps = await Component.getInitialProps(ctx);
-  }
-
-  await client.fetch(siteConfigQuery).then((config) => {
-    pageProps.config = config;
-  });
+  const websiteConfig = await client.fetch(siteConfigQuery);
 
   await client.fetch(socialQuery).then((socialLinks) => {
     pageProps.socialLinks = socialLinks;
   });
+
+  if (Component.getInitialProps) {
+    pageProps = await Component.getInitialProps({
+      ...ctx,
+      websiteConfig,
+    });
+  }
+
+  pageProps.config = websiteConfig;
 
   return {
     pageProps,

@@ -5,59 +5,42 @@ import BlockContent from "@sanity/block-content-to-react";
 import Link from "next/link";
 import client from "../../client";
 
-class internalLink extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const InternalLink = ({ mark, children }) => {
+  const [slug, setSlug] = React.useState(null);
 
-    this.state = {
-      slug: null,
-    };
-  }
-
-  async componentDidMount() {
-    const { mark } = this.props;
-
+  React.useEffect(() => {
     if (mark != null && mark._ref != null) {
       const ref = mark._ref;
       const refQuery = `*[_id == "${ref}"][0]`;
 
-      await client.fetch(refQuery).then((res) => {
+      client.fetch(refQuery).then((res) => {
         if (res != null && res.slug != null) {
-          this.setState({
-            slug: res.slug,
-          });
+          setSlug(res.slug);
         }
       });
     }
+  }, []);
+
+  if (slug != null) {
+    return (
+      <Link
+        href={{
+          pathname: "/LandingPage",
+          query: { slug: slug.current },
+        }}
+        as={`/${slug.current !== "/" ? slug.current : ""}`}
+      >
+        <a>{children}</a>
+      </Link>
+    );
   }
 
-  render() {
-    const { children } = this.props;
-    const { slug } = this.state;
-
-    if (slug != null) {
-      return (
-        <Link
-          href={{
-            pathname: "/LandingPage",
-            query: { slug: slug.current },
-          }}
-          as={`/${slug.current !== "/" ? slug.current : ""}`}
-        >
-          <a>{children}</a>
-        </Link>
-      );
-    }
-
-    return <a href={""}>{children}</a>;
-  }
-}
+  return <a>{children}</a>;
+};
 
 const { projectId, dataset } = client.config();
 
-function SimpleBlockContent(props) {
-  const { blocks, className } = props;
-
+const SimpleBlockContent = ({ blocks, className }) => {
   if (!blocks) {
     // console.error('Missing blocks');
     return null;
@@ -70,10 +53,14 @@ function SimpleBlockContent(props) {
       dataset={dataset}
       className={className}
       renderContainerOnSingleChild
-      serializers={{ marks: { internalLink } }}
+      serializers={{
+        marks: {
+          internalLink: InternalLink,
+        },
+      }}
     />
   );
-}
+};
 
 SimpleBlockContent.propTypes = {
   blocks: PropTypes.arrayOf(PropTypes.object).isRequired,

@@ -4,16 +4,14 @@ import PropTypes from "prop-types";
 import SimpleBlockContent from "../../SimpleBlockContent";
 import styles from "./Job.module.css";
 
-function Job(props) {
-  const {
-    company,
-    position,
-    location,
-    startDate,
-    endDate,
-    description,
-  } = props;
-
+const Job = ({
+  company,
+  position,
+  location,
+  startDate,
+  endDate,
+  description,
+}) => {
   const startForm = new Date(startDate);
   const endForm = new Date(endDate);
 
@@ -68,7 +66,7 @@ function Job(props) {
       </section>
     </div>
   );
-}
+};
 
 Job.propTypes = {
   company: PropTypes.string.isRequired,

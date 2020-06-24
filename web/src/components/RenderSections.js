@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import * as SectionComponents from "./sections";
 
-function resolveSections(section) {
+const resolveSections = (section) => {
   let upper = section._type;
   if (typeof upper === "string" && upper.length > 0) {
     upper = upper[0].toUpperCase() + upper.slice(1);
@@ -17,11 +17,9 @@ function resolveSections(section) {
 
   console.error("Cant find section", section); // eslint-disable-line no-console
   return null;
-}
+};
 
-function RenderSections(props) {
-  const { sections } = props;
-
+const RenderSections = ({ sections }) => {
   if (!sections) {
     console.error("Missing section");
     return <div>Missing sections</div>;
@@ -40,7 +38,7 @@ function RenderSections(props) {
       })}
     </>
   );
-}
+};
 
 RenderSections.propTypes = {
   sections: PropTypes.arrayOf(

@@ -5,46 +5,11 @@ import useComponentSize from "@rehooks/component-size";
 import styles from "./BasicImage.module.css";
 import client from "../../../../client";
 
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source);
-}
-
 const BasicImage = (props) => {
-  const [src, setSrc] = React.useState(null);
-  const [error, setError] = React.useState(false);
   const imageContainer = React.useRef(null);
   const { width, height } = useComponentSize(imageContainer);
 
-  const onError = () => {
-    setError(true);
-  };
-
-  React.useLayoutEffect(() => {
-    const handler = async () => {
-      const imageWidth =
-        imageContainer.current.clientWidth || props.maxWidth || 500;
-      const imageHeight =
-        imageContainer.current.clientHeight || props.maxHeight || 500;
-
-      try {
-        const newSrc = await urlFor(props.image)
-          .width(imageWidth)
-          .height(imageHeight)
-          .dpr(3)
-          .fit("clip")
-          .auto("format")
-          .url();
-
-        setSrc(newSrc);
-      } catch (e) {
-        onError();
-      }
-    };
-
-    handler();
-  }, []);
-
-  if (props.image.image == null || error) {
+  if (props.image.image == null) {
     return null;
   }
 
@@ -55,11 +20,19 @@ const BasicImage = (props) => {
     maxHeight: props.maxHeight,
   };
 
-  const imgStyle = {
-    borderRadius: props.circular ? "50%" : "0",
-  };
-
   const smaller = Math.min(width, height);
+
+  const imageWidth = width || props.maxWidth || 500;
+  const imageHeight = height || props.maxHeight || 500;
+
+  const src = imageUrlBuilder(client)
+    .image(props.image)
+    .width(imageWidth)
+    .height(imageHeight)
+    .dpr(3)
+    .fit("clip")
+    .auto("format")
+    .url();
 
   return (
     <div className={styles.root}>
@@ -71,7 +44,7 @@ const BasicImage = (props) => {
         >
           <div
             style={{
-              ...imgStyle,
+              borderRadius: props.circular ? "50%" : "0",
               width: smaller,
               height: smaller,
               backgroundImage: `url('${src}')`,

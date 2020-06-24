@@ -6,13 +6,9 @@ import styles from "./Project.module.css";
 import client from "../../../../client";
 import SimpleBlockContent from "../../SimpleBlockContent";
 
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source);
-}
+const urlFor = (source) => imageUrlBuilder(client).image(source);
 
-function Project(props) {
-  const { name, tags, description, image, links } = props;
-
+const Project = ({ name, tags, description, image, links }) => {
   const projImage = urlFor(image).height(300).dpr(3).auto("format").url();
 
   const imgStyle = image
@@ -55,7 +51,7 @@ function Project(props) {
       </div>
     </div>
   );
-}
+};
 
 Project.propTypes = {
   name: PropTypes.string.isRequired,

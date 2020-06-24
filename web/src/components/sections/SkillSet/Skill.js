@@ -5,13 +5,9 @@ import imageUrlBuilder from "@sanity/image-url";
 import styles from "./Skill.module.css";
 import client from "../../../../client";
 
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source);
-}
+const urlFor = (source) => imageUrlBuilder(client).image(source);
 
-function Skill(props) {
-  const { name, image } = props;
-
+const Skill = ({ name, image }) => {
   const imageStyle = image
     ? {
         backgroundImage: `url("${urlFor(image)
@@ -32,7 +28,7 @@ function Skill(props) {
       {name && <p className={styles.skillText}>{name}</p>}
     </div>
   );
-}
+};
 
 Skill.propTypes = {
   name: PropTypes.string,

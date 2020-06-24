@@ -8,27 +8,19 @@ const encode = (data) =>
     .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
     .join("&");
 
-class EmailForm extends React.PureComponent {
-  constructor(props) {
-    super(props);
+const EmailForm = ({ heading, subtitle }) => {
+  const [botField, setBotField] = React.useState("");
+  const [name, setName] = React.useState("");
+  const [replyTo, setReplyTo] = React.useState("");
+  const [message, setMessage] = React.useState("");
 
-    this.state = {
-      name: "",
-      replyTo: "",
-      message: "",
-    };
-  }
-
-  handleChange = (event) => {
-    this.setState({
-      [event.target.name]: event.target.value,
-    });
-  };
-
-  submitForm = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { name, replyTo, message } = this.state;
+    const optionals = {};
+    if (botField.length > 0) {
+      optionals["bot-field"] = botField;
+    }
 
     if (name.length > 0 && replyTo.length > 0 && message.length > 0) {
       await fetch("/", {
@@ -41,6 +33,7 @@ class EmailForm extends React.PureComponent {
           name,
           replyTo,
           message,
+          ...optionals,
         }),
       })
         .then((response) => {
@@ -58,73 +51,72 @@ class EmailForm extends React.PureComponent {
     }
   };
 
-  render() {
-    const { heading, subtitle } = this.props;
-    const { name, replyTo, message } = this.state;
+  return (
+    <section className={styles.root}>
+      <div className={styles.container}>
+        {heading && <h2 className={styles.heading}>{heading}</h2>}
+        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+        <form
+          className={styles.form}
+          name="contact"
+          method="POST"
+          data-netlify="true"
+          data-netlify-honeypot="bot-field"
+          action="/contact/"
+          onSubmit={handleSubmit}
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <p hidden>
+            <label>
+              {"Don’t fill this out if you're human:"}
+              <input
+                value={botField}
+                onChange={(event) => setBotField(event.target.value)}
+              />
+            </label>
+          </p>
 
-    return (
-      <section className={styles.root}>
-        <div className={styles.container}>
-          {heading && <h2 className={styles.heading}>{heading}</h2>}
-          {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
-          <form
-            className={styles.form}
-            name="contact"
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
-            action="/contact/"
-            onSubmit={this.submitForm}
-          >
-            <input type="hidden" name="form-name" value="contact" />
-            <p hidden>
-              <label>
-                <input name="bot-field" onChange={this.handleChange} />
-              </label>
-            </p>
+          <label htmlFor="fname">Name</label>
+          <input
+            className={styles.formInput}
+            id="fname"
+            type="text"
+            name="name"
+            placeholder="Your Name"
+            required
+            value={name}
+            onChange={(event) => setName(event.target.value)}
+          />
 
-            <label htmlFor="fname">Name</label>
-            <input
-              className={styles.formInput}
-              id="fname"
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              required
-              value={name}
-              onChange={this.handleChange}
-            />
+          <label htmlFor="femail">ReplyTo</label>
+          <input
+            className={styles.formInput}
+            id="femail"
+            type="email"
+            name="replyTo"
+            placeholder="Your Email"
+            required
+            value={replyTo}
+            onChange={(event) => setReplyTo(event.target.value)}
+          />
 
-            <label htmlFor="femail">ReplyTo</label>
-            <input
-              className={styles.formInput}
-              id="femail"
-              type="email"
-              name="replyTo"
-              placeholder="Your Email"
-              required
-              value={replyTo}
-              onChange={this.handleChange}
-            />
+          <label htmlFor="fmessage">Message</label>
+          <textarea
+            className={styles.formInput}
+            id="fmessage"
+            name="message"
+            placeholder="Message"
+            required
+            value={message}
+            onChange={(event) => setMessage(event.target.value)}
+          />
 
-            <label htmlFor="fmessage">Message</label>
-            <textarea
-              className={styles.formInput}
-              id="fmessage"
-              name="message"
-              placeholder="Message"
-              required
-              value={message}
-              onChange={this.handleChange}
-            />
-
-            <input className={styles.formButton} type="submit" value="Send" />
-          </form>
-        </div>
-      </section>
-    );
-  }
-}
+          <input className={styles.formButton} type="submit" value="Send" />
+        </form>
+      </div>
+    </section>
+  );
+};
 
 EmailForm.propTypes = {
   heading: PropTypes.string,

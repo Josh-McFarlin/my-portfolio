@@ -7,13 +7,9 @@ import client from "../../../../client";
 import SimpleBlockContent from "../../SimpleBlockContent";
 import Cta from "../../Cta";
 
-function urlFor(source) {
-  return imageUrlBuilder(client).image(source);
-}
+const urlFor = (source) => imageUrlBuilder(client).image(source);
 
-function Hero(props) {
-  const { heading, backgroundImage, tagline, ctas } = props;
-
+const Hero = ({ heading, backgroundImage, tagline, ctas }) => {
   const style = backgroundImage
     ? {
         backgroundImage: `url("${urlFor(backgroundImage)
@@ -40,7 +36,7 @@ function Hero(props) {
       </div>
     </div>
   );
-}
+};
 
 Hero.propTypes = {
   heading: PropTypes.string.isRequired,
