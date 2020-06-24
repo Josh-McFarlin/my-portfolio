@@ -28,18 +28,23 @@ function Job(props) {
     timeZone: "UTC",
   };
 
-  const startMonth = new Intl.DateTimeFormat("en-US", onlyMonth).format(
-    startForm
-  );
-  const startMonYear = new Intl.DateTimeFormat("en-US", monYear).format(
-    startForm
-  );
+  let startMonth;
+  let startMonYear;
+  try {
+    startMonth = new Intl.DateTimeFormat("en-US", onlyMonth).format(startForm);
+    startMonYear = new Intl.DateTimeFormat("en-US", monYear).format(startForm);
+  } catch (e) {
+    console.log("DT Error", e);
+  }
 
   let dateString;
+  let endMonYear;
   if (endDate != null) {
-    const endMonYear = new Intl.DateTimeFormat("en-US", monYear).format(
-      endForm
-    );
+    try {
+      endMonYear = new Intl.DateTimeFormat("en-US", monYear).format(endForm);
+    } catch (e) {
+      console.log("DT Error", e);
+    }
 
     dateString =
       startForm.getUTCFullYear() === endForm.getUTCFullYear()
