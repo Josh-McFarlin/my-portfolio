@@ -83,10 +83,16 @@ module.exports = withOffline(
             ];
           }
 
+          const optionals = {};
+          if (isProduction) {
+            optionals.branch = "production";
+          }
+
           config.plugins.push(
             new PacktrackerPlugin({
               project_token: "dc2fe0d9-6d34-4f76-b25b-b6af3f16822f",
               upload: true,
+              ...optionals,
             })
           );
         }
