@@ -1,41 +1,41 @@
-import React from 'react';
-
+import React from "react";
 
 const LinkRender = ({ children }) => <span>{children} 🌍</span>;
 
 export default {
-    title: 'Titled Link',
-    name: 'titledLink',
-    type: 'object',
-    fields: [
-        {
-            name: 'title',
-            type: 'string',
-            title: 'Title'
-        },
-        {
-            title: 'URL',
-            name: 'href',
-            type: 'url',
-            validation: (Rule) => Rule.uri({
-                allowRelative: true,
-                scheme: ['https', 'http', 'mailto', 'tel']
-            })
-        }
-    ],
-    blockEditor: {
-        icon: () => '🌍',
-        render: LinkRender
+  title: "Titled Link",
+  name: "titledLink",
+  type: "object",
+  fields: [
+    {
+      name: "title",
+      type: "string",
+      title: "Title",
     },
-    preview: {
-        select: {
-            title: 'title'
-        },
-        prepare({ title }) {
-            return {
-                title,
-                subtitle: 'Link'
-            };
-        }
-    }
+    {
+      title: "URL",
+      name: "href",
+      type: "url",
+      validation: (Rule) =>
+        Rule.uri({
+          allowRelative: true,
+          scheme: ["https", "http", "mailto", "tel"],
+        }),
+    },
+  ],
+  blockEditor: {
+    icon: () => "🌍",
+    render: LinkRender,
+  },
+  preview: {
+    select: {
+      title: "title",
+    },
+    prepare({ title }) {
+      return {
+        title,
+        subtitle: "Link",
+      };
+    },
+  },
 };

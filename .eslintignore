@@ -1,0 +1,9 @@
+web/.next/
+studio/.next/
+web/out/
+studio/out/
+web/dist/
+studio/dist/
+node_modules
+.idea_modules/
+.idea/
