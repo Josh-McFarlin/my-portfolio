@@ -9,10 +9,6 @@
     "start": "next start"
   },
   "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.29",
-    "@fortawesome/free-brands-svg-icons": "^5.13.1",
-    "@fortawesome/free-solid-svg-icons": "^5.13.1",
-    "@fortawesome/react-fontawesome": "^0.1.11",
     "@rehooks/component-size": "^1.0.3",
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^1.149.16",
@@ -27,12 +23,13 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
-    "react-icons": "^3.10.0",
     "react-inlinesvg": "^1.2.0",
+    "react-ionicons": "^3.1.4",
     "resize-observer-polyfill": "^1.5.1",
     "worker-loader": "^2.0.0"
   },
   "devDependencies": {
+    "@packtracker/webpack-plugin": "^2.3.0",
     "cssnano": "^4.1.10",
     "postcss-import": "^12.0.1",
     "postcss-preset-env": "^6.6.0",

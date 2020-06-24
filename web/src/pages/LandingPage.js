@@ -1,5 +1,5 @@
-import PropTypes from "prop-types";
 import React from "react";
+import PropTypes from "prop-types";
 import { NextSeo, SocialProfileJsonLd } from "next-seo";
 import groq from "groq";
 import imageUrlBuilder from "@sanity/image-url";
@@ -111,23 +111,23 @@ LandingPage.getInitialProps = async ({ query }) => {
     return client
       .fetch(
         groq`
-                  *[_id == "global-config"][0]{
-                    frontpage -> {
-                      ...,
-                      content[] {
-                        ...,
-                        cta {
-                          ...,
-                          route->
-                        },
-                        ctas[] {
-                          ...,
-                          route->
-                        }
-                      }
-                    }
-                  }
-                `
+          *[_id == "global-config"][0]{
+            frontpage -> {
+              ...,
+              content[] {
+                ...,
+                cta {
+                  ...,
+                  route->
+                },
+                ctas[] {
+                  ...,
+                  route->
+                }
+              }
+            }
+          }
+        `
       )
       .then((res) => ({
         ...res.frontpage,

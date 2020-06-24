@@ -1,16 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
-import { faLinkedin } from "@fortawesome/free-brands-svg-icons/faLinkedin";
-import { faAngellist } from "@fortawesome/free-brands-svg-icons/faAngellist";
-import { faTwitter } from "@fortawesome/free-brands-svg-icons/faTwitter";
-import { faInstagram } from "@fortawesome/free-brands-svg-icons/faInstagram";
+import LogoGithub from "react-ionicons/lib/LogoGithub";
+import LogoLinkedin from "react-ionicons/lib/LogoLinkedin";
+import LogoTwitter from "react-ionicons/lib/LogoTwitter";
+import LogoInstagram from "react-ionicons/lib/LogoInstagram";
 
 import styles from "./SocialLinks.module.css";
 
 function TextSection(props) {
-  const { linkedIn, gitHub, angelList, twitter, instagram } = props;
+  const { linkedIn, gitHub, twitter, instagram } = props;
 
   return (
     <div className={styles.root}>
@@ -22,7 +20,7 @@ function TextSection(props) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FontAwesomeIcon icon={faLinkedin} width="30" size="2x" />
+            <LogoLinkedin fontSize="30px" />
           </a>
         )}
         {gitHub && (
@@ -32,17 +30,7 @@ function TextSection(props) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FontAwesomeIcon icon={faGithub} width="30" size="2x" />
-          </a>
-        )}
-        {angelList && (
-          <a
-            className={styles.link}
-            href={angelList}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <FontAwesomeIcon icon={faAngellist} width="30" size="2x" />
+            <LogoGithub fontSize="30px" />
           </a>
         )}
         {twitter && (
@@ -52,7 +40,7 @@ function TextSection(props) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FontAwesomeIcon icon={faTwitter} width="30" size="2x" />
+            <LogoTwitter fontSize="30px" />
           </a>
         )}
         {instagram && (
@@ -62,7 +50,7 @@ function TextSection(props) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FontAwesomeIcon icon={faInstagram} width="30" size="2x" />
+            <LogoInstagram fontSize="30px" />
           </a>
         )}
       </section>
@@ -73,7 +61,6 @@ function TextSection(props) {
 TextSection.propTypes = {
   linkedIn: PropTypes.string,
   gitHub: PropTypes.string,
-  angelList: PropTypes.string,
   twitter: PropTypes.string,
   instagram: PropTypes.string,
 };
