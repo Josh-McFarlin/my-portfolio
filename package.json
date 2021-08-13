@@ -26,7 +26,7 @@
     "prettier-eslint": "^9.0.1"
   },
   "dependencies": {
-    "next": "^9.4.1",
+    "next": "^11.1.0",
     "lerna": "^3.21.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
