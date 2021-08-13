@@ -18,7 +18,7 @@
     "clsx": "^1.1.1",
     "framer-motion": "^1.11.1",
     "groq": "^1.149.16",
-    "next": "^9.4.4",
+    "next": "^11.1.0",
     "next-offline": "^5.0.2",
     "next-seo": "^4.5.0",
     "prop-types": "^15.7.2",
