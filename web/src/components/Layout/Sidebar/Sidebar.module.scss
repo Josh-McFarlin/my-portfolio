@@ -1,0 +1,27 @@
+@import '../../../styles/Properties';
+@import '../../../styles/Colors';
+
+.root {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 5;
+
+  @include breakpoint-above-small {
+    display: none;
+  }
+
+  .background {
+    background: $accent-color;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 70%;
+    height: 100%;
+  }
+}

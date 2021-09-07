@@ -1,0 +1,67 @@
+@import '../../../../../styles/Properties';
+@import '../../../../../styles/Colors';
+
+.root {
+  padding-bottom: 2rem;
+
+  .container {
+    width: 100%;
+    max-width: $width-small;
+    padding: 0 1.5em;
+    box-sizing: border-box;
+    margin: 0 auto;
+
+    .heading {
+      text-align: center;
+      font-size: $font-title3-size;
+      line-height: $font-title3-line-height;
+      margin: 0 0 0.5rem;
+
+      @include breakpoint-above-small {
+        font-size: $font-title2-size;
+        line-height: $font-title2-line-height;
+      }
+    }
+
+    .subtitle {
+      text-align: center;
+      margin: 0.5rem 0 1.5rem;
+    }
+
+    .form {
+      display: flex;
+      flex-direction: column;
+
+      .formInput {
+        -webkit-font-smoothing: inherit;
+        font: inherit;
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-top: 6px;
+        margin-bottom: 16px;
+        resize: vertical;
+      }
+
+      .formButton {
+        -webkit-font-smoothing: inherit;
+        font: inherit;
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 25%;
+        min-width: 100px;
+        align-self: flex-end;
+
+        &:hover {
+          background-color: #45a049;
+        }
+      }
+    }
+  }
+}

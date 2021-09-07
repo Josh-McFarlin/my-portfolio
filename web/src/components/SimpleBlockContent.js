@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import BlockContent from "@sanity/block-content-to-react";
 
 import Link from "next/link";
-import client from "../../client";
+import client from "../utils/sanity/client";
 
 const InternalLink = ({ mark, children }) => {
   const [slug, setSlug] = React.useState(null);

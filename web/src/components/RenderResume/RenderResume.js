@@ -1,9 +1,8 @@
 import React from "react";
 import PropTypes from "prop-types";
 import imageUrlBuilder from "@sanity/image-url";
-
-import client from "../../../client";
-import styles from "./RenderResume.module.css";
+import client from "../../utils/sanity/client";
+import styles from "./RenderResume.module.scss";
 
 const Loader = () => <div className={styles.loading}>Loading Resume...</div>;
 

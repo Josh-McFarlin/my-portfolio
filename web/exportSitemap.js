@@ -2,7 +2,7 @@ const sm = require("sitemap");
 const fs = require("fs");
 
 const { exportPathMap } = require("./next.config");
-const client = require("./client");
+const client = require("./src/utils/sanity/client");
 
 client.fetch('*[_id == "global-config"] {url}[0]').then((config) => {
   exportPathMap().then((res) => {
@@ -26,7 +26,10 @@ client.fetch('*[_id == "global-config"] {url}[0]').then((config) => {
     fs.writeFile("./out/sitemap.xml", sitemap.toString(), (err) => {
       if (err) throw err;
 
+      // eslint-disable-next-line no-console
       console.log("sitemap.xml updated");
     });
   });
 });
+
+export const fixer = "";

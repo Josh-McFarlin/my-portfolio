@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
-
-import styles from "./Cta.module.css";
+import styles from "./Cta.module.scss";
 
 const cta = ({ title, route, link }) => {
   if (route && route.slug && route.slug.current) {

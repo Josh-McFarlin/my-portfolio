@@ -1,0 +1,31 @@
+@import '../../../../../styles/Properties';
+@import '../../../../../styles/Colors';
+
+.root {
+  &:not(:last-of-type) {
+    padding-bottom: 0.5rem;
+  }
+
+  .job {
+    width: 100%;
+    max-width: $width-small;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    box-sizing: border-box;
+
+    @include breakpoint-below-large {
+      padding: 0 !important;
+    }
+
+    .heading {
+      font-size: $font-title4-size;
+      line-height: $font-title4-line-height;
+      margin: 0.25em 0 0;
+    }
+
+    .details {
+      font-size: $font-small-size;
+      line-height: $font-small-line-height;
+    }
+  }
+}
