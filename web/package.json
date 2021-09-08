@@ -37,5 +37,8 @@
   "devDependencies": {
     "@packtracker/webpack-plugin": "^2.3.0",
     "sitemap": "^7.0.0"
+  },
+  "engines": {
+    "node": ">=12"
   }
 }
