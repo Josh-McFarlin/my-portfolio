@@ -19,7 +19,7 @@ export default {
                 },
                 {
                   buildHookId: "5d61c74b408efd13bcb4f168",
-                  title: "Landing pages Website",
+                  title: "Website",
                   name: "my-portfolio-web-ahq6sri6",
                   apiId: "c0d70a92-2491-42e4-8edd-6619a4ad26af",
                 },
@@ -35,7 +35,7 @@ export default {
           },
           {
             title: "Frontend",
-            value: "https://my-portfolio-web-ahq6sri6.netlify.com",
+            value: "https://mcfarl.in",
             category: "apps",
           },
         ],
