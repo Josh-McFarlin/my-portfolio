@@ -1,7 +1,6 @@
 const { SitemapStream, streamToPromise } = require("sitemap");
 const { Readable } = require("stream");
 const fs = require("fs");
-const exportPathMap = require("./next.config");
 const client = require("./src/utils/sanity/node-client");
 
 const query = `
@@ -35,7 +34,7 @@ const reduceRoutes = (obj, route) => {
   return obj;
 };
 
-(async () => {
+async function run() {
   const config = await client.fetch('*[_id == "global-config"] {url}[0]');
   const res = await client.fetch(query).then((res) => {
     const { routes = [] } = res;
@@ -68,6 +67,13 @@ const reduceRoutes = (obj, route) => {
 
   fs.writeFileSync("./out/sitemap.xml", sitemap.toString());
   console.log("sitemap.xml updated");
-})();
+}
+
+try {
+  run();
+} catch (error) {
+  console.error("Failed to update sitemap!");
+  console.error(error.message || error);
+}
 
 module.exports = {};
