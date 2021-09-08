@@ -4,6 +4,7 @@ const withOffline = require("next-offline");
 const isProd = process.env.NODE_ENV === "production";
 
 const config = withImages({
+  webpack5: !isProd,
   scope: "/",
   workboxOpts: {
     swDest: "service-worker.js",
