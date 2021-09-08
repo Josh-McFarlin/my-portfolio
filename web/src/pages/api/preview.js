@@ -5,16 +5,13 @@ import urls from "../../utils/urls";
 // @desc    Get preview of a Sanity page
 // @access  Public
 export default async (req, res) => {
-  if (
-    req.query.secret !== process.env.SANITY_STUDIO_PREVIEW_SECRET ||
-    !req.query.slug
-  ) {
+  if (req.query.secret !== process.env.SANITY_STUDIO_PREVIEW_SECRET) {
     return res.status(401).json({
       message: "Invalid token",
     });
   }
 
-  const data = await getPage(req.query.slug, true);
+  const data = await getPage(req.query.slug || "/", true);
 
   if (!data) {
     return res.status(401).json({
