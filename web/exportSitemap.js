@@ -65,6 +65,10 @@ async function run() {
 
   const sitemap = await streamToPromise(Readable.from(links).pipe(stream));
 
+  if (!fs.existsSync("./out")) {
+    fs.mkdirSync("./out");
+  }
+
   fs.writeFileSync("./out/sitemap.xml", sitemap.toString());
   console.log("sitemap.xml updated");
 }
