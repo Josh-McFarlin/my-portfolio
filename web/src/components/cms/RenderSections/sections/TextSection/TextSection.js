@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import SimpleBlockContent from "../../../../SimpleBlockContent";
+import BlockContent from "../../../BlockContent";
 import styles from "./TextSection.module.scss";
 
 const TextSection = ({ heading, label, text }) => (
@@ -9,9 +8,7 @@ const TextSection = ({ heading, label, text }) => (
     <section className={styles.section}>
       <div className={styles.label}>{label}</div>
       <h1 className={styles.heading}>{heading}</h1>
-      {text && (
-        <SimpleBlockContent className={styles.textContainer} blocks={text} />
-      )}
+      {text && <BlockContent className={styles.textContainer} blocks={text} />}
     </section>
   </div>
 );

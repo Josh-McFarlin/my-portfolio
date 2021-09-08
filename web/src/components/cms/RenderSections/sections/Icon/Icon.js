@@ -1,22 +1,46 @@
 import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
-import { Person, Mail, List, Document } from "react-ionicons";
+import { Icon as IconifyIcon } from "@iconify/react";
 import classes from "./Icon.module.scss";
 
 const Icon = ({ type, className, ...rest }) => {
   switch (type) {
     case "Person": {
-      return <Person className={clsx(classes.root, className)} {...rest} />;
+      return (
+        <IconifyIcon
+          className={clsx(classes.root, className)}
+          icon="ion:person"
+          {...rest}
+        />
+      );
     }
     case "Mail": {
-      return <Mail className={clsx(classes.root, className)} {...rest} />;
+      return (
+        <IconifyIcon
+          className={clsx(classes.root, className)}
+          icon="ion:mail"
+          {...rest}
+        />
+      );
     }
     case "List": {
-      return <List className={clsx(classes.root, className)} {...rest} />;
+      return (
+        <IconifyIcon
+          className={clsx(classes.root, className)}
+          icon="ion:list"
+          {...rest}
+        />
+      );
     }
     case "Document": {
-      return <Document className={clsx(classes.root, className)} {...rest} />;
+      return (
+        <IconifyIcon
+          className={clsx(classes.root, className)}
+          icon="ion:document"
+          {...rest}
+        />
+      );
     }
     default: {
       return null;
@@ -26,6 +50,7 @@ const Icon = ({ type, className, ...rest }) => {
 
 Icon.propTypes = {
   type: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default Icon;

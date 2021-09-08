@@ -2,6 +2,7 @@ import * as React from "react";
 import PropTypes from "prop-types";
 import { NextSeo, SocialProfileJsonLd } from "next-seo";
 import RenderSections from "../../components/cms/RenderSections";
+import RenderResume from "../../components/RenderResume";
 import Layout from "../../components/Layout";
 import { getSiteConfig } from "../../utils/sanity/actions/siteConfig";
 import { getPage } from "../../utils/sanity/actions/page";
@@ -13,6 +14,7 @@ const SanityScreen = ({ preview, siteConfig, page }) => {
     description,
     disallowRobots = false,
     content = [],
+    resume,
     config = {},
     socialLinks = [],
     slug,
@@ -23,7 +25,7 @@ const SanityScreen = ({ preview, siteConfig, page }) => {
     <>
       <NextSeo
         title={title}
-        titleTemplate={`${siteConfig.config.title} | %s`}
+        titleTemplate={`${siteConfig.config.name} | %s`}
         description={description}
         canonical={config.url && `${config.url}/${slug}`}
         openGraph={{
@@ -39,6 +41,7 @@ const SanityScreen = ({ preview, siteConfig, page }) => {
       />
       <Layout preview={preview} siteConfig={siteConfig}>
         {content && <RenderSections sections={content} />}
+        {resume && <RenderResume {...resume} />}
       </Layout>
     </>
   );

@@ -1,8 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import styles from "./ProjectsSection.module.scss";
 import Project from "./Project";
+import styles from "./ProjectsSection.module.scss";
 
 const ProjectsSection = ({ heading, projects }) => (
   <div className={styles.root}>

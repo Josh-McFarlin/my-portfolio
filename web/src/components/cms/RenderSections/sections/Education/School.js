@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import SimpleBlockContent from "../../../../SimpleBlockContent";
+import BlockContent from "../../../BlockContent";
 import styles from "./School.module.scss";
 
 const School = ({
@@ -21,7 +20,7 @@ const School = ({
           endYear
         ).getUTCFullYear()} in ${location}`}
       </div>
-      {description && <SimpleBlockContent blocks={description} />}
+      {description && <BlockContent blocks={description} />}
       {completedCourses && (
         <div>
           <div className={styles.details}>Completed Courses</div>

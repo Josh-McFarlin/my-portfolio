@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import imageUrlBuilder from "@sanity/image-url";
-
-import styles from "./Hero.module.scss";
 import client from "../../../../../utils/sanity/client";
-import SimpleBlockContent from "../../../../SimpleBlockContent";
+import BlockContent from "../../../BlockContent";
 import Cta from "../../../../Cta";
+import styles from "./Hero.module.scss";
 
 const urlFor = (source) => imageUrlBuilder(client).image(source);
 
@@ -24,7 +23,7 @@ const Hero = ({ heading, backgroundImage, tagline, ctas }) => {
       <div className={styles.content}>
         <h1 className={styles.title}>{heading}</h1>
         <div className={styles.tagline}>
-          {tagline && <SimpleBlockContent blocks={tagline} />}
+          {tagline && <BlockContent blocks={tagline} />}
         </div>
         {ctas && (
           <div className={styles.ctas}>

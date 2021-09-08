@@ -50,13 +50,7 @@ const Header = ({ name = "Missing name", navItems, router }) => {
                   )}
                 >
                   {slug != null ? (
-                    <Link
-                      href={{
-                        pathname: urls.pages.sanityPage(),
-                        query: { slug: item.slug.current },
-                      }}
-                      as={urls.pages.sanityPage(item.slug.current)}
-                    >
+                    <Link href={urls.pages.sanityPage(item.slug.current)}>
                       <a>{title}</a>
                     </Link>
                   ) : (

@@ -6,11 +6,17 @@ html,
 body,
 #__next {
   width: 100%;
+  height: 100%;
   margin: 0;
   padding: 0;
   position: relative;
   overscroll-behavior: none;
   background-color: $primary-bg-color;
+}
+
+#__next {
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 body {
@@ -20,6 +26,7 @@ body {
 #content {
   width: 100%;
   max-width: 1400px;
+  min-height: calc(100% - 70px);
   display: flex;
   flex-direction: column;
   margin: 0 auto;

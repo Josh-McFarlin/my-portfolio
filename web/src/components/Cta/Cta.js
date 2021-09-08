@@ -1,18 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+import urls from "../../utils/urls";
 import styles from "./Cta.module.scss";
 
 const cta = ({ title, route, link }) => {
   if (route && route.slug && route.slug.current) {
     return (
-      <Link
-        href={{
-          pathname: "/LandingPage",
-          query: { slug: route.slug.current },
-        }}
-        as={`/${route.slug.current}`}
-      >
+      <Link href={urls.pages.sanityPage(route.slug.current)}>
         <a className={styles.button}>{title}</a>
       </Link>
     );

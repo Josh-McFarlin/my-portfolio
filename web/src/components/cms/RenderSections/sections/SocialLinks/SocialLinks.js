@@ -1,11 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import {
-  LogoGithub,
-  LogoLinkedin,
-  LogoTwitter,
-  LogoInstagram,
-} from "react-ionicons";
+import { Icon as IconifyIcon } from "@iconify/react";
 import classes from "./SocialLinks.module.scss";
 
 const TextSection = ({ linkedIn, gitHub, twitter, instagram }) => (
@@ -18,7 +13,11 @@ const TextSection = ({ linkedIn, gitHub, twitter, instagram }) => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <LogoLinkedin className={classes.logo} fontSize="30px" />
+          <IconifyIcon
+            className={classes.logo}
+            icon="ion:logo-linkedin"
+            fontSize="30px"
+          />
         </a>
       )}
       {gitHub && (
@@ -28,7 +27,11 @@ const TextSection = ({ linkedIn, gitHub, twitter, instagram }) => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <LogoGithub className={classes.logo} fontSize="30px" />
+          <IconifyIcon
+            className={classes.logo}
+            icon="ion:logo-github"
+            fontSize="30px"
+          />
         </a>
       )}
       {twitter && (
@@ -38,7 +41,11 @@ const TextSection = ({ linkedIn, gitHub, twitter, instagram }) => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <LogoTwitter className={classes.logo} fontSize="30px" />
+          <IconifyIcon
+            className={classes.logo}
+            icon="ion:logo-twitter"
+            fontSize="30px"
+          />
         </a>
       )}
       {instagram && (
@@ -48,7 +55,11 @@ const TextSection = ({ linkedIn, gitHub, twitter, instagram }) => (
           target="_blank"
           rel="noopener noreferrer"
         >
-          <LogoInstagram className={classes.logo} fontSize="30px" />
+          <IconifyIcon
+            className={classes.logo}
+            icon="ion:logo-instagram"
+            fontSize="30px"
+          />
         </a>
       )}
     </section>

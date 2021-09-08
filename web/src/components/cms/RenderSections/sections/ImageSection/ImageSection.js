@@ -1,11 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
 import imageUrlBuilder from "@sanity/image-url";
-
-import styles from "./ImageSection.module.scss";
 import client from "../../../../../utils/sanity/client";
-import SimpleBlockContent from "../../../../SimpleBlockContent";
+import BlockContent from "../../../BlockContent";
 import Cta from "../../../../Cta";
+import styles from "./ImageSection.module.scss";
 
 const urlFor = (source) => imageUrlBuilder(client).image(source);
 
@@ -27,7 +26,7 @@ const ImageSection = ({ heading, label, text, image, cta }) => {
             <div className={styles.captionBox}>
               <div className={styles.label}>{label}</div>
               <h2 className={styles.title}>{heading}</h2>
-              {text && <SimpleBlockContent blocks={text} />}
+              {text && <BlockContent blocks={text} />}
               {cta && cta.route && <Cta {...cta} />}
             </div>
           </div>

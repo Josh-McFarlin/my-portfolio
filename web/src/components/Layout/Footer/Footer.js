@@ -2,7 +2,8 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import { withRouter } from "next/router";
-import SimpleBlockContent from "../../SimpleBlockContent";
+import BlockContent from "../../cms/BlockContent";
+import urls from "../../../utils/urls";
 import styles from "./Footer.module.scss";
 
 const Footer = ({ navItems, text, router }) => {
@@ -22,13 +23,7 @@ const Footer = ({ navItems, text, router }) => {
 
               return (
                 <li key={item._id} className={styles.item}>
-                  <Link
-                    href={{
-                      pathname: "/LandingPage",
-                      query: { slug: item.slug.current },
-                    }}
-                    as={`/${item.slug.current}`}
-                  >
+                  <Link href={urls.pages.sanityPage(item.slug.current)}>
                     <a data-is-active={isActive ? "true" : "false"}>
                       {item.title}
                     </a>
@@ -39,7 +34,7 @@ const Footer = ({ navItems, text, router }) => {
         </ul>
       </nav>
       <div className={styles.text}>
-        <SimpleBlockContent blocks={text} />
+        <BlockContent blocks={text} />
       </div>
     </div>
   );

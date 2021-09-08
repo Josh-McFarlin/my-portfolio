@@ -42,7 +42,7 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
         .then(({ url }) => setPdfLink(url));
     }
 
-    if (image != null) {
+    if (image != null && image.url != null) {
       setImageLink(urlFor(image).height(3000).auto("format").url());
     }
   }, []);

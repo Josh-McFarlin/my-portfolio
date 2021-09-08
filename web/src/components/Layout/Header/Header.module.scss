@@ -71,12 +71,15 @@
         white-space: nowrap;
         align-items: stretch;
         padding: 0 !important;
-        line-height: calc(#{$font-base-line-height} * 1.5rem);
+        line-height: $font-base-line-height * 1.5rem;
 
         a {
           display: block;
           position: relative;
           padding: 0 0.75rem;
+          font-size: $font-large-size;
+          line-height: $font-large-line-height;
+          font-weight: 600;
 
           @include breakpoint-below-large {
             padding: 1rem 1.5rem;

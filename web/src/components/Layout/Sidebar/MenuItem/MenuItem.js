@@ -55,17 +55,8 @@ const MenuItem = ({ item, router, toggle }) => {
   return (
     <motion.div className={styles.root} variants={variants} onClick={toggle}>
       {slug != null ? (
-        <Link
-          href={{
-            pathname: urls.pages.sanityPage(),
-            query: { slug: item.slug.current },
-          }}
-          as={urls.pages.sanityPage(item.slug.current)}
-        >
-          <div
-            className={clsx(styles.container, isActive && styles.active)}
-            data-is-active={isActive ? "true" : "false"}
-          >
+        <Link href={urls.pages.sanityPage(item.slug.current)}>
+          <div className={clsx(styles.container, isActive && styles.active)}>
             <Icon type={icon} className={styles.icon} />
             <p className={styles.text}>{title}</p>
           </div>

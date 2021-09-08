@@ -1,3 +1,5 @@
+@use "sass:math";
+
 $wide-container: 60rem;
 $narrow-container: 40rem;
 
@@ -6,24 +8,24 @@ $font-family-sans: -apple-system, BlinkMacSystemFont, sans-serif;
 $font-family-raleway: 'Raleway', sans-serif;
 $font-family-quicksand: 'Quicksand', sans-serif;
 
-$unit: 16;
-$font-micro-size: calc(10 / #{$unit} * 1rem); /* 10px */
-$font-micro-line-height: calc(12 / 10); /* 12px */
-$font-small-size: calc(14 / #{$unit} * 1rem); /* 14px */
-$font-small-line-height: calc(21 / 14); /* 21px */
-$font-base-size: calc(16 / #{$unit} * 1rem); /* 16px */
-$font-base-line-height: calc(24 / #{$unit}); /* 24px */
-$font-large-size: calc(18 / #{$unit} * 1rem); /* 18px */
-$font-large-line-height: calc(27 / 18); /* 27px */
+$unit: 14;
+$font-micro-size: math.div(10, $unit) * 1rem; /* 10px */
+$font-micro-line-height: math.div(12, 10); /* 12px */
+$font-small-size: math.div(14, $unit) * 1rem; /* 14px */
+$font-small-line-height: math.div(21, 14); /* 21px */
+$font-base-size: math.div(16, $unit) * 1rem; /* 16px */
+$font-base-line-height: math.div(24, 16); /* 24px */
+$font-large-size: math.div(18, $unit) * 1rem; /* 18px */
+$font-large-line-height: math.div(27, 18); /* 27px */
 
-$font-title4-size: calc(18 / #{$unit} * 1rem); /* 21px */
-$font-title4-line-height: calc(27 / 18); /* 30px */
-$font-title3-size: calc(21 / #{$unit} * 1rem); /* 21px */
-$font-title3-line-height: calc(30 / 21); /* 30px */
-$font-title2-size: calc(24 / #{$unit} * 1rem); /* 24px */
-$font-title2-line-height: calc(33 / 24); /* 33px */
-$font-title1-size: calc(49 / #{$unit} * 1rem); /* 49px */
-$font-title1-line-height: calc(57 / 49); /* 57px */
+$font-title4-size: math.div(18, $unit) * 1rem; /* 21px */
+$font-title4-line-height: math.div(27, 18); /* 30px */
+$font-title3-size: math.div(21, $unit) * 1rem; /* 21px */
+$font-title3-line-height: math.div(30, 21); /* 30px */
+$font-title2-size: math.div(24, $unit) * 1rem; /* 24px */
+$font-title2-line-height: math.div(33, 24); /* 33px */
+$font-title1-size: math.div(49, $unit) * 1rem; /* 49px */
+$font-title1-line-height: math.div(57, 49); /* 57px */
 
 $font-weight-light: 300;
 $font-weight-regular: 400;

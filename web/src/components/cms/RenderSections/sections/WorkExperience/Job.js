@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import SimpleBlockContent from "../../../../SimpleBlockContent";
+import BlockContent from "../../../BlockContent";
 import styles from "./Job.module.scss";
 
 const Job = ({
@@ -62,7 +61,7 @@ const Job = ({
           {dateString}
           {location && ` in ${location}`}
         </div>
-        {description && <SimpleBlockContent blocks={description} />}
+        {description && <BlockContent blocks={description} />}
       </section>
     </div>
   );

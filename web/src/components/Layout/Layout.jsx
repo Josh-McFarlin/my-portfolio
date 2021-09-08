@@ -14,7 +14,7 @@ const Layout = ({ preview, siteConfig, children, ...rest }) => {
   }
 
   const { config, favicons } = siteConfig;
-  const { title, mainNavigation, footerNavigation, footerText, logo } = config;
+  const { name, mainNavigation, footerNavigation, footerText, logo } = config;
 
   return (
     <>
@@ -42,7 +42,7 @@ const Layout = ({ preview, siteConfig, children, ...rest }) => {
         />
       </Head>
       <>
-        <Header title={title} logo={logo} navItems={mainNavigation} />
+        <Header name={name} logo={logo} navItems={mainNavigation} />
         <Sidebar navItems={mainNavigation} />
         <div id="content" {...rest}>
           {children}

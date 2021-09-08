@@ -1,10 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
 import imageUrlBuilder from "@sanity/image-url";
-
+import client from "../../../../../../utils/sanity/client";
+import BlockContent from "../../../../BlockContent";
 import styles from "./Project.module.scss";
-import client from "../../../../../utils/sanity/client";
-import SimpleBlockContent from "../../../../SimpleBlockContent";
 
 const urlFor = (source) => imageUrlBuilder(client).image(source);
 
@@ -19,11 +18,11 @@ const Project = ({ name, tags, description, image, links }) => {
     : {};
 
   return (
-    <div className={`${styles.root} card`}>
+    <div className={styles.root}>
       <div style={imgStyle} className={styles.image} />
       <div className={styles.content}>
         <h1 className={styles.title}>{name}</h1>
-        {description && <SimpleBlockContent blocks={description} />}
+        {description && <BlockContent blocks={description} />}
         {tags.length > 0 && (
           <div className={styles.tagsContainer}>
             {tags.map((tag) => (
