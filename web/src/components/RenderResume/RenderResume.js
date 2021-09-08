@@ -1,16 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
-import imageUrlBuilder from "@sanity/image-url";
 import client from "../../utils/sanity/client";
+import SanityImage from "../cms/SanityImage";
 import styles from "./RenderResume.module.scss";
 
 const Loader = () => <div className={styles.loading}>Loading Resume...</div>;
 
-const urlFor = (source) => imageUrlBuilder(client).image(source);
-
 const RenderResume = ({ first, second, image, link, pdf }) => {
   const [pdfLink, setPdfLink] = React.useState(null);
-  const [imageLink, setImageLink] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
   const [showWhich, setShowWhich] = React.useState(first);
 
@@ -40,10 +37,6 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
       client
         .fetch(`*[_id == "${pdf.asset._ref}"][0]`)
         .then(({ url }) => setPdfLink(url));
-    }
-
-    if (image != null && image.url != null) {
-      setImageLink(urlFor(image).height(3000).auto("format").url());
     }
   }, []);
 
@@ -75,9 +68,9 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
         )}
         {showWhich === "image" && (
           <div className={styles.imageContainer}>
-            <img
+            <SanityImage
               className={styles.resumeImage}
-              src={imageLink}
+              src={image}
               alt="Resume"
               onLoad={onLoaded}
               onError={onRenderFail}
