@@ -57,8 +57,9 @@ export const getStaticProps = async ({ params, preview = false }) => {
       siteConfig,
       page,
     },
+    // DISABLED FOR NETLIFY
     // At most every 10 minutes
-    revalidate: 10 * 60,
+    // revalidate: 10 * 60,
   };
 };
 
