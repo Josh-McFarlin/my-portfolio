@@ -10,6 +10,8 @@ const options = {
   useCdn: prod,
 };
 
+const previewToken = process.env.SANITY_API_TOKEN;
+
 export const client = sanityClient(options);
 
 export const imageBuilder = imageUrlBuilder(client);
@@ -17,9 +19,10 @@ export const imageBuilder = imageUrlBuilder(client);
 export const previewClient = sanityClient({
   ...options,
   useCdn: false,
-  token: process.env.SANITY_API_TOKEN,
+  token: previewToken,
 });
 
-export const getClient = (preview) => (preview ? previewClient : client);
+export const getClient = (preview) =>
+  preview === true && previewToken != null ? previewClient : client;
 
 export default client;

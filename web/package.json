@@ -5,6 +5,7 @@
   "author": "Josh McFarlin <jmcfarlin6@gatech.edu>",
   "scripts": {
     "dev": "next dev -p 3000",
+    "lint": "eslint --fix --ext .jsx --ext .js .",
     "build": "next build && node exportSitemap.js",
     "start": "next start"
   },
@@ -24,6 +25,7 @@
     "next": "^11.1.2",
     "next-images": "^1.8.1",
     "next-offline": "^5.0.5",
+    "next-sanity-image": "^3.1.5",
     "next-seo": "^4.26.0",
     "normalize.css": "^8.0.1",
     "prop-types": "^15.7.2",
@@ -35,6 +37,7 @@
     "sass": "^1.39.0"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^11.1.2",
     "@packtracker/webpack-plugin": "^2.3.0",
     "sitemap": "^7.0.0"
   },

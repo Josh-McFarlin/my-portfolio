@@ -1,17 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { imageBuilder } from "../../../../utils/sanity/client";
+import SanityImage from "../../SanityImage";
 import classes from "./Figure.module.scss";
 
 const Figure = ({ node }) => (
-  <img
-    className={classes.root}
-    src={
-      imageBuilder.image(node.asset).auto("format").width(2000).url() ??
-      undefined
-    }
-    alt={node.alt}
-  />
+  <SanityImage className={classes.root} src={node.asset} alt={node.alt} />
 );
 
 Figure.propTypes = {

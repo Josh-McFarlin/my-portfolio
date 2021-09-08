@@ -1,56 +1,44 @@
 import React from "react";
 import PropTypes from "prop-types";
-import imageUrlBuilder from "@sanity/image-url";
-import client from "../../../../../../utils/sanity/client";
 import BlockContent from "../../../../BlockContent";
+import SanityImage from "../../../../SanityImage";
 import styles from "./Project.module.scss";
 
-const urlFor = (source) => imageUrlBuilder(client).image(source);
-
-const Project = ({ name, tags, description, image, links }) => {
-  const projImage = urlFor(image).height(300).dpr(3).auto("format").url();
-
-  const imgStyle = image
-    ? {
-        backgroundImage: `url("${projImage}")`,
-        backgroundSize: "cover",
-      }
-    : {};
-
-  return (
-    <div className={styles.root}>
-      <div style={imgStyle} className={styles.image} />
-      <div className={styles.content}>
-        <h1 className={styles.title}>{name}</h1>
-        {description && <BlockContent blocks={description} />}
-        {tags.length > 0 && (
-          <div className={styles.tagsContainer}>
-            {tags.map((tag) => (
-              <div key={tag} className={styles.tag}>
-                {tag}
-              </div>
-            ))}
-          </div>
-        )}
-        {links && (
-          <div className={styles.linkContainer}>
-            {links.map((data) => (
-              <a
-                key={data.title}
-                className={styles.button}
-                href={data.href}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                {data.title}
-              </a>
-            ))}
-          </div>
-        )}
-      </div>
+const Project = ({ name, tags, description, image, links }) => (
+  <div className={styles.root}>
+    <div className={styles.image}>
+      <SanityImage src={image} layout="fill" objectFit="cover" />
     </div>
-  );
-};
+    <div className={styles.content}>
+      <h1 className={styles.title}>{name}</h1>
+      {description && <BlockContent blocks={description} />}
+      {tags.length > 0 && (
+        <div className={styles.tagsContainer}>
+          {tags.map((tag) => (
+            <div key={tag} className={styles.tag}>
+              {tag}
+            </div>
+          ))}
+        </div>
+      )}
+      {links && (
+        <div className={styles.linkContainer}>
+          {links.map((data) => (
+            <a
+              key={data.title}
+              className={styles.button}
+              href={data.href}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {data.title}
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+);
 
 Project.propTypes = {
   name: PropTypes.string.isRequired,

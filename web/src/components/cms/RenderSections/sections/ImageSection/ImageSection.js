@@ -1,12 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import imageUrlBuilder from "@sanity/image-url";
-import client from "../../../../../utils/sanity/client";
 import BlockContent from "../../../BlockContent";
 import Cta from "../../../../Cta";
+import SanityImage from "../../../SanityImage";
 import styles from "./ImageSection.module.scss";
-
-const urlFor = (source) => imageUrlBuilder(client).image(source);
 
 const ImageSection = ({ heading, label, text, image, cta }) => {
   if (image == null) {
@@ -16,11 +13,7 @@ const ImageSection = ({ heading, label, text, image, cta }) => {
   return (
     <div className={styles.root}>
       <figure className={styles.content}>
-        <img
-          src={urlFor(image).auto("format").width(2000).url()}
-          className={styles.image}
-          alt={heading}
-        />
+        <SanityImage src={image} className={styles.image} alt={heading} />
         <figcaption>
           <div className={styles.caption}>
             <div className={styles.captionBox}>

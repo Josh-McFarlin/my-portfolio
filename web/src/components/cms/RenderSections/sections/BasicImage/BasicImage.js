@@ -1,56 +1,29 @@
 import React from "react";
 import PropTypes from "prop-types";
-import imageUrlBuilder from "@sanity/image-url";
-import useComponentSize from "@rehooks/component-size";
+import clsx from "clsx";
+import SanityImage from "../../../SanityImage";
 import styles from "./BasicImage.module.scss";
-import client from "../../../../../utils/sanity/client";
 
 const BasicImage = (props) => {
-  const imageContainer = React.useRef(null);
-  const { width, height } = useComponentSize(imageContainer);
-
   if (props.image.image == null) {
     return null;
   }
 
   const contStyle = {
+    borderRadius: props.circular ? "50%" : 0,
     width: `${props.width}vw`,
     height: `${props.height}vh`,
     maxWidth: props.maxWidth,
     maxHeight: props.maxHeight,
   };
 
-  const smaller = Math.min(width, height);
-
-  const imageWidth = width || props.maxWidth || 500;
-  const imageHeight = height || props.maxHeight || 500;
-
-  const src = imageUrlBuilder(client)
-    .image(props.image)
-    .width(imageWidth)
-    .height(imageHeight)
-    .dpr(3)
-    .fit("clip")
-    .auto("format")
-    .url();
-
   return (
     <div className={styles.root}>
       <section className={styles.section}>
-        <div
-          className={styles.imageContainer}
-          style={contStyle}
-          ref={imageContainer}
-        >
-          <div
-            style={{
-              borderRadius: props.circular ? "50%" : "0",
-              width: smaller,
-              height: smaller,
-              backgroundImage: `url('${src}')`,
-              backgroundSize: "cover",
-              backgroundPosition: "center center",
-            }}
+        <div className={styles.imageContainer} style={contStyle}>
+          <SanityImage
+            className={clsx(styles.image, props.circular && styles.circular)}
+            src={props.image}
           />
         </div>
       </section>

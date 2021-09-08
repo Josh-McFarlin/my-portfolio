@@ -18,9 +18,11 @@
   }
 
   .image {
+    position: relative;
     flex: 1;
     width: 50%;
     background: white;
+    overflow: hidden;
 
     @include breakpoint-below-large {
       display: none;

@@ -10,6 +10,7 @@
   background-size: cover;
   background: $black-color no-repeat center center;
   padding-bottom: 2rem;
+  z-index: 0;
 
   @include breakpoint-above-small {
     padding-bottom: 4rem;
@@ -84,5 +85,14 @@
     .ctas > *:not(:first-child) {
       margin-left: 1rem;
     }
+  }
+
+  .background {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    z-index: -1;
   }
 }

@@ -5,6 +5,9 @@ const isProd = process.env.NODE_ENV === "production";
 
 const config = withImages({
   webpack5: !isProd,
+  images: {
+    domains: ["cdn.sanity.io"],
+  },
   scope: "/",
   workboxOpts: {
     swDest: "service-worker.js",
