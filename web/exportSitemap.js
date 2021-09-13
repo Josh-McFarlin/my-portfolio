@@ -70,11 +70,11 @@ async function run() {
   }
 
   fs.writeFileSync("./out/sitemap.xml", sitemap.toString());
-  console.log("sitemap.xml updated");
 }
 
 try {
   run();
+  console.log("sitemap.xml updated");
 } catch (error) {
   console.error("Failed to update sitemap!");
   console.error(error.message || error);
