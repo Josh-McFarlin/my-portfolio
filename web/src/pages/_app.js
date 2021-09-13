@@ -1,19 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import Script from "next/script";
+import PlausibleProvider from "next-plausible";
 import "focus-visible/dist/focus-visible.min.js";
 import "normalize.css";
 import "../styles/App.scss";
 
 const MyApp = ({ Component, pageProps }) => (
-  <>
-    <Script
-      src="https://plausible.io/js/plausible.js"
-      data-domain="mcfarl.in"
-    />
+  <PlausibleProvider domain="mcfarl.in" trackOutboundLinks>
     <Component {...pageProps} />
-    <div id="portalRoot" />
-  </>
+  </PlausibleProvider>
 );
 
 MyApp.propTypes = {
