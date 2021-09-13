@@ -4,7 +4,8 @@ const subdirectory = "plaus";
 const script = "plaus";
 
 const fileContents = `/${subdirectory}/js/${script}.outbound-links.js https://plausible.io/js/plausible.outbound-links.js 200
-/${subdirectory}/api/event https://plausible.io/api/event 202`;
+/${subdirectory}/api/event https://plausible.io/api/event 202
+/test123 https://plausible.io/api/event 200!`;
 
 const run = () => {
   if (!fs.existsSync("./out")) {
