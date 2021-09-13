@@ -4,7 +4,11 @@ const { withPlausibleProxy } = require("next-plausible");
 
 const isProd = process.env.NODE_ENV === "production";
 
-const config = withPlausibleProxy()(
+const config = withPlausibleProxy({
+  subdirectory: "plaus",
+  scriptName: "plaus",
+  customDomain: "https://mcfarl.in",
+})(
   withImages({
     generateBuildId: () => "build",
     images: {
