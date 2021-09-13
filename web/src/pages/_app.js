@@ -6,7 +6,15 @@ import "normalize.css";
 import "../styles/App.scss";
 
 const MyApp = ({ Component, pageProps }) => (
-  <PlausibleProvider domain="mcfarl.in" trackOutboundLinks>
+  <PlausibleProvider
+    domain="mcfarl.in"
+    trackOutboundLinks
+    scriptProps={{
+      src: "/plaus/js/plaus.outbound-links.js",
+      "data-api": "/plaus/api/event",
+    }}
+    selfHosted
+  >
     <Component {...pageProps} />
   </PlausibleProvider>
 );

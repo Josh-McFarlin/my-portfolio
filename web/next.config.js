@@ -22,7 +22,7 @@ const config = {
         },
       },
     ],
-  }
+  },
 };
 
 module.exports = isProd ? withOffline(config) : config;
