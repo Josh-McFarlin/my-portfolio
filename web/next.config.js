@@ -22,15 +22,7 @@ const config = {
         },
       },
     ],
-  },
-  async rewrites() {
-    return [
-      {
-        source: "/test456",
-        destination: "https://plausible.io/api/event",
-      },
-    ];
-  },
+  }
 };
 
 module.exports = isProd ? withOffline(config) : config;
