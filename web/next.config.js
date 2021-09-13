@@ -6,6 +6,7 @@ const isProd = process.env.NODE_ENV === "production";
 
 const config = withPlausibleProxy()(
   withImages({
+    generateBuildId: () => "build",
     images: {
       domains: ["cdn.sanity.io"],
     },
