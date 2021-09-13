@@ -12,6 +12,13 @@ export default {
       title: "Slug",
     },
     {
+      name: "prefetch",
+      type: "boolean",
+      title: "Prefetch",
+      description: "Should the page be loaded automatically",
+      initialValue: true,
+    },
+    {
       name: "page",
       type: "reference",
       description: "Select the page that this route should point to",

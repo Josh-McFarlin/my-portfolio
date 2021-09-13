@@ -23,7 +23,10 @@ const Footer = ({ navItems, text, router }) => {
 
               return (
                 <li key={item._id} className={styles.item}>
-                  <Link href={urls.pages.sanityPage(item.slug.current)}>
+                  <Link
+                    href={urls.pages.sanityPage(item.slug.current)}
+                    prefetch={item.prefetch !== false}
+                  >
                     <a data-is-active={isActive ? "true" : "false"}>
                       {item.title}
                     </a>

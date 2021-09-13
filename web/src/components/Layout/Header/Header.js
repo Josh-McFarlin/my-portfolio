@@ -50,7 +50,10 @@ const Header = ({ name = "Missing name", navItems, router }) => {
                   )}
                 >
                   {slug != null ? (
-                    <Link href={urls.pages.sanityPage(item.slug.current)}>
+                    <Link
+                      href={urls.pages.sanityPage(item.slug.current)}
+                      prefetch={item.prefetch !== false}
+                    >
                       <a>{title}</a>
                     </Link>
                   ) : (
