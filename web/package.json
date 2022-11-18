@@ -22,7 +22,7 @@
     "groq": "^2.15.0",
     "isomorphic-unfetch": "^3.1.0",
     "lodash": "^4.17.21",
-    "next": "^11.1.2",
+    "next": "^13.0.4",
     "next-images": "^1.8.1",
     "next-offline": "^5.0.5",
     "next-plausible": "^2.1.1",
