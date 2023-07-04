@@ -21,6 +21,7 @@
         border: 1px solid black;
         background: white;
         margin: 0 auto;
+        object-fit: cover;
 
         &.circular {
           border-radius: 50%;
