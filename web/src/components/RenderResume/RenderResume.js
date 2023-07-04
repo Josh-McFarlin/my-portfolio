@@ -4,8 +4,6 @@ import client from "../../utils/sanity/client";
 import SanityImage from "../cms/SanityImage";
 import styles from "./RenderResume.module.scss";
 
-const Loader = () => <div className={styles.loading}>Loading Resume...</div>;
-
 const RenderResume = ({ first, second, image, link, pdf }) => {
   const [pdfLink, setPdfLink] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
@@ -44,20 +42,8 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
     }
   }, [pdf]);
 
-  let content = (
-    <div className={styles.resumeContainer}>
-      <div className={styles.loading}>
-        Could not load resume at this time, please try again later!
-      </div>
-    </div>
-  );
-  if (isLoading) {
-    content = (
-      <div className={styles.resumeContainer}>
-        {isLoading && <Loader />}
-      </div>
-    );
-  } else if (showWhich === "image") {
+  let content = null;
+  if (showWhich === "image") {
     content = (
       <div className={styles.resumeContainer}>
         <div className={styles.imageContainer}>
@@ -69,20 +55,40 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
             onError={onRenderFail}
           />
         </div>
+        {isLoading && (
+          <div className={styles.resumeContainer}>
+            <div className={styles.loading}>Loading Resume...</div>
+          </div>
+        )}
       </div>
     );
   } else if (showWhich === "link" || showWhich === "pdf") {
     content = (
-      <iframe
-        className={styles.resumeContainer}
-        src={`https://docs.google.com/gview?url=${
-          showWhich === "link" ? link : pdfLink
-        }&embedded=true`}
-        frameBorder="0"
-        title="My Resume"
-        onLoad={onLoaded}
-        onError={onRenderFail}
-      />
+      <>
+        <iframe
+          className={styles.resumeContainer}
+          src={`https://docs.google.com/gview?url=${
+            showWhich === "link" ? link : pdfLink
+          }&embedded=true`}
+          frameBorder="0"
+          title="My Resume"
+          onLoad={onLoaded}
+          onError={onRenderFail}
+        />
+        {isLoading && (
+          <div className={styles.resumeContainer}>
+            <div className={styles.loading}>Loading Resume...</div>
+          </div>
+        )}
+      </>
+    );
+  } else if (showWhich == null) {
+    content = (
+      <div className={styles.resumeContainer}>
+        <div className={styles.loading}>
+          Could not load resume at this time, please try again later!
+        </div>
+      </div>
     );
   }
 
