@@ -33,6 +33,10 @@ body {
   padding: 16px;
   overflow-x: hidden;
   color: $primary-text-color;
+
+  section {
+    max-width: 50em;
+  }
 }
 
 #portalRoot {
