@@ -63,24 +63,22 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
       </div>
     );
   } else if (showWhich === "link" || showWhich === "pdf") {
+    let iframeUrl = link;
+    if (showWhich === "link") {
+      iframeUrl = "https://docs.google.com/document/d/e/2PACX-1vT8qSwaATh5uddVSEyBxqhW4xNFMG0kLEr2n0Kx9q31GWPggXX7MjdJM2bhn4IbfQ/pub?embedded=true"
+    } else {
+      iframeUrl = `https://docs.google.com/gview?url=${pdfLink}&embedded=true`;
+    }
+    
     content = (
-      <>
-        <iframe
-          className={styles.resumeContainer}
-          src={`https://docs.google.com/gview?url=${
-            showWhich === "link" ? link : pdfLink
-          }&embedded=true`}
-          frameBorder="0"
-          title="My Resume"
-          onLoad={onLoaded}
-          onError={onRenderFail}
-        />
-        {isLoading && (
-          <div className={styles.resumeContainer}>
-            <div className={styles.loading}>Loading Resume...</div>
-          </div>
-        )}
-      </>
+      <iframe
+        className={styles.resumeContainer}
+        src={iframeUrl}
+        frameBorder="0"
+        title="My Resume"
+        onLoad={onLoaded}
+        onError={onRenderFail}
+      />
     );
   } else if (showWhich == null) {
     content = (
