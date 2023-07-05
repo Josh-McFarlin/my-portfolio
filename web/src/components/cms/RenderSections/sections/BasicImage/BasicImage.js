@@ -27,6 +27,7 @@ const BasicImage = (props) => {
             sizes={`${
               props.maxWidth ? `(max-width: ${props.maxWidth}px) ` : ""
             }${props.width}vw`}
+            priority
           />
         </div>
       </section>
