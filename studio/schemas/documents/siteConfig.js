@@ -61,6 +61,10 @@ export default {
           type: "reference",
           to: [{ type: "route" }, { type: "socialLink" }],
         },
+        {
+          type: "titledLink",
+          title: "Link",
+        },
       ],
     },
     {

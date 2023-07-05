@@ -35,15 +35,15 @@ const Header = ({ name = "Missing name", navItems, router }) => {
           </a>
         </Link>
       </h1>
-      <nav className={styles.nav}>
-        <ul className={styles.navItems}>
-          {navItems &&
-            navItems.map((item) => {
-              const { slug, title, link, _id } = item;
+      {navItems && (
+        <nav className={styles.nav}>
+          <ul className={styles.navItems}>
+            {navItems.map((item) => {
+              const { slug, title, link, href, _id, _key } = item;
 
               return (
                 <li
-                  key={_id}
+                  key={_id || _key}
                   className={clsx(
                     styles.navItem,
                     isRouteActive(item) && styles.active
@@ -57,15 +57,20 @@ const Header = ({ name = "Missing name", navItems, router }) => {
                       <a>{title}</a>
                     </Link>
                   ) : (
-                    <a href={link} target="_blank" rel="noopener noreferrer">
+                    <a
+                      href={link ?? href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
                       {title}
                     </a>
                   )}
                 </li>
               );
             })}
-        </ul>
-      </nav>
+          </ul>
+        </nav>
+      )}
     </div>
   );
 };

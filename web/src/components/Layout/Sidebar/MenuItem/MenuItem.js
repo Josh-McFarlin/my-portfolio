@@ -42,7 +42,7 @@ const conditionalJoin = (slug) => {
 };
 
 const MenuItem = ({ item, router, toggle }) => {
-  const { slug, title, link, icon } = item;
+  const { slug, title, link, href, icon } = item;
 
   let isActive = false;
   if ("slug" in item && item.slug != null) {
@@ -64,7 +64,7 @@ const MenuItem = ({ item, router, toggle }) => {
       ) : (
         <a
           className={clsx(styles.container, isActive && styles.active)}
-          href={link}
+          href={link ?? href}
           target="_blank"
           rel="noopener noreferrer"
         >

@@ -22,6 +22,11 @@ export default {
           scheme: ["https", "http", "mailto", "tel"],
         }),
     },
+    {
+      name: "icon",
+      type: "icon",
+      title: "Icon",
+    },
   ],
   blockEditor: {
     icon: () => "🌍",

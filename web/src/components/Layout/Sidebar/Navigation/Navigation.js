@@ -24,7 +24,7 @@ const variants = {
 const Navigation = ({ navItems, toggle }) => (
   <motion.div className={styles.root} variants={variants}>
     {navItems.map((item) => (
-      <MenuItem item={item} key={item._id} toggle={toggle} />
+      <MenuItem item={item} key={item._id || item._key} toggle={toggle} />
     ))}
   </motion.div>
 );
