@@ -6,16 +6,13 @@ import styles from "./Skill.module.scss";
 const Skill = ({ name, image }) => (
   <div className={styles.root}>
     {image && (
-      <div className={styles.skillImage}>
-        <SanityImage
-          className={styles.image}
-          src={image}
-          width={26}
-          height={22}
-          objectFit="contain"
-          placeholder="empty"
-        />
-      </div>
+      <SanityImage
+        className={styles.skillImage}
+        src={image}
+        width={26}
+        height={22}
+        placeholder="empty"
+      />
     )}
     {name && <p className={styles.skillText}>{name}</p>}
   </div>

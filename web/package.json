@@ -2,47 +2,47 @@
   "private": true,
   "name": "my-portfolio-web",
   "version": "1.0.0",
-  "author": "Josh McFarlin <jmcfarlin6@gatech.edu>",
+  "author": "Josh McFarlin <josh@mcfarl.in>",
   "scripts": {
     "dev": "next dev -p 3000",
-    "lint": "eslint --fix --ext .jsx --ext .js .",
+    "lint": "next lint",
     "build": "next build && node exportSitemap.js && node redirects.js",
     "start": "next start"
   },
   "dependencies": {
-    "@iconify/react": "^3.0.1",
+    "@iconify/react": "^4.1.1",
+    "@portabletext/react": "^3.0.4",
     "@rehooks/component-size": "^1.0.3",
-    "@sanity/block-content-to-react": "^3.0.0",
-    "@sanity/client": "^2.18.0",
-    "@sanity/image-url": "^1.0.1",
-    "clsx": "^1.1.1",
-    "dayjs": "^1.10.6",
+    "@sanity/client": "^6.1.6",
+    "@sanity/image-url": "^1.0.2",
+    "clsx": "^1.2.1",
+    "dayjs": "^1.11.9",
     "focus-visible": "^5.2.0",
-    "framer-motion": "^4.1.17",
-    "groq": "^2.15.0",
-    "isomorphic-unfetch": "^3.1.0",
+    "framer-motion": "^10.12.18",
+    "isomorphic-unfetch": "^4.0.2",
     "lodash": "^4.17.21",
-    "next": "^11.1.2",
-    "next-images": "^1.8.1",
+    "next": "^13.4.8",
+    "next-images": "^1.8.5",
     "next-offline": "^5.0.5",
-    "next-plausible": "^2.1.1",
-    "next-sanity-image": "^3.1.5",
-    "next-seo": "^4.26.0",
+    "next-plausible": "^3.8.0",
+    "next-sanity": "^5.1.0",
+    "next-sanity-image": "^6.1.0",
+    "next-seo": "^6.1.0",
     "normalize.css": "^8.0.1",
-    "prop-types": "^15.7.2",
-    "react": "^17.0.2",
-    "react-content-loader": "^6.0.3",
-    "react-dom": "^17.0.2",
-    "react-inlinesvg": "^2.3.0",
-    "resize-observer-polyfill": "^1.5.1",
-    "sass": "^1.39.0"
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-content-loader": "^6.2.1",
+    "react-dom": "^18.2.0",
+    "react-inlinesvg": "^3.0.2",
+    "resize-observer-polyfill": "^1.5.1"
   },
   "devDependencies": {
-    "@next/eslint-plugin-next": "^11.1.2",
+    "@next/eslint-plugin-next": "^13.4.8",
     "@packtracker/webpack-plugin": "^2.3.0",
-    "sitemap": "^7.0.0"
+    "sass": "^1.63.6",
+    "sitemap": "^7.1.1"
   },
   "engines": {
-    "node": ">=12"
+    "node": ">=16.14"
   }
 }

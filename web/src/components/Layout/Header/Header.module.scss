@@ -47,7 +47,7 @@
   .nav {
     flex: 1;
 
-    @include breakpoint-below-large {
+    @include breakpoint-below-medium {
       display: none;
     }
 

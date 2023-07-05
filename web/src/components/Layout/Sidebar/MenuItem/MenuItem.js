@@ -55,10 +55,7 @@ const MenuItem = ({ item, router, toggle }) => {
   return (
     <motion.div className={styles.root} variants={variants} onClick={toggle}>
       {slug != null ? (
-        <Link
-          href={urls.pages.sanityPage(item.slug.current)}
-          prefetch={item.prefetch !== false}
-        >
+        <Link href={urls.pages.sanityPage(slug.current)}>
           <div className={clsx(styles.container, isActive && styles.active)}>
             <Icon type={icon} className={styles.icon} />
             <p className={styles.text}>{title}</p>

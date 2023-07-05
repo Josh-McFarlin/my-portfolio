@@ -49,6 +49,7 @@ const Layout = ({ preview, siteConfig, children, ...rest }) => {
         </div>
         <Footer navItems={footerNavigation} text={footerText} />
         {preview && (
+          // eslint-disable-next-line @next/next/no-html-link-for-pages
           <a className={classes.exitPreviewButton} href="/api/exit-preview">
             Exit Preview
           </a>

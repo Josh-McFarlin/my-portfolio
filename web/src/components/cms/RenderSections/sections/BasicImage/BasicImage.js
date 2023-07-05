@@ -24,7 +24,6 @@ const BasicImage = (props) => {
           <SanityImage
             className={clsx(styles.image, props.circular && styles.circular)}
             src={props.image}
-            layout="fill"
             sizes={`${
               props.maxWidth ? `(max-width: ${props.maxWidth}px) ` : ""
             }${props.width}vw`}

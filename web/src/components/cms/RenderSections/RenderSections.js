@@ -49,4 +49,4 @@ RenderSections.propTypes = {
   ).isRequired,
 };
 
-export default RenderSections;
+export default React.memo(RenderSections);

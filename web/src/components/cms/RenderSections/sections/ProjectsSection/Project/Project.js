@@ -6,9 +6,6 @@ import styles from "./Project.module.scss";
 
 const Project = ({ name, tags, description, image, links }) => (
   <div className={styles.root}>
-    <div className={styles.image}>
-      <SanityImage src={image} layout="fill" objectFit="cover" />
-    </div>
     <div className={styles.content}>
       <h1 className={styles.title}>{name}</h1>
       {description && <BlockContent blocks={description} />}
@@ -37,6 +34,7 @@ const Project = ({ name, tags, description, image, links }) => (
         </div>
       )}
     </div>
+    <SanityImage className={styles.image} src={image} />
   </div>
 );
 

@@ -24,8 +24,8 @@ const Footer = ({ navItems, text, router }) => {
               return (
                 <li key={item._id} className={styles.item}>
                   <Link
+                    legacyBehavior
                     href={urls.pages.sanityPage(item.slug.current)}
-                    prefetch={item.prefetch !== false}
                   >
                     <a data-is-active={isActive ? "true" : "false"}>
                       {item.title}
@@ -56,7 +56,7 @@ Footer.propTypes = {
   router: PropTypes.shape({
     pathname: PropTypes.string,
     query: PropTypes.shape({
-      slug: PropTypes.string,
+      slug: PropTypes.arrayOf(PropTypes.string),
     }),
   }).isRequired,
 };

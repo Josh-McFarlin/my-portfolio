@@ -70,9 +70,9 @@ const Job = ({
 Job.propTypes = {
   company: PropTypes.string.isRequired,
   position: PropTypes.string.isRequired,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.string,
   startDate: PropTypes.string.isRequired,
-  endDate: PropTypes.string.isRequired,
+  endDate: PropTypes.string,
   description: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 

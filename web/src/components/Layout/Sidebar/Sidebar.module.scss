@@ -11,7 +11,7 @@
   pointer-events: none;
   z-index: 5;
 
-  @include breakpoint-above-small {
+  @include breakpoint-above-medium {
     display: none;
   }
 

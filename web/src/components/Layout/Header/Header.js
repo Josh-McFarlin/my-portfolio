@@ -29,7 +29,7 @@ const Header = ({ name = "Missing name", navItems, router }) => {
   return (
     <div className={styles.root}>
       <h1 className={styles.branding}>
-        <Link href={urls.pages.index()}>
+        <Link legacyBehavior href={urls.pages.index()}>
           <a title={name}>
             <h1 className={styles.title}>{name}</h1>
           </a>
@@ -51,8 +51,8 @@ const Header = ({ name = "Missing name", navItems, router }) => {
                 >
                   {slug != null ? (
                     <Link
+                      legacyBehavior
                       href={urls.pages.sanityPage(item.slug.current)}
-                      prefetch={item.prefetch !== false}
                     >
                       <a>{title}</a>
                     </Link>
@@ -74,7 +74,7 @@ Header.propTypes = {
   router: PropTypes.shape({
     pathname: PropTypes.string,
     query: PropTypes.shape({
-      slug: PropTypes.string,
+      slug: PropTypes.arrayOf(PropTypes.string),
     }),
     asPath: PropTypes.string,
     events: PropTypes.any,

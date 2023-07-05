@@ -7,7 +7,7 @@ import styles from "./Cta.module.scss";
 const cta = ({ title, route, link }) => {
   if (route && route.slug && route.slug.current) {
     return (
-      <Link href={urls.pages.sanityPage(route.slug.current)}>
+      <Link legacyBehavior href={urls.pages.sanityPage(route.slug.current)}>
         <a className={styles.button}>{title}</a>
       </Link>
     );

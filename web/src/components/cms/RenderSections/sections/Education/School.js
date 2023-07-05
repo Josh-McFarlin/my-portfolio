@@ -55,8 +55,13 @@ School.propTypes = {
   startYear: PropTypes.string.isRequired,
   endYear: PropTypes.string.isRequired,
   description: PropTypes.arrayOf(PropTypes.object).isRequired,
-  completedCourses: PropTypes.arrayOf(PropTypes.string).isRequired,
-  currentCourses: PropTypes.arrayOf(PropTypes.string).isRequired,
+  completedCourses: PropTypes.arrayOf(PropTypes.string),
+  currentCourses: PropTypes.arrayOf(PropTypes.string),
+};
+
+School.defaultProps = {
+  completedCourses: [],
+  currentCourses: [],
 };
 
 export default School;

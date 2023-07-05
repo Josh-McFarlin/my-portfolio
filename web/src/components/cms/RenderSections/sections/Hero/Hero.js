@@ -21,7 +21,7 @@ const Hero = ({ heading, backgroundImage, tagline, ctas }) => (
       )}
     </div>
     <div className={styles.background}>
-      <SanityImage src={backgroundImage} layout="fill" objectFit="cover" />
+      <SanityImage src={backgroundImage} />
     </div>
   </div>
 );

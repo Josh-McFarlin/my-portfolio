@@ -3,7 +3,7 @@
   "name": "my-portfolio-studio",
   "version": "1.0.0",
   "main": "package.json",
-  "author": "Josh McFarlin <jmcfarlin6@gatech.edu>",
+  "author": "Josh McFarlin <josh@mcfarl.in>",
   "scripts": {
     "dev": "sanity start",
     "build": "sanity build",

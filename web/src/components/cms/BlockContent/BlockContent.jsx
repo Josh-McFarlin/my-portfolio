@@ -1,12 +1,9 @@
 import React from "react";
 import PropTypes from "prop-types";
-import BlockContentPure from "@sanity/block-content-to-react";
+import { PortableText } from "@portabletext/react";
 import InternalLink from "./InternalLink";
 import EmbedHTML from "./EmbedHTML";
 import Figure from "./Figure";
-import client from "../../../utils/sanity/client";
-
-const { projectId, dataset } = client.config();
 
 const BlockContent = ({ blocks, className, ...rest }) => {
   if (!blocks) {
@@ -14,24 +11,21 @@ const BlockContent = ({ blocks, className, ...rest }) => {
     return null;
   }
 
+  const components = {
+    block: blocks,
+    marks: {
+      internalLink: InternalLink,
+    },
+    types: {
+      embedHTML: EmbedHTML,
+      figure: Figure,
+    },
+  };
+
   return (
-    <BlockContentPure
-      blocks={blocks}
-      projectId={projectId}
-      dataset={dataset}
-      className={className}
-      renderContainerOnSingleChild
-      serializers={{
-        marks: {
-          internalLink: InternalLink,
-        },
-        types: {
-          embedHTML: EmbedHTML,
-          figure: Figure,
-        },
-      }}
-      {...rest}
-    />
+    <div className={className} {...rest}>
+      <PortableText components={components} value={blocks} />
+    </div>
   );
 };
 

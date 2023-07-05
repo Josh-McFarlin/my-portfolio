@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
@@ -9,7 +10,7 @@ const InternalLink = ({ mark, children }) => {
   if (slug == null) return <a>{children}</a>;
 
   return (
-    <Link href={`/${urls.pages.sanityPage(slug.current)}`}>
+    <Link legacyBehavior href={`/${urls.pages.sanityPage(slug.current)}`}>
       <a>{children}</a>
     </Link>
   );
