@@ -4,12 +4,11 @@ import client from "../../utils/sanity/client";
 import SanityImage from "../cms/SanityImage";
 import styles from "./RenderResume.module.scss";
 
-const Loader = () => <div className={styles.loading}>Loading Resume...</div>;
-
 const RenderResume = ({ first, second, image, link, pdf }) => {
   const [pdfLink, setPdfLink] = React.useState(null);
   const [isLoading, setIsLoading] = React.useState(true);
   const [showWhich, setShowWhich] = React.useState(first);
+  const initialized = React.useRef(false);
 
   const onLoaded = () => setIsLoading(false);
 
@@ -33,12 +32,63 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
   };
 
   React.useEffect(() => {
-    if (pdf != null) {
+    if (pdf != null && !initialized.current) {
       client
         .fetch(`*[_id == "${pdf.asset._ref}"][0]`)
-        .then(({ url }) => setPdfLink(url));
+        .then(({ url }) => {
+          setPdfLink(url);
+          initialized.current = true;
+        });
     }
-  }, []);
+  }, [pdf]);
+
+  let content = null;
+  if (showWhich === "image") {
+    content = (
+      <div className={styles.resumeContainer}>
+        <div className={styles.imageContainer}>
+          <SanityImage
+            className={styles.resumeImage}
+            src={image}
+            alt="Resume"
+            onLoad={onLoaded}
+            onError={onRenderFail}
+          />
+        </div>
+        {isLoading && (
+          <div className={styles.resumeContainer}>
+            <div className={styles.loading}>Loading Resume...</div>
+          </div>
+        )}
+      </div>
+    );
+  } else if (showWhich === "link" || showWhich === "pdf") {
+    let iframeUrl = link;
+    if (showWhich === "link") {
+      iframeUrl = "https://docs.google.com/document/d/e/2PACX-1vT8qSwaATh5uddVSEyBxqhW4xNFMG0kLEr2n0Kx9q31GWPggXX7MjdJM2bhn4IbfQ/pub?embedded=true"
+    } else {
+      iframeUrl = `https://docs.google.com/gview?url=${pdfLink}&embedded=true`;
+    }
+    
+    content = (
+      <iframe
+        className={styles.resumeContainer}
+        src={iframeUrl}
+        frameBorder="0"
+        title="My Resume"
+        onLoad={onLoaded}
+        onError={onRenderFail}
+      />
+    );
+  } else if (showWhich == null) {
+    content = (
+      <div className={styles.resumeContainer}>
+        <div className={styles.loading}>
+          Could not load resume at this time, please try again later!
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className={styles.root}>
@@ -52,37 +102,7 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
           Download PDF
         </a>
       )}
-      <div className={styles.resumeContainer}>
-        {isLoading && <Loader />}
-        {(showWhich === "link" || showWhich === "pdf") && (
-          <iframe
-            className={styles.resume}
-            src={`https://docs.google.com/gview?url=${
-              showWhich === "link" ? link : pdfLink
-            }&embedded=true`}
-            frameBorder="0"
-            title="My Resume"
-            onLoad={onLoaded}
-            onError={onRenderFail}
-          />
-        )}
-        {showWhich === "image" && (
-          <div className={styles.imageContainer}>
-            <SanityImage
-              className={styles.resumeImage}
-              src={image}
-              alt="Resume"
-              onLoad={onLoaded}
-              onError={onRenderFail}
-            />
-          </div>
-        )}
-        {showWhich == null && (
-          <div className={styles.loading}>
-            Could not load resume at this time, please try again later!
-          </div>
-        )}
-      </div>
+      {content}
     </div>
   );
 };
