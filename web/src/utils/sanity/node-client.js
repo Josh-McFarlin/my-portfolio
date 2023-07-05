@@ -1,4 +1,4 @@
-const sanityClient = require("@sanity/client");
+const { createClient } = require("@sanity/client");
 const prod = process.env.NODE_ENV === "production";
 
 const options = {
@@ -9,4 +9,4 @@ const options = {
   useCdn: prod,
 };
 
-module.exports = sanityClient(options);
+module.exports = createClient(options);

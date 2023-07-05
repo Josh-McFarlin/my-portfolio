@@ -33,12 +33,10 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
 
   React.useEffect(() => {
     if (pdf != null && !initialized.current) {
-      client
-        .fetch(`*[_id == "${pdf.asset._ref}"][0]`)
-        .then(({ url }) => {
-          setPdfLink(url);
-          initialized.current = true;
-        });
+      client.fetch(`*[_id == "${pdf.asset._ref}"][0]`).then(({ url }) => {
+        setPdfLink(url);
+        initialized.current = true;
+      });
     }
   }, [pdf]);
 
@@ -63,18 +61,18 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
       </div>
     );
   } else if (showWhich === "link" || showWhich === "pdf") {
-    let iframeUrl = link;
+    let iframeUrl;
     if (showWhich === "link") {
-      iframeUrl = "https://docs.google.com/document/d/e/2PACX-1vT8qSwaATh5uddVSEyBxqhW4xNFMG0kLEr2n0Kx9q31GWPggXX7MjdJM2bhn4IbfQ/pub?embedded=true"
+      iframeUrl =
+        "https://docs.google.com/document/d/e/2PACX-1vT8qSwaATh5uddVSEyBxqhW4xNFMG0kLEr2n0Kx9q31GWPggXX7MjdJM2bhn4IbfQ/pub?embedded=true";
     } else {
       iframeUrl = `https://docs.google.com/gview?url=${pdfLink}&embedded=true`;
     }
-    
+
     content = (
       <iframe
         className={styles.resumeContainer}
         src={iframeUrl}
-        frameBorder="0"
         title="My Resume"
         onLoad={onLoaded}
         onError={onRenderFail}
