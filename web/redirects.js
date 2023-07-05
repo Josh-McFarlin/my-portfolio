@@ -13,6 +13,7 @@ const run = () => {
 
   fs.writeFileSync("./out/_redirects", fileContents);
   fs.writeFileSync("./_redirects", fileContents);
+  fs.writeFileSync("./public/_redirects", fileContents);
 };
 
 try {
