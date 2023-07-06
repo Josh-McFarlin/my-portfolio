@@ -9,8 +9,8 @@ const School = ({
   startYear,
   endYear,
   description,
-  completedCourses,
-  currentCourses,
+  completedCourses=[],
+  currentCourses=[],
 }) => (
   <div className={styles.root}>
     <section className={styles.school}>
@@ -21,7 +21,7 @@ const School = ({
         ).getUTCFullYear()} in ${location}`}
       </div>
       {description && <BlockContent blocks={description} />}
-      {completedCourses && (
+      {completedCourses.length > 0 && (
         <div>
           <div className={styles.details}>Completed Courses</div>
           <ul>
@@ -33,7 +33,7 @@ const School = ({
           </ul>
         </div>
       )}
-      {currentCourses && (
+      {currentCourses.length > 0 && (
         <div>
           <div className={styles.details}>Current Courses</div>
           <ul>
