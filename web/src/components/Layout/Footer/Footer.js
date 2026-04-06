@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import BlockContent from "../../cms/BlockContent";
 import urls from "../../../utils/urls";
 
-const Footer = ({ navItems, text }) => {
+const Footer = ({ navItems = [], text = null }) => {
   const router = useRouter();
 
   if (navItems.length === 0 && text == null) {
@@ -55,9 +55,5 @@ Footer.propTypes = {
   text: PropTypes.arrayOf(PropTypes.object),
 };
 
-Footer.defaultProps = {
-  navItems: [],
-  text: null,
-};
 
 export default Footer;

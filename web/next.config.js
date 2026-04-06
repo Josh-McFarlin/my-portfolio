@@ -1,6 +1,8 @@
 const { withPlausibleProxy } = require('next-plausible')
+const path = require('path')
 
 module.exports = withPlausibleProxy()({
+  outputFileTracingRoot: path.join(__dirname, '..'),
   generateBuildId: () => "build",
   images: {
     remotePatterns: [
