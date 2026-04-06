@@ -33,7 +33,7 @@ const Header = ({ name = "Missing name", navItems }) => {
         <Link
           href={urls.pages.index()}
           title={name}
-          className="block py-2 px-0 lg:!py-3 lg:!px-2 text-title2"
+          className="block py-3 px-2 lg:!py-3 lg:!px-0 text-title2"
         >
           {name}
         </Link>
