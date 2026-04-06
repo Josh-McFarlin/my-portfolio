@@ -2,7 +2,7 @@ import React from "react";
 import clsx from "clsx";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { withRouter } from "next/router";
+import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Icon from "../../../cms/RenderSections/sections/Icon";
 import urls from "../../../../utils/urls";
@@ -41,7 +41,8 @@ const conditionalJoin = (slug) => {
   return typeof slug === "string" ? slug : slug.join("/");
 };
 
-const MenuItem = ({ item, router, toggle }) => {
+const MenuItem = ({ item, toggle }) => {
+  const router = useRouter();
   const { slug, title, link, href, icon } = item;
 
   let isActive = false;
@@ -80,8 +81,7 @@ const MenuItem = ({ item, router, toggle }) => {
 
 MenuItem.propTypes = {
   item: PropTypes.object.isRequired,
-  router: PropTypes.object.isRequired,
   toggle: PropTypes.func.isRequired,
 };
 
-export default withRouter(MenuItem);
+export default MenuItem;

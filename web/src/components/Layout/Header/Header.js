@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import Link from "next/link";
-import { withRouter } from "next/router";
+import { useRouter } from "next/router";
 import urls from "../../../utils/urls";
 import styles from "./Header.module.scss";
 
@@ -12,7 +12,9 @@ const conditionalJoin = (slug) => {
   return typeof slug === "string" ? slug : slug.join("/");
 };
 
-const Header = ({ name = "Missing name", navItems, router }) => {
+const Header = ({ name = "Missing name", navItems }) => {
+  const router = useRouter();
+
   const isRouteActive = (item) => {
     if (typeof item === "string") return item === router.asPath;
 
@@ -29,10 +31,8 @@ const Header = ({ name = "Missing name", navItems, router }) => {
   return (
     <div className={styles.root}>
       <h1 className={styles.branding}>
-        <Link legacyBehavior href={urls.pages.index()}>
-          <a title={name}>
-            <h1 className={styles.title}>{name}</h1>
-          </a>
+        <Link href={urls.pages.index()} title={name} className={styles.title}>
+          {name}
         </Link>
       </h1>
       {navItems && (
@@ -51,10 +51,9 @@ const Header = ({ name = "Missing name", navItems, router }) => {
                 >
                   {slug != null ? (
                     <Link
-                      legacyBehavior
                       href={urls.pages.sanityPage(item.slug.current)}
                     >
-                      <a>{title}</a>
+                      {title}
                     </Link>
                   ) : (
                     <a
@@ -76,14 +75,6 @@ const Header = ({ name = "Missing name", navItems, router }) => {
 };
 
 Header.propTypes = {
-  router: PropTypes.shape({
-    pathname: PropTypes.string,
-    query: PropTypes.shape({
-      slug: PropTypes.arrayOf(PropTypes.string),
-    }),
-    asPath: PropTypes.string,
-    events: PropTypes.any,
-  }).isRequired,
   name: PropTypes.string.isRequired,
   navItems: PropTypes.arrayOf(
     PropTypes.shape({
@@ -99,4 +90,4 @@ Header.defaultProps = {
   navItems: [],
 };
 
-export default withRouter(Header);
+export default Header;

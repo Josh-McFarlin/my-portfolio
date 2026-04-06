@@ -10,8 +10,8 @@ const InternalLink = ({ mark, children }) => {
   if (slug == null) return <a>{children}</a>;
 
   return (
-    <Link legacyBehavior href={`/${urls.pages.sanityPage(slug.current)}`}>
-      <a>{children}</a>
+    <Link href={`/${urls.pages.sanityPage(slug.current)}`}>
+      {children}
     </Link>
   );
 };
