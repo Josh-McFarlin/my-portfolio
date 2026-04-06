@@ -13,7 +13,7 @@ module.exports = withPlausibleProxy()({
     ],
     formats: ["image/avif", "image/webp"],
   },
-  sass: {
+  sassOptions: {
     silenceDeprecations: ["legacy-js-api", "import"],
   },
 });
