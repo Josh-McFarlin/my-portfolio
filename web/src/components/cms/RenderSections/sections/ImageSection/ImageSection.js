@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import BlockContent from "../../../BlockContent";
 import Cta from "../../../../Cta";
 import SanityImage from "../../../SanityImage";
-import styles from "./ImageSection.module.scss";
 
 const ImageSection = ({ heading, label, text, image, cta }) => {
   if (image == null) {
@@ -11,14 +10,14 @@ const ImageSection = ({ heading, label, text, image, cta }) => {
   }
 
   return (
-    <div className={styles.root}>
-      <figure className={styles.content}>
-        <SanityImage src={image} className={styles.image} alt={heading} />
+    <div className="relative py-8">
+      <figure className="relative mx-6 max-w-wide">
+        <SanityImage src={image} className="block w-full" alt={heading} />
         <figcaption>
-          <div className={styles.caption}>
-            <div className={styles.captionBox}>
-              <div className={styles.label}>{label}</div>
-              <h2 className={styles.title}>{heading}</h2>
+          <div className="w-full mx-auto box-border">
+            <div className="bg-primary-bg border border-dark-text p-6">
+              <div className="text-micro leading-[1.2] tracking-[0.5px] uppercase mt-[1em]">{label}</div>
+              <h2 className="text-title3 leading-[1.429] [.label+&]:mt-[0.2em]">{heading}</h2>
               {text && <BlockContent blocks={text} />}
               {cta && cta.route && <Cta {...cta} />}
             </div>

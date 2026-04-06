@@ -1,13 +1,11 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import styles from "./Education.module.scss";
 import School from "./School";
 
 const Education = ({ heading, schools }) => (
-  <div className={styles.root}>
-    <section className={styles.education}>
-      <h1 className={styles.heading}>{heading}</h1>
+  <div className="pb-8">
+    <section className="w-full max-w-narrow mx-auto px-6 box-border">
+      <h1 className="text-title2 leading-[1.375] my-[0.25em] max-lg:underline">{heading}</h1>
       <div>
         {schools.map((data) => (
           <School key={data.name + data.startYear} {...data} />

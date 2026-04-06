@@ -2,12 +2,14 @@ import React from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
 import urls from "../../utils/urls";
-import styles from "./Cta.module.scss";
+
+const buttonClass =
+  "text-inherit block rounded-none border border-current bg-transparent px-[1.5em] py-[1em] no-underline font-semibold max-w-fit transition-transform duration-[50ms] ease-in-out scale-100 hover:scale-105 active:scale-95";
 
 const cta = ({ title, route, link }) => {
   if (route && route.slug && route.slug.current) {
     return (
-      <Link href={urls.pages.sanityPage(route.slug.current)} className={styles.button}>
+      <Link href={urls.pages.sanityPage(route.slug.current)} className={buttonClass}>
         {title}
       </Link>
     );
@@ -15,13 +17,13 @@ const cta = ({ title, route, link }) => {
 
   if (link) {
     return (
-      <a className={styles.button} href={link}>
+      <a className={buttonClass} href={link}>
         {title}
       </a>
     );
   }
 
-  return <a className={styles.button}>{title}</a>;
+  return <a className={buttonClass}>{title}</a>;
 };
 
 cta.propTypes = {

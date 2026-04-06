@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import BlockContent from "../../../BlockContent";
-import styles from "./Job.module.scss";
 
 const Job = ({
   company,
@@ -52,12 +51,12 @@ const Job = ({
   }
 
   return (
-    <div className={styles.root} id={`work-${company}`}>
-      <section className={styles.job}>
-        <h2 className={styles.heading}>
+    <div className="[&:not(:last-of-type)]:pb-2" id={`work-${company}`}>
+      <section className="w-full max-w-narrow mx-auto px-6 box-border max-lg:!px-0">
+        <h2 className="text-title4 leading-[1.5] mt-[0.25em] mb-0">
           {position} @ {company}
         </h2>
-        <div className={styles.details}>
+        <div className="text-small leading-[1.5]">
           {dateString}
           {location && ` in ${location}`}
         </div>

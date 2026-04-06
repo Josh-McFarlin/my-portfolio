@@ -4,7 +4,6 @@ import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import urls from "../../../utils/urls";
-import styles from "./Header.module.scss";
 
 const conditionalJoin = (slug) => {
   if (slug === undefined) return "";
@@ -29,15 +28,19 @@ const Header = ({ name = "Missing name", navItems }) => {
   };
 
   return (
-    <div className={styles.root}>
-      <h1 className={styles.branding}>
-        <Link href={urls.pages.index()} title={name} className={styles.title}>
+    <div className="relative flex flex-row justify-center items-center w-full border-b border-black/40 bg-white box-border py-2 [&_a]:text-inherit [&_a]:no-underline">
+      <h1 className="text-inherit font-inherit uppercase m-0 p-0 text-center flex-1">
+        <Link
+          href={urls.pages.index()}
+          title={name}
+          className="block py-2 px-0 lg:!py-3 lg:!px-2 text-title2"
+        >
           {name}
         </Link>
       </h1>
       {navItems && (
-        <nav className={styles.nav}>
-          <ul className={styles.navItems}>
+        <nav className="flex-1 hidden md:block">
+          <ul className="p-0 m-0 h-full sm:flex sm:justify-center sm:px-4">
             {navItems.map((item) => {
               const { slug, title, link, href, _id, _key } = item;
 
@@ -45,13 +48,14 @@ const Header = ({ name = "Missing name", navItems }) => {
                 <li
                   key={_id || _key}
                   className={clsx(
-                    styles.navItem,
-                    isRouteActive(item) && styles.active
+                    "flex whitespace-nowrap items-stretch !p-0 sm:ml-2",
+                    isRouteActive(item) && "active"
                   )}
                 >
                   {slug != null ? (
                     <Link
                       href={urls.pages.sanityPage(item.slug.current)}
+                      className="block relative px-3 text-large font-semibold max-lg:px-6 max-lg:py-4 max-lg:w-full max-lg:text-right"
                     >
                       {title}
                     </Link>
@@ -60,6 +64,7 @@ const Header = ({ name = "Missing name", navItems }) => {
                       href={link ?? href}
                       target="_blank"
                       rel="noopener noreferrer"
+                      className="block relative px-3 text-large font-semibold max-lg:px-6 max-lg:py-4 max-lg:w-full max-lg:text-right"
                     >
                       {title}
                     </a>

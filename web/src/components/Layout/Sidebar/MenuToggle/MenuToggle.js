@@ -1,7 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
 import PropTypes from "prop-types";
-import styles from "./MenuToggle.module.scss";
 
 const variants = {
   open: {
@@ -29,7 +28,11 @@ const Path = (props) => (
 );
 
 const MenuToggle = ({ toggle }) => (
-  <button className={styles.root} onClick={toggle} type="button">
+  <button
+    className="outline-none border-none select-none cursor-pointer absolute top-5 right-[15px] w-[50px] h-[50px] rounded-full bg-transparent pointer-events-auto m-0 p-0"
+    onClick={toggle}
+    type="button"
+  >
     <motion.svg width="23" height="23" viewBox="0 0 23 23" variants={variants}>
       <Path
         variants={{
