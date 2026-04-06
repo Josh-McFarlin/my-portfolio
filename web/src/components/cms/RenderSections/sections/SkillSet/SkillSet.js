@@ -1,14 +1,12 @@
 import React from "react";
 import PropTypes from "prop-types";
-
-import styles from "./SkillSet.module.scss";
 import Skill from "./Skill";
 
 const SkillSet = ({ heading, skills }) => (
-  <div className={styles.root}>
-    <section className={styles.section}>
-      <h1 className={styles.heading}>{heading}</h1>
-      <div className={styles.skillsList}>
+  <div className="pb-8 -mt-6">
+    <section className="w-full max-w-narrow mx-auto px-6 box-border">
+      <h1 className="text-title4 leading-[1.5] my-[0.25em] text-center">{heading}</h1>
+      <div className="flex flex-row flex-wrap justify-center">
         {skills.map((data) => (
           <Skill key={data.name} {...data} />
         ))}

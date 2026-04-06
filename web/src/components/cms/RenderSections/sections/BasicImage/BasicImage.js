@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import SanityImage from "../../../SanityImage";
-import styles from "./BasicImage.module.scss";
 
 const BasicImage = (props) => {
   if (props.image.image == null) {
@@ -18,11 +17,14 @@ const BasicImage = (props) => {
   };
 
   return (
-    <div className={styles.root}>
-      <section className={styles.section}>
-        <div className={styles.imageContainer} style={contStyle}>
+    <div className="pb-8">
+      <section className="w-full max-w-narrow mx-auto px-6 box-border flex justify-center">
+        <div className="relative overflow-hidden border border-black" style={contStyle}>
           <SanityImage
-            className={clsx(styles.image, props.circular && styles.circular)}
+            className={clsx(
+              "w-full h-full bg-white mx-auto object-cover",
+              props.circular && "rounded-full"
+            )}
             src={props.image}
             sizes={`${
               props.maxWidth ? `(max-width: ${props.maxWidth}px) ` : ""

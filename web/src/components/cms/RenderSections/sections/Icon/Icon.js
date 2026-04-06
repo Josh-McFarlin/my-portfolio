@@ -2,14 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import clsx from "clsx";
 import { Icon as IconifyIcon } from "@iconify/react";
-import classes from "./Icon.module.scss";
 
 const Icon = ({ type, className, ...rest }) => {
   switch (type) {
     case "Person": {
       return (
         <IconifyIcon
-          className={clsx(classes.root, className)}
+          className={clsx("text-inherit fill-current", className)}
           icon="ion:person"
           {...rest}
         />
@@ -18,7 +17,7 @@ const Icon = ({ type, className, ...rest }) => {
     case "Mail": {
       return (
         <IconifyIcon
-          className={clsx(classes.root, className)}
+          className={clsx("text-inherit fill-current", className)}
           icon="ion:mail"
           {...rest}
         />
@@ -27,7 +26,7 @@ const Icon = ({ type, className, ...rest }) => {
     case "List": {
       return (
         <IconifyIcon
-          className={clsx(classes.root, className)}
+          className={clsx("text-inherit fill-current", className)}
           icon="ion:list"
           {...rest}
         />
@@ -36,7 +35,7 @@ const Icon = ({ type, className, ...rest }) => {
     case "Document": {
       return (
         <IconifyIcon
-          className={clsx(classes.root, className)}
+          className={clsx("text-inherit fill-current", className)}
           icon="ion:document"
           {...rest}
         />

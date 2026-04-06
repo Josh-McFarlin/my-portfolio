@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 import PropTypes from "prop-types";
 import Icon from "../../../cms/RenderSections/sections/Icon";
 import urls from "../../../../utils/urls";
-import styles from "./MenuItem.module.scss";
 
 const variants = {
   open: {
@@ -53,25 +52,34 @@ const MenuItem = ({ item, toggle }) => {
       router.asPath === item.slug.current;
   }
 
+  const containerClass = clsx(
+    "flex flex-row items-center text-white fill-white",
+    isActive && "active"
+  );
+
   return (
-    <motion.div className={styles.root} variants={variants} onClick={toggle}>
+    <motion.div
+      className="mb-[26px] cursor-pointer w-full p-[5px] border-[3px] border-white rounded-[10px] box-border"
+      variants={variants}
+      onClick={toggle}
+    >
       {slug != null ? (
         <Link href={urls.pages.sanityPage(slug.current)}>
-          <div className={clsx(styles.container, isActive && styles.active)}>
-            <Icon type={icon} className={styles.icon} />
-            <p className={styles.text}>{title}</p>
+          <div className={containerClass}>
+            <Icon type={icon} className="text-[30px] mx-2 p-[6px] text-inherit fill-current align-middle" />
+            <p className="text-title3 text-inherit no-underline m-0">{title}</p>
           </div>
         </Link>
       ) : (
         <a
-          className={clsx(styles.container, isActive && styles.active)}
+          className={containerClass}
           href={link ?? href}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <div className={styles.container}>
-            <Icon type={icon} className={styles.icon} />
-            <p className={styles.text}>{title}</p>
+          <div className={containerClass}>
+            <Icon type={icon} className="text-[30px] mx-2 p-[6px] text-inherit fill-current align-middle" />
+            <p className="text-title3 text-inherit no-underline m-0">{title}</p>
           </div>
         </a>
       )}

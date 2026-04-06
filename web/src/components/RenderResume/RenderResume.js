@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import client from "../../utils/sanity/client";
 import SanityImage from "../cms/SanityImage";
-import styles from "./RenderResume.module.scss";
 
 const RenderResume = ({ first, second, image, link, pdf }) => {
   const [pdfLink, setPdfLink] = React.useState(null);
@@ -43,10 +42,10 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
   let content = null;
   if (showWhich === "image") {
     content = (
-      <div className={styles.resumeContainer}>
-        <div className={styles.imageContainer}>
+      <div className="relative flex-1 m-8 h-0 max-w-[calc(100%-64px)] w-[600px] border border-black shadow-[10px_10px_2px_1px_rgba(0,0,255,0.2)] bg-white">
+        <div className="w-full h-full overflow-auto">
           <SanityImage
-            className={styles.resumeImage}
+            className="w-auto min-w-full max-w-[125%]"
             src={image}
             alt="Resume"
             onLoad={onLoaded}
@@ -54,8 +53,8 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
           />
         </div>
         {isLoading && (
-          <div className={styles.resumeContainer}>
-            <div className={styles.loading}>Loading Resume...</div>
+          <div className="w-full h-full text-center flex flex-col justify-center items-center bg-white absolute top-0 left-0">
+            Loading Resume...
           </div>
         )}
       </div>
@@ -71,7 +70,7 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
 
     content = (
       <iframe
-        className={styles.resumeContainer}
+        className="relative flex-1 m-8 h-0 max-w-[calc(100%-64px)] w-[600px] border border-black shadow-[10px_10px_2px_1px_rgba(0,0,255,0.2)] bg-white"
         src={iframeUrl}
         title="My Resume"
         onLoad={onLoaded}
@@ -80,8 +79,8 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
     );
   } else if (showWhich == null) {
     content = (
-      <div className={styles.resumeContainer}>
-        <div className={styles.loading}>
+      <div className="relative flex-1 m-8 h-0 max-w-[calc(100%-64px)] w-[600px] border border-black shadow-[10px_10px_2px_1px_rgba(0,0,255,0.2)] bg-white">
+        <div className="w-full h-full text-center flex flex-col justify-center items-center bg-white absolute top-0 left-0">
           Could not load resume at this time, please try again later!
         </div>
       </div>
@@ -89,10 +88,10 @@ const RenderResume = ({ first, second, image, link, pdf }) => {
   }
 
   return (
-    <div className={styles.root}>
+    <div className="w-full h-full flex-1 flex flex-col justify-center items-center">
       {(link || pdfLink) && (
         <a
-          className={styles.link}
+          className="flex justify-center items-center mx-[3px] mb-[3px] p-2 border border-black cursor-default bg-white shadow-[3px_4px_2px_0_rgba(0,0,255,0.2)]"
           href={showWhich === "link" ? link : pdfLink}
           target="_blank"
           rel="noopener noreferrer"

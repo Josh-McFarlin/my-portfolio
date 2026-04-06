@@ -1,8 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-import styles from "./EmailForm.module.scss";
-
 const encode = (data) =>
   Object.keys(data)
     .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`)
@@ -51,13 +49,22 @@ const EmailForm = ({ heading, subtitle }) => {
     }
   };
 
+  const inputClass =
+    "[-webkit-font-smoothing:inherit] font-[inherit] w-full p-3 border border-[#ccc] rounded box-border mt-[6px] mb-4 resize-y";
+
   return (
-    <section className={styles.root}>
-      <div className={styles.container}>
-        {heading && <h2 className={styles.heading}>{heading}</h2>}
-        {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+    <section className="pb-8">
+      <div className="w-full max-w-narrow px-[1.5em] box-border mx-auto">
+        {heading && (
+          <h2 className="text-center text-title3 leading-[1.429] mb-2 sm:text-title2 sm:leading-[1.375]">
+            {heading}
+          </h2>
+        )}
+        {subtitle && (
+          <p className="text-center mt-2 mb-6">{subtitle}</p>
+        )}
         <form
-          className={styles.form}
+          className="flex flex-col"
           name="contact"
           method="POST"
           data-netlify="true"
@@ -68,7 +75,7 @@ const EmailForm = ({ heading, subtitle }) => {
           <input type="hidden" name="form-name" value="contact" />
           <p hidden>
             <label>
-              {"Don’t fill this out if you're human:"}
+              {"Don't fill this out if you're human:"}
               <input
                 value={botField}
                 onChange={(event) => setBotField(event.target.value)}
@@ -78,7 +85,7 @@ const EmailForm = ({ heading, subtitle }) => {
 
           <label htmlFor="fname">Name</label>
           <input
-            className={styles.formInput}
+            className={inputClass}
             id="fname"
             type="text"
             name="name"
@@ -90,7 +97,7 @@ const EmailForm = ({ heading, subtitle }) => {
 
           <label htmlFor="femail">ReplyTo</label>
           <input
-            className={styles.formInput}
+            className={inputClass}
             id="femail"
             type="email"
             name="replyTo"
@@ -102,7 +109,7 @@ const EmailForm = ({ heading, subtitle }) => {
 
           <label htmlFor="fmessage">Message</label>
           <textarea
-            className={styles.formInput}
+            className={inputClass}
             id="fmessage"
             name="message"
             placeholder="Message"
@@ -111,7 +118,11 @@ const EmailForm = ({ heading, subtitle }) => {
             onChange={(event) => setMessage(event.target.value)}
           />
 
-          <input className={styles.formButton} type="submit" value="Send" />
+          <input
+            className="[-webkit-font-smoothing:inherit] font-[inherit] bg-[#4CAF50] text-white px-5 py-3 border-none rounded cursor-pointer w-1/4 min-w-[100px] self-end hover:bg-[#45a049]"
+            type="submit"
+            value="Send"
+          />
         </form>
       </div>
     </section>

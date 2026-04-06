@@ -1,0 +1,100 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Box sizing */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  /* Typography defaults matching the SCSS design system */
+  h1 {
+    @apply text-title1 font-semibold font-quicksand m-0 text-primary-text;
+  }
+
+  h2 {
+    @apply text-title2 font-semibold font-quicksand m-0 text-primary-text;
+  }
+
+  h3 {
+    @apply text-title3 font-semibold font-quicksand m-0 text-primary-text;
+  }
+
+  h4 {
+    @apply text-title4 font-semibold font-quicksand m-0 text-primary-text;
+  }
+
+  h5 {
+    @apply text-title4 font-medium font-quicksand m-0 text-primary-text;
+  }
+
+  h6 {
+    @apply text-title4 font-medium m-0 text-primary-text;
+  }
+
+  p,
+  a,
+  span,
+  li {
+    @apply text-base font-medium font-quicksand m-0 text-primary-text;
+  }
+
+  a,
+  button {
+    cursor: pointer;
+  }
+
+  li:not(:last-of-type) {
+    padding-bottom: 8px;
+  }
+
+  *:focus:not(.focus-visible) {
+    outline: none;
+  }
+
+  button,
+  div {
+    &::-moz-focus-inner {
+      border: 0;
+    }
+  }
+}
+
+/* Root layout */
+html,
+body,
+#__next {
+  @apply w-full h-full m-0 p-0 relative;
+  overscroll-behavior: none;
+  background-color: #f0efe9;
+}
+
+#__next {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body {
+  font-family: 'Raleway', sans-serif;
+}
+
+#content {
+  @apply w-full flex flex-col mx-auto px-4 overflow-x-hidden text-primary-text;
+  max-width: 1400px;
+  min-height: calc(100% - 70px);
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+#content section {
+  max-width: 50em;
+}
+
+#portalRoot {
+  @apply w-screen h-screen absolute top-0 left-0 m-0 p-0 pointer-events-none;
+  max-width: 100%;
+  z-index: 1000;
+}

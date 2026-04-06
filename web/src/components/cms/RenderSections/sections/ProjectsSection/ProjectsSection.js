@@ -1,13 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
 import Project from "./Project";
-import styles from "./ProjectsSection.module.scss";
 
 const ProjectsSection = ({ heading, projects }) => (
-  <div className={styles.root}>
-    <section className={styles.section}>
-      {heading != null && <h1 className={styles.title}>{heading}</h1>}
-      <div className={styles.projectList}>
+  <div className="pb-8">
+    <section className="flex flex-col justify-center items-center mx-auto">
+      {heading != null && (
+        <h1 className="text-title3 leading-[1.429] mt-[0.25em]">{heading}</h1>
+      )}
+      <div className="w-full max-w-[50em] p-4 box-border">
         {projects.map((data) => (
           <Project key={data.name} {...data} />
         ))}

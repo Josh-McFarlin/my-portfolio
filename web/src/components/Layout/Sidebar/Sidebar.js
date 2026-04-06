@@ -3,7 +3,6 @@ import { motion, useCycle } from "framer-motion";
 import PropTypes from "prop-types";
 import MenuToggle from "./MenuToggle";
 import Navigation from "./Navigation";
-import styles from "./Sidebar.module.scss";
 
 const sidebarVariants = {
   open: {
@@ -59,14 +58,14 @@ const Sidebar = ({ navItems }) => {
 
   return (
     <motion.nav
-      className={styles.root}
+      className="fixed top-0 right-0 bottom-0 w-screen h-screen pointer-events-none z-[5] md:hidden"
       initial={false}
       animate={isOpen ? "open" : "closed"}
       variants={sidebarVariants}
       ref={containerRef}
     >
       <motion.div
-        className={styles.background}
+        className="bg-accent absolute top-0 right-0 bottom-0 w-[70%] h-full"
         variants={backgroundVariants}
         custom={height}
       >

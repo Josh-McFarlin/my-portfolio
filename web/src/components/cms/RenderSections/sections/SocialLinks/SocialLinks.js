@@ -1,20 +1,19 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { Icon as IconifyIcon } from "@iconify/react";
-import classes from "./SocialLinks.module.scss";
 
 const TextSection = ({ linkedIn, gitHub, twitter, instagram }) => (
-  <div className={classes.root}>
-    <section className={classes.section}>
+  <div className="pb-8">
+    <section className="w-full max-w-narrow mx-auto px-6 box-border flex justify-center">
       {linkedIn && (
         <a
-          className={classes.link}
+          className="mx-2 flex justify-center items-center"
           href={linkedIn}
           target="_blank"
           rel="noopener noreferrer"
         >
           <IconifyIcon
-            className={classes.logo}
+            className="text-inherit fill-current"
             icon="ion:logo-linkedin"
             fontSize="30px"
           />
@@ -22,13 +21,13 @@ const TextSection = ({ linkedIn, gitHub, twitter, instagram }) => (
       )}
       {gitHub && (
         <a
-          className={classes.link}
+          className="mx-2 flex justify-center items-center"
           href={gitHub}
           target="_blank"
           rel="noopener noreferrer"
         >
           <IconifyIcon
-            className={classes.logo}
+            className="text-inherit fill-current"
             icon="ion:logo-github"
             fontSize="30px"
           />
@@ -36,13 +35,13 @@ const TextSection = ({ linkedIn, gitHub, twitter, instagram }) => (
       )}
       {twitter && (
         <a
-          className={classes.link}
+          className="mx-2 flex justify-center items-center"
           href={twitter}
           target="_blank"
           rel="noopener noreferrer"
         >
           <IconifyIcon
-            className={classes.logo}
+            className="text-inherit fill-current"
             icon="ion:logo-twitter"
             fontSize="30px"
           />
@@ -50,13 +49,13 @@ const TextSection = ({ linkedIn, gitHub, twitter, instagram }) => (
       )}
       {instagram && (
         <a
-          className={classes.link}
+          className="mx-2 flex justify-center items-center"
           href={instagram}
           target="_blank"
           rel="noopener noreferrer"
         >
           <IconifyIcon
-            className={classes.logo}
+            className="text-inherit fill-current"
             icon="ion:logo-instagram"
             fontSize="30px"
           />

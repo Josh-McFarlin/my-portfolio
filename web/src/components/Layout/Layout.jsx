@@ -4,7 +4,6 @@ import Head from "next/head";
 import Header from "./Header";
 import Footer from "./Footer";
 import Sidebar from "./Sidebar";
-import classes from "./Layout.module.scss";
 
 const Layout = ({ preview, siteConfig, children, ...rest }) => {
   if (siteConfig?.config == null) {
@@ -50,7 +49,10 @@ const Layout = ({ preview, siteConfig, children, ...rest }) => {
         <Footer navItems={footerNavigation} text={footerText} />
         {preview && (
           // eslint-disable-next-line @next/next/no-html-link-for-pages
-          <a className={classes.exitPreviewButton} href="/api/exit-preview">
+          <a
+            className="fixed bottom-2 right-2 px-6 py-4 bg-warning text-white border-2 border-white rounded-lg text-xl font-semibold no-underline opacity-50 hover:opacity-100"
+            href="/api/exit-preview"
+          >
             Exit Preview
           </a>
         )}

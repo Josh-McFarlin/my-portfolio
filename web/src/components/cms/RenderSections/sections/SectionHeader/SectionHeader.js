@@ -1,12 +1,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import styles from "./SectionHeader.module.scss";
+const headerSizeClasses = {
+  sm: "text-title3 leading-[1.429] my-[0.25em]",
+  md: "text-title2 leading-[1.375] my-[0.25em]",
+  lg: "text-title1 leading-[1.163] my-[0.25em]",
+};
 
 const SectionHeader = ({ header, align, size }) => (
-  <div className={styles.root}>
-    <section className={styles.section}>
-      <h1 className={styles[`header-${size}`]} align={align}>
+  <div>
+    <section className="w-full max-w-narrow mx-auto px-6 box-border">
+      <h1 className={headerSizeClasses[size] ?? headerSizeClasses.md} align={align}>
         {header}
       </h1>
     </section>
