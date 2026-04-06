@@ -7,6 +7,7 @@ const fileContents = `/${subdirectory}/js/${script}.outbound-links.js https://pl
 /${subdirectory}/api/event https://plausible.io/api/event 202`;
 
 const run = () => {
+  fs.mkdirSync("./public", { recursive: true });
   fs.writeFileSync("./public/_redirects", fileContents);
 };
 
