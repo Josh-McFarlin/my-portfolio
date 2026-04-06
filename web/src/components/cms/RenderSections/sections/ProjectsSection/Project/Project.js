@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import BlockContent from "../../../../BlockContent";
 import SanityImage from "../../../../SanityImage";
 
-const Project = ({ name, tags, description, image, links }) => (
+const Project = ({ name, tags = [], description, image, links = [] }) => (
   <div className="relative mb-8 bg-white rounded-2xl shadow-[8px_8px_8px_0_rgba(0,0,0,0.2)] overflow-hidden border border-black/15 sm:min-h-[300px]">
     {/* Image: hidden on mobile, absolute positioned on desktop */}
     <SanityImage
@@ -53,9 +53,5 @@ Project.propTypes = {
   links: PropTypes.arrayOf(PropTypes.object),
 };
 
-Project.defaultProps = {
-  links: [],
-  tags: [],
-};
 
 export default Project;
