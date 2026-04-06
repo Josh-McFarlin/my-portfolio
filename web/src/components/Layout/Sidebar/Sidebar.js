@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { motion, useCycle } from "framer-motion";
 import PropTypes from "prop-types";
-import useComponentSize from "@rehooks/component-size";
 import MenuToggle from "./MenuToggle";
 import Navigation from "./Navigation";
 import styles from "./Sidebar.module.scss";
@@ -43,7 +42,20 @@ const backgroundVariants = {
 const Sidebar = ({ navItems }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = React.useRef(null);
-  const { height } = useComponentSize(containerRef);
+  const [height, setHeight] = useState(0);
+
+  const updateHeight = useCallback(() => {
+    if (containerRef.current) {
+      setHeight(containerRef.current.getBoundingClientRect().height);
+    }
+  }, []);
+
+  useEffect(() => {
+    updateHeight();
+    const observer = new ResizeObserver(updateHeight);
+    if (containerRef.current) observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [updateHeight]);
 
   return (
     <motion.nav
